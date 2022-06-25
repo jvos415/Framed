@@ -18,7 +18,7 @@ module.exports = {
         unique: true
       },
       imageUrl: {
-        type: Sequelize.STRING(200),
+        type: Sequelize.STRING(250),
         allowNull: false,
       },
       title: {
