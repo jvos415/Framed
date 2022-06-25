@@ -3,7 +3,13 @@ module.exports = (sequelize, DataTypes) => {
   const Image = sequelize.define('Image', {
     userId: DataTypes.INTEGER,
     albumId: DataTypes.INTEGER,
-    imageId: DataTypes.INTEGER,
+    imageUrl: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [4, 200]
+      }
+    },
     title: {
       type: DataTypes.STRING,
       allowNull: false,

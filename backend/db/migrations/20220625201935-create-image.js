@@ -17,8 +17,9 @@ module.exports = {
         type: Sequelize.INTEGER,
         unique: true
       },
-      imageId: {
-        type: Sequelize.INTEGER
+      imageUrl: {
+        type: Sequelize.STRING(200),
+        allowNull: false,
       },
       title: {
         type: Sequelize.STRING(40),
