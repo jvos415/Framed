@@ -125,17 +125,57 @@ module.exports = {
   },
   {
     userId: 6,
-    imageUrl: "https://www.dualshockers.com/static/uploads/2014/01/digital-tunnel-wallpaper1.jpg",
-    title: "Binary Tunnel",
-    description: "Binary tunnel",
+    imageUrl: "https://cdn.wallpapersafari.com/57/71/qJMmQd.jpg",
+    title: "Future Planet",
+    description: "A digital art piece of a future world",
     createdAt: new Date(),
     updatedAt: new Date()
   },
   {
     userId: 6,
-    imageUrl: "https://cdn.wallpapersafari.com/57/71/qJMmQd.jpg",
-    title: "Future Planet",
-    description: "A digital art piece of a future world",
+    imageUrl: "https://images.unsplash.com/photo-1546019170-f1f6e46039f5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2895&q=80",
+    title: "Woman On The Beach",
+    description: "A woman standing on the beach looking out to the ocean on a cloudy day",
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    userId: 6,
+    imageUrl: "https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2866&q=80",
+    title: "Man Looing Into Nature",
+    description: "Man looking into nature",
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    userId: 6,
+    imageUrl: "https://images.freeimages.com/images/large-previews/13e/my-cat-1363423.jpg",
+    title: "White Cat",
+    description: "Cute white little cat on a sofa",
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    userId: 6,
+    imageUrl: "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/little-cute-maltipoo-puppy-royalty-free-image-1652926025.jpg?crop=0.444xw:1.00xh;0.129xw,0&resize=980:*",
+    title: "Maltipoo Snackin'",
+    description: "A small light colored Matlipoo eating and looking cute",
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    userId: 6,
+    imageUrl: "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/happy-dog-outdoors-royalty-free-image-1652927740.jpg?crop=0.447xw:1.00xh;0.187xw,0&resize=980:*",
+    title: "Border Collie",
+    description: "White and black border collie looking into the camera",
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    userId: 6,
+    imageUrl: "https://hips.hearstapps.com/ghk.h-cdn.co/assets/17/30/pit-bull.jpg?crop=1.0xw:1xh;center,top&resize=980:*",
+    title: "American Staffordshire Terrier",
+    description: "Grey and white Staffordshire Terrier in the snow",
     createdAt: new Date(),
     updatedAt: new Date()
   },
