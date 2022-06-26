@@ -46,60 +46,27 @@ const AddImageForm = () => {
   };
 
   return (
-    <section className="new-form-holder centered middled">
-      <form className="create-pokemon-form" onSubmit={handleSubmit}>
-        <input
-          type="number"
-          placeholder="Number"
-          min="1"
-          required
-          value={number}
-          onChange={updateNumber} />
-        <input
-          type="number"
-          placeholder="Attack"
-          min="0"
-          max="100"
-          required
-          value={attack}
-          onChange={updateAttack} />
-        <input
-          type="number"
-          placeholder="Defense"
-          min="0"
-          max="100"
-          required
-          value={defense}
-          onChange={updateDefense} />
-        <input
+    <div>
+      <form className="add-image-form" onSubmit={handleSubmit}>
+         <input
           type="text"
           placeholder="Image URL"
           value={imageUrl}
           onChange={updateImageUrl} />
         <input
           type="text"
-          placeholder="Name"
-          value={name}
-          onChange={updateName} />
+          placeholder="Image Title"
+          value={title}
+          onChange={updateTitle} />
         <input
           type="text"
-          placeholder="Move 1"
-          value={move1}
-          onChange={updateMove1} />
-        <input
-          type="text"
-          placeholder="Move 2"
-          value={move2}
-          onChange={updateMove2} />
-        <select onChange={updateType} value={type}>
-          {pokeTypes.map(type =>
-            <option key={type}>{type}</option>
-          )}
-        </select>
-        <button type="submit">Create new Pokemon</button>
+          placeholder="Image Description"
+          value={description}
+          onChange={updateDescription} />
+        <button type="submit">Add Your Image</button>
         <button type="button" onClick={handleCancelClick}>Cancel</button>
       </form>
-    </section>
+    </div>
   );
 };
 
