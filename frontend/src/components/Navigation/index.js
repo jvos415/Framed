@@ -10,11 +10,19 @@ function Navigation({ isLoaded }){
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
-      <ProfileButton user={sessionUser} />
+      <>
+        <ProfileButton user={sessionUser} />
+        <NavLink exact to="/">Home</NavLink>
+        {/* the link above needs to go to the personal page for a user */}
+        <NavLink exact to="/add-photo">Add Photo</NavLink>
+        {/* the link above needs to go to an add-photo page, maybe make this a cool icon*/}
+      </>
     );
   } else {
     sessionLinks = (
       <>
+        <NavLink to="/login">Demo User</NavLink>
+        {/* the link needs to log you in as a demo user */}
         <NavLink to="/login">Log In</NavLink>
         <NavLink to="/signup">Sign Up</NavLink>
       </>
@@ -22,9 +30,9 @@ function Navigation({ isLoaded }){
   }
 
   return (
-    <ul>
-      <li>
-        <NavLink exact to="/">Home</NavLink>
+    <ul className="nav-bar">
+      <li className="nav-bar-items">
+       <NavLink exact to="/">FRAMED.</NavLink>
         {isLoaded && sessionLinks}
       </li>
     </ul>

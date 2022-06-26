@@ -2,19 +2,23 @@
   margin: 0
 }
 
-.nav-bar {
+.footer {
   list-style: none;
   background-color: rgb(51, 127, 175);
   padding: 2%;
 }
 
-.nav-bar-items {
+.footer-items {
   display: flex;
   justify-content: space-between;
 }
 
-.nav-bar-items > a {
+.footer-items > a {
   color: white;
   font-size: 1.5em;
   text-decoration: none;
+}
+
+.footer-items > p {
+  color: white;
 }

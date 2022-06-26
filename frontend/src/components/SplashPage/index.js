@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, Route } from 'react-router-dom';
 
+import './SplashPage.css'
+
 import { getImages } from '../../store/images';
 
 const ImageScroll = () => {

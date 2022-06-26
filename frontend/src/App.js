@@ -5,6 +5,7 @@ import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
+import Footer from "./components/Footer";
 import ImageScroll from "./components/SplashPage";
 
 function App() {
@@ -21,7 +22,7 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
-          <Route path="/">
+          <Route exact path="/">
             <ImageScroll />
           </Route>
           <Route path="/login">
@@ -32,6 +33,7 @@ function App() {
           </Route>
         </Switch>
       )}
+      <Footer />
     </>
   );
 }
