@@ -17,7 +17,6 @@ const ImageScroll = () => {
     dispatch(getImages())
   }, [dispatch])
 
-
   return (
     <div>
       <p>Rendering something</p>
