@@ -13,7 +13,7 @@ const load = (images) => ({
 
 /********************** THUNKS **************************/
 
-export const getImages = () => (dispatch) => {
+export const getImages = () => async (dispatch) => {
   const response = await csrfFetch('/api/images', {
     method: 'GET',
   })
