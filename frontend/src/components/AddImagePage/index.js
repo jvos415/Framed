@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
-import * as sessionActions from "../../store/session";
 import { createImage } from '../../store/images';
 import './AddImagePage.css';
 
 const AddImageForm = () => {
   const dispatch = useDispatch();
   const history = useHistory();
+  const sessionUser = useSelector(state => state.session.user);
 
   const [imageUrl, setImageUrl] = useState("");
   const [title, setTitle] = useState('');
@@ -46,7 +46,8 @@ const AddImageForm = () => {
   };
 
   return (
-    <div>
+    <div className="add-image-container">
+      <h3 id="add-image-title">Add an image to FRAMED</h3>
       <form className="add-image-form" onSubmit={handleSubmit}>
          <input
           type="text"

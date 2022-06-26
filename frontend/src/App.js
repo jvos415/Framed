@@ -7,6 +7,7 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 import ImageScroll from "./components/SplashPage";
+import AddImageForm from "./components/AddImagePage";
 
 function App() {
   const dispatch = useDispatch();
@@ -30,6 +31,9 @@ function App() {
           </Route>
           <Route path="/signup">
             <SignupFormPage />
+          </Route>
+          <Route path="/add-image">
+            <AddImageForm />
           </Route>
         </Switch>
       )}
