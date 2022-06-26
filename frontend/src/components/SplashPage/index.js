@@ -7,9 +7,9 @@ import './SplashPage.css'
 import { getImages } from '../../store/images';
 
 const ImageScroll = () => {
-  // const allImages = useSelector(state => {
-  //   return Object.values(state.images);
-  // });
+  const allImages = useSelector(state => {
+    return Object.values(state.images);
+  });
 
   const dispatch = useDispatch()
 
@@ -17,12 +17,20 @@ const ImageScroll = () => {
     dispatch(getImages())
   }, [dispatch])
 
+  if (!allImages) {
+    return null;
+  }
+
+  // console.log(allImages);
+  // console.log(allImages[0].imageUrl);
+
   return (
     <div>
-      <p>Rendering something</p>
-      <p>Rendering something</p>
-      <p>Rendering something</p>
-      <p>Rendering something</p>
+      {allImages.map((image) => {
+        return (
+          <img src={`${image.imageUrl}`} alt={`${image.title}`}></img>
+        )
+      })}
     </div>
   )
 }
