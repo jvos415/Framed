@@ -1,5 +1,5 @@
 const { check } = require('express-validator');
-const { handleValidationErrors } = require('./utils');
+const { handleValidationErrors } = require('./validation');
 
 const imageUrl = check('imageUrl')
   .notEmpty()

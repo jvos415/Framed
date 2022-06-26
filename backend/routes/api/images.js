@@ -3,14 +3,18 @@ const router = express.Router();
 const asyncHandler = require('express-async-handler');
 
 const { setTokenCookie, restoreUser } = require('../../utils/auth');
-const imageValidations = require('../../validations/images');
+const imageValidations = require('../../utils/images');
 const { User, Image } = require('../../db/models');
+
+/******************************* GET ROUTE FOR SPLASH PAGE*************************************/
 
 router.get('/', asyncHandler(async function(req, res) {
   const images = await Image.findAll()
   // console.log(images);
   return res.json(images);
 }));
+
+/******************************* POST ROUTE FOR SPLASH PAGE *************************************/
 
 router.post(
   '/',
