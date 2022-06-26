@@ -13,7 +13,7 @@ const ImageScroll = () => {
 
   const dispatch = useDispatch()
 
-  useEffect(()=>{
+  useEffect(()=> {
     dispatch(getImages())
   }, [dispatch])
 
