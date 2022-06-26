@@ -64,7 +64,7 @@ export const signup = (user) => async (dispatch) => {
 };
 
 
-/*************************   REDUCERS   **********************************/
+/*************************   REDUCER   **********************************/
 
 const initialState = { user: null };
 
