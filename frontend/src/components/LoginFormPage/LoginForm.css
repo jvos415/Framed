@@ -1,0 +1,15 @@
+.login-form-container {
+  margin: 2% 15%;
+}
+
+#login-title {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.login-form {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 2% 15%;
+}

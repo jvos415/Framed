@@ -1,8 +1,14 @@
 .splash-container {
   margin: 5% 15%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
 }
 
 #splash-images {
-  width: 75%;
-  height: auto;
+  /* max-height: 400px;
+  max-width: 400px; */
+  width: 100%;
+  height: 100%;
+  padding: 7px;
 }
