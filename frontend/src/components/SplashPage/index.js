@@ -25,10 +25,10 @@ const ImageScroll = () => {
   // console.log(allImages[0].imageUrl);
 
   return (
-    <div>
+    <div className='splash-container'>
       {allImages.map((image) => {
         return (
-          <img src={`${image.imageUrl}`} alt={`${image.title}`}></img>
+          <img key={image.id} id="splash-images" src={`${image.imageUrl}`} alt={`${image.title}`}></img>
         )
       })}
     </div>
