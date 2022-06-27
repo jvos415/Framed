@@ -56,7 +56,7 @@ router.delete('/:id', asyncHandler(async function(req, res) {
   /* if (!User.id) {
     return res.redirect(`/signup`);
   } */
-  const imageId = await image.destroy(req.params.id);
+  const imageId = await Image.destroy(req.params.id);
   return res.json({ imageId });
 }));
 
