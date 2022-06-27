@@ -1,0 +1,17 @@
+.image-details > img {
+  width: 95%;
+  height: auto;
+  margin: 2%;
+}
+
+#image-title {
+  padding: 1% 2%;
+}
+
+#image-description {
+  padding: 1% 2%;
+}
+
+#image-edit-button {
+  margin: 1% 2%;
+}

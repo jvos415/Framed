@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { getOneImage } from '../../store/images';
+import "./ImageDetails.css"
 
 const ImageDetails = () => {
   const { imageId } = useParams();
@@ -36,8 +37,8 @@ const ImageDetails = () => {
     content = (
     <div className='image-details'>
       <img src={`${image.imageUrl}`} alt={image.title}></img>
-      <h3>{image.title}</h3>
-      <p>{image.description}</p>
+      <h3 id="image-title">{image.title}</h3>
+      <p id="image-description">{image.description}</p>
     </div>
     )
   }
@@ -46,7 +47,7 @@ const ImageDetails = () => {
     <div className="image-detail">
       {content}
       {(!showEditImageForm &&
-        <button onClick={() => setShowEditImageForm(true)}>Edit</button>
+        <button id="image-edit-button" onClick={() => setShowEditImageForm(true)}>Edit</button>
       )}
     </div>
   );
