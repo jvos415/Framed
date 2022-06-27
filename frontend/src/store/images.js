@@ -42,8 +42,8 @@ export const getImages = () => async (dispatch) => {
   }
 }
 
-export const getOneImage = (id) => async (dispatch) => {
-  const response = await csrfFetch(`/api/images/${id}`, {
+export const getOneImage = (imageId) => async (dispatch) => {
+  const response = await csrfFetch(`/api/images/${imageId}`, {
     method: 'GET'
   })
 
@@ -69,8 +69,8 @@ export const createImage = (imageObj) => async dispatch => {
 }
 
 export const updateSingleImage = image => async dispatch => {
-  const response = await csrfFetch(`/api/pokemon/${image.id}`, {
-    method: 'put',
+  const response = await csrfFetch(`/api/images/${image.id}`, {
+    method: 'PUT',
     headers: {
       'Content-Type': 'application/json'
     },
@@ -78,9 +78,9 @@ export const updateSingleImage = image => async dispatch => {
   });
 
   if (response.ok) {
-    const pokemon = await response.json();
-    dispatch(addOnePokemon(pokemon));
-    return pokemon;
+    const image = await response.json();
+    dispatch(updateImage(image));
+    return image;
   }
 };
 

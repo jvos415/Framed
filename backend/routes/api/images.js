@@ -32,8 +32,8 @@ router.get('/:id', asyncHandler(async function(req, res) {
   /* if (!User.id) {
     return res.redirect(`/signup`);
   } */
-  const image = await Image.findByPk(req.params.id);
-  return res.json(image);
+  const imageId = await Image.findByPk(req.params.id);
+  return res.json(imageId);
 }));
 
 /******************************* UPDATE A SINGLE IMAGE AND DETAILS *************************************/
