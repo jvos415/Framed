@@ -37,7 +37,7 @@ const AddImageForm = () => {
     // console.log("\n\n", createdImage, "\n\n",);
 
     if (createdImage) {
-      history.push(`/images/${createdImage.id}`);
+     return history.push(`/images/${createdImage.id}`);
     }
   };
 

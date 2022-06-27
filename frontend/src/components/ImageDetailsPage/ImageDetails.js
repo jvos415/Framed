@@ -1,18 +1,15 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { getOneImage } from '../../store/images';
+import { deleteSingleImage, getOneImage } from '../../store/images';
 import "./ImageDetails.css"
 
 const ImageDetails = () => {
   const { imageId } = useParams();
-  const image = useSelector(state => state.images[imageId]);
-
-  // console.log("\n\n", imageId, "\n\n");
-  // console.log("\n\n", image, "\n\n");
-
   const dispatch = useDispatch();
+  const history = useHistory();
+  const image = useSelector(state => state.images[imageId]);
 
   const [showEditImageForm, setShowEditImageForm] = useState(false);
 
@@ -24,6 +21,14 @@ const ImageDetails = () => {
   if (!image) {
     return null;
   }
+
+  const handleDeleteImage = async (e) => {
+    e.preventDefault();
+
+    await dispatch(deleteSingleImage(+imageId))
+
+    return history.push(`/`);
+  };
 
   let content = null;
 
@@ -47,11 +52,13 @@ const ImageDetails = () => {
     <div className="image-detail">
       {content}
       {(!showEditImageForm &&
-        <button id="image-edit-button" onClick={() => setShowEditImageForm(true)}>Edit</button>
+        <>
+          <button id="image-edit-button" onClick={() => setShowEditImageForm(true)}>Edit</button>
+          <button type="button" onClick={handleDeleteImage}>Delete Image</button>
+        </>
       )}
     </div>
   );
-
 }
 
 export default ImageDetails;
