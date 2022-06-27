@@ -1,7 +1,7 @@
-.image-details > img {
+#image-image {
   width: 95%;
   height: auto;
-  margin: 2%;
+  margin: 2% 2% 0 2%;
 }
 
 #image-title {

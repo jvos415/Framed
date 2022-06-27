@@ -36,7 +36,7 @@ const ImageDetails = () => {
   } else {
     content = (
     <div className='image-details'>
-      <img src={`${image.imageUrl}`} alt={image.title}></img>
+      <img id='image-image' src={`${image.imageUrl}`} alt={image.title}></img>
       <h3 id="image-title">{image.title}</h3>
       <p id="image-description">{image.description}</p>
     </div>
