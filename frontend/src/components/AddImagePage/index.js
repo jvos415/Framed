@@ -1,13 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
-import { createImage } from '../../store/images';
+import { createImage, getImages } from '../../store/images';
 import './AddImagePage.css';
 
 const AddImageForm = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const sessionUser = useSelector(state => state.session.user);
+  const allImages = useSelector(state => {
+    return Object.values(state.images);
+  });
+
+  useEffect(()=> {
+    dispatch(getImages())
+  }, [dispatch])
 
   const [imageUrl, setImageUrl] = useState("");
   const [title, setTitle] = useState('');
@@ -22,18 +29,26 @@ const AddImageForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    const userId = sessionUser.id
+
     const payload = {
+      userId,
       imageUrl,
       title,
       description
     };
 
+    // console.log(allImages);
+    // console.log(payload);
+
+    // Anything after this line seems not to run
     let createdImage = await dispatch(createImage(payload))
 
-    // console.log("CREATED IMAGE: ", createdImage)
+    const imageId = allImages[allImages.length - 1]
+    // console.log(imageId)
 
     if (createdImage) {
-      history.push(`/images/${createdImage.id}`);
+      history.push(`/images/${imageId}`);
     }
   };
 
