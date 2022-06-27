@@ -30,7 +30,9 @@ const ImageScroll = () => {
         return (
           <Link id="splash-images" key={image.id} to={`/images/${image.id}`}>
             <img key={image.id} id="splash-images"
-            src={`${image.imageUrl}`} alt={`${image.title}`}></img>
+            src={`${image.imageUrl}`}
+            alt={`${image.title}`}
+            loading="lazy"></img>
           </Link>
         )
       })}
