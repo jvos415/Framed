@@ -22,3 +22,13 @@
 .footer-items > p {
   color: white;
 }
+
+#linkedIn {
+  width: 23px;
+  height: auto;
+}
+
+#GitHub {
+  width: 25px;
+  height: auto;
+}
