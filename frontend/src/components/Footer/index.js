@@ -8,7 +8,7 @@ function Footer(){
     <ul className="footer">
       <li className="footer-items">
        <NavLink exact to="/about">About</NavLink>
-       <p><span>&copy;</span> FRAMED. 2022</p>
+       <p><span>&copy;</span> FRAMED 2022</p>
       </li>
     </ul>
   );
