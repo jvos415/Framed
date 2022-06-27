@@ -36,14 +36,28 @@ router.get('/:id', asyncHandler(async function(req, res) {
   return res.json(image);
 }));
 
-/******************************* DELETE ROUTE *************************************/
+/******************************* UPDATE A SINGLE IMAGE AND DETAILS *************************************/
+
+router.put(
+  '/:id',
+  imageValidations.validateUpdatePhoto,
+  asyncHandler(async function (req, res) {
+    /* if (!User.id) {
+    return res.redirect(`/signup`);
+  } */
+    const image = await Image.update(req.body);
+    return res.json(image);
+  })
+);
+
+/******************************* DELETE SINGLE IMAGE ROUTE *************************************/
 
 router.delete('/:id', asyncHandler(async function(req, res) {
   /* if (!User.id) {
     return res.redirect(`/signup`);
   } */
-  const image = await Image.findByPk(req.params.id);
-  return res.json(image);
+  const imageId = await image.destroy(req.params.id);
+  return res.json({ imageId });
 }));
 
 module.exports = router;
