@@ -42,20 +42,11 @@ export const getOneImage = (id) => async (dispatch) => {
   }
 }
 
-// export const getOnePokemon = id => async dispatch => {
-//   const response = await fetch(`/api/pokemon/${id}`);
-
-//   if (response.ok) {
-//     const pokemon = await response.json();
-//     dispatch(addOnePokemon(pokemon));
-//   }
-// };
-
-export const createImage = (image) => async dispatch => {
+export const createImage = (imageObj) => async dispatch => {
   const response = await csrfFetch(`/api/images`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(image)
+    body: JSON.stringify(imageObj)
   })
 
   if (response.ok) {

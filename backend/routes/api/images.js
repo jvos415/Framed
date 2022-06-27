@@ -20,8 +20,9 @@ router.post(
   '/',
   imageValidations.validateAddPhoto,
   asyncHandler(async function (req, res) {
-    const id = await Image.create(req.body);
-    return res.redirect(`${req.baseUrl}/${id}`);
+    const imageObj = await Image.create(req.body);
+    res.status(201)
+    return res.json(imageObj);
   })
 );
 
