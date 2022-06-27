@@ -8,13 +8,13 @@ const AddImageForm = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const sessionUser = useSelector(state => state.session.user);
-  const allImages = useSelector(state => {
-    return Object.values(state.images);
-  });
+  // const allImages = useSelector(state => {
+  //   return Object.values(state.images);
+  // });
 
-  useEffect(()=> {
-    dispatch(getImages())
-  }, [dispatch])
+  // useEffect(()=> {
+  //   dispatch(getImages())
+  // }, [dispatch])
 
   const [imageUrl, setImageUrl] = useState("");
   const [title, setTitle] = useState('');
@@ -41,14 +41,18 @@ const AddImageForm = () => {
     // console.log(allImages);
     // console.log(payload);
 
-    // Anything after this line seems not to run
+    // Anything after this line seems like it does not run
     let createdImage = await dispatch(createImage(payload))
 
-    const imageId = allImages[allImages.length - 1]
+    // const imageId = allImages[allImages.length - 1]
     // console.log(imageId)
 
+    const photo = await JSON.parse(createdImage);
+
+    console.log(photo);
+
     if (createdImage) {
-      history.push(`/images/${imageId}`);
+      history.push(`/images/${createdImage.id}`);
     }
   };
 

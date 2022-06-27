@@ -14,7 +14,7 @@ router.get('/', asyncHandler(async function(req, res) {
   return res.json(images);
 }));
 
-/******************************* POST ROUTE FOR SPLASH PAGE *************************************/
+/******************************* POST ROUTE TO SPLASH PAGE *************************************/
 
 router.post(
   '/',
@@ -24,5 +24,15 @@ router.post(
     return res.redirect(`${req.baseUrl}/${id}`);
   })
 );
+
+/******************************* GET SINGLE IMAGE AND DETAILS *************************************/
+
+router.get('/:id', asyncHandler(async function(req, res) {
+  /* if (!User.id) {
+    return res.redirect(`/signup`);
+  } */
+  const image = await Image.findByPk(req.params.id);
+  return res.json(image);
+}));
 
 module.exports = router;
