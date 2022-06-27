@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import './Footer.css';
 import { ReactComponent as LinkedIn } from "../../images/linkedin.svg"
 import { ReactComponent as GitHub } from "../../images/github.svg"
