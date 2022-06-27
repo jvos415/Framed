@@ -79,7 +79,7 @@ module.exports = {
     userId: 4,
     imageUrl: "https://cdn.pixabay.com/photo/2016/08/11/23/48/mountains-1587287_1280.jpg",
     title: "Lake House in the Alps",
-    description: "A picture perfect lake house nestled in the the Alps",
+    description: "A picture perfect lake house nestled in the base of the Alps",
     createdAt: new Date(),
     updatedAt: new Date()
   },

@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import './SplashPage.css'
 
@@ -27,8 +28,12 @@ const ImageScroll = () => {
     <div className='splash-container'>
       {allImages.map((image) => {
         return (
-          <img key={image.id} id="splash-images"
-          src={`${image.imageUrl}`} alt={`${image.title}`}></img>
+          <Link id="splash-images" key={image.id} to={`/images/${image.id}`}>
+            <img key={image.id} id="splash-images"
+            src={`${image.imageUrl}`}
+            alt={`${image.title}`}
+            loading="lazy"></img>
+          </Link>
         )
       })}
     </div>
