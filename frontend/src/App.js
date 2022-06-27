@@ -8,6 +8,7 @@ import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 import ImageScroll from "./components/SplashPage";
 import AddImageForm from "./components/AddImagePage";
+import ImageDetails from "./components/ImageDetailsPage/ImageDetails";
 
 function App() {
   const dispatch = useDispatch();
@@ -34,6 +35,9 @@ function App() {
           </Route>
           <Route path="/add-image">
             <AddImageForm />
+          </Route>
+          <Route exact path="/images/:imageId">
+            <ImageDetails />
           </Route>
         </Switch>
       )}
