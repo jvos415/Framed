@@ -59,13 +59,14 @@ router.put(
 /******************************* DELETE SINGLE IMAGE ROUTE *************************************/
 
 router.delete(
-  "/:id",
+  "/:id(\\d+)",
   asyncHandler(async function (req, res) {
     /* if (!User.id) {
     return res.redirect(`/signup`);
   } */
-    const imageId = await Image.destroy(req.params.id);
-    return res.json(imageId);
+  const image = await Image.findByPk(req.params.id)
+    await image.destroy(req.params.id);
+    return res.json(image);
   })
 );
 
