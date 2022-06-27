@@ -84,6 +84,22 @@ export const updateSingleImage = image => async dispatch => {
   }
 };
 
+export const deleteSingleImage = imageId => async dispatch => {
+  const response = await csrfFetch(`/api/images/${imageId}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(imageId)
+  });
+
+  if (response.ok) {
+    const image = await response.json();
+    dispatch(deleteImage(image));
+    return image;
+  }
+};
+
 /********************** REDUCER **************************/
 
 const initialState = {}
@@ -169,22 +185,5 @@ export default imagesReducer;
 //   }
 //   catch (error) {
 //     throw error;
-//   }
-// };
-
-// //PHASE 4
-// export const updatePokemon = data => async dispatch => {
-//   const response = await fetch(`/api/pokemon/${data.id}`, {
-//     method: 'put',
-//     headers: {
-//       'Content-Type': 'application/json'
-//     },
-//     body: JSON.stringify(data)
-//   });
-
-//   if (response.ok) {
-//     const pokemon = await response.json();
-//     dispatch(addOnePokemon(pokemon));
-//     return pokemon;
 //   }
 // };
