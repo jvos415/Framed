@@ -28,7 +28,7 @@ const ImageScroll = () => {
     <div className='splash-container'>
       {allImages.map((image) => {
         return (
-          <Link to={`/images/${image.id}`}>
+          <Link id="splash-images" key={image.id} to={`/images/${image.id}`}>
             <img key={image.id} id="splash-images"
             src={`${image.imageUrl}`} alt={`${image.title}`}></img>
           </Link>
