@@ -8,6 +8,9 @@ const ImageDetails = () => {
   const { imageId } = useParams();
   const image = useSelector(state => state.images[imageId]);
 
+  // console.log("\n\n", imageId, "\n\n");
+  // console.log("\n\n", image, "\n\n");
+
   const dispatch = useDispatch();
 
   const [showEditImageForm, setShowEditImageForm] = useState(false);

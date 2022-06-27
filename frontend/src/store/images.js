@@ -21,7 +21,7 @@ const addImage = (image) => ({
 
 export const getImages = () => async (dispatch) => {
   const response = await csrfFetch('/api/images', {
-    method: 'GET',
+    method: 'GET'
   })
 
   if (response.ok) {
@@ -32,11 +32,12 @@ export const getImages = () => async (dispatch) => {
 
 export const getOneImage = (id) => async (dispatch) => {
   const response = await csrfFetch(`/api/images/${id}`, {
-    method: 'GET',
+    method: 'GET'
   })
 
   if (response.ok) {
     const image = await response.json();
+    //  console.log("\n\n", image, "\n\n");
     dispatch(addImage(image));
   }
 }
@@ -80,20 +81,18 @@ const imagesReducer = (state = initialState, action) => {
         ...state
       };
       case ADD_IMAGE:
-      if (!state[action.images.id]) {
-        const newState = {
-          ...state,
-          [action.images.id]: action.images
-        };
-        const imageList = newState.images.map((id) => newState[id]);
-        imageList.push(action.images);
-        return newState;
+        if (!state[action.image.id]) {
+          const newState = {
+            ...state,
+            [action.image.id]: action.image
+          };
+          return newState;
       }
       return {
         ...state,
-        [action.images.id]: {
-          ...state[action.images.id],
-          ...action.images
+        [action.image.id]: {
+          ...state[action.image.id],
+          ...action.image
         }
       };
       default:
