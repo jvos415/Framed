@@ -87,11 +87,11 @@ export const updateSingleImage = image => async dispatch => {
 export const deleteSingleImage = (imageId) => async dispatch => {
   const response = await csrfFetch(`/api/images/${imageId}`, {
     method: 'DELETE',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(imageId)
-  });
+    // headers: {
+    //     'Content-Type': 'application/json'
+    //   },
+    //   body: JSON.stringify(imageId)
+    });
 
   if (response.ok) {
     const image = await response.json();

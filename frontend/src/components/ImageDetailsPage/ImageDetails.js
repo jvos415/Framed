@@ -25,7 +25,7 @@ const ImageDetails = () => {
   const handleDeleteImage = async (e) => {
     e.preventDefault();
 
-    await dispatch(deleteSingleImage(+imageId))
+    await dispatch(deleteSingleImage(imageId))
 
     return history.push(`/`);
   };
