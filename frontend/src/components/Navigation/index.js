@@ -1,8 +1,10 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
+import logo from "../../images/logo-32x32.png"
 
 function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
@@ -32,6 +34,9 @@ function Navigation({ isLoaded }){
   return (
     <ul className="nav-bar">
       <li className="nav-bar-items">
+        <NavLink id="framed-logo" exact to="/">
+          <img src={logo}></img>
+        </NavLink>
        <NavLink id="framed" exact to="/">FRAMED</NavLink>
         {isLoaded && sessionLinks}
       </li>
