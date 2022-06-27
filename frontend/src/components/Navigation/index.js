@@ -11,11 +11,11 @@ function Navigation({ isLoaded }){
   if (sessionUser) {
     sessionLinks = (
       <>
-        <ProfileButton user={sessionUser} />
+        <NavLink exact to="/add-image">Add Image</NavLink>
+        {/* the link above needs to go to an add-photo page, maybe make this a cool icon*/}
         <NavLink exact to="/">Home</NavLink>
         {/* the link above needs to go to the personal page for a user */}
-        <NavLink exact to="/add-photo">Add Photo</NavLink>
-        {/* the link above needs to go to an add-photo page, maybe make this a cool icon*/}
+        <ProfileButton user={sessionUser} />
       </>
     );
   } else {
