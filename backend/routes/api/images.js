@@ -36,4 +36,14 @@ router.get('/:id', asyncHandler(async function(req, res) {
   return res.json(image);
 }));
 
+/******************************* DELETE ROUTE *************************************/
+
+router.delete('/:id', asyncHandler(async function(req, res) {
+  /* if (!User.id) {
+    return res.redirect(`/signup`);
+  } */
+  const image = await Image.findByPk(req.params.id);
+  return res.json(image);
+}));
+
 module.exports = router;
