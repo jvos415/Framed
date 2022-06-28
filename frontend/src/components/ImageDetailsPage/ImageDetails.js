@@ -18,6 +18,10 @@ const ImageDetails = () => {
     setShowEditImageForm(false);
   }, [dispatch, imageId]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   if (!image) {
     return null;
   }

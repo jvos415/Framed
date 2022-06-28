@@ -17,6 +17,10 @@ const ImageScroll = () => {
     dispatch(getImages())
   }, [dispatch])
 
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   if (!allImages) {
     return null;
   }
