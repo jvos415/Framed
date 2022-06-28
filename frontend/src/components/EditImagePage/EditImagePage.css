@@ -1,0 +1,15 @@
+.edit-image-container {
+  margin: 2% 15%;
+}
+
+#edit-image-title {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.edit-image-form {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 2% 15%;
+}

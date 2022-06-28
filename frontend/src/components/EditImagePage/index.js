@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { createImage } from '../../store/images';
-import './AddImagePage.css';
+import './EditImagePage.css';
 
-const AddImageForm = () => {
+const EditImageForm = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const sessionUser = useSelector(state => state.session.user);
@@ -44,34 +44,35 @@ const AddImageForm = () => {
     e.preventDefault();
 
     return (
+      // this should take you back to specific details page
       history.push("/")
     )
   };
 
   return (
-    <div className="add-image-container">
-      <h3 id="add-image-title">Add an image to FRAMED</h3>
-      <form className="add-image-form" onSubmit={handleSubmit}>
-         <input
+    <div className="edit-image-container">
+      <h3 id="edit-image-title">Edit Your Image</h3>
+      <form className="edit-image-form" onSubmit={handleSubmit}>
+        <label>ImageUrl: </label>
+          <input
           type="text"
-          placeholder="Image URL"
           value={imageUrl}
           onChange={updateImageUrl} />
+        <label>Title: </label>
         <input
           type="text"
-          placeholder="Image Title"
           value={title}
           onChange={updateTitle} />
+        <label>Description: </label>
         <input
           type="text"
-          placeholder="Image Description"
           value={description}
           onChange={updateDescription} />
-        <button type="submit">Add Your Image</button>
+        <button type="submit">Submit Image Changes</button>
         <button type="button" onClick={handleCancelClick}>Cancel</button>
       </form>
     </div>
   );
 };
 
-export default AddImageForm;
+export default EditImageForm;
