@@ -4,6 +4,8 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { deleteSingleImage, getOneImage } from '../../store/images';
 import EditImageForm from "../EditImagePage"
+import CommentComponent from '../Comments';
+import AddCommentComponent from '../Comments/addComment';
 import "./ImageDetails.css"
 
 const ImageDetails = () => {
@@ -65,6 +67,8 @@ const ImageDetails = () => {
           {!showEditForm && <button id="image-edit-button" onClick={goToEditPage}>Edit</button>}
           <button type="button" onClick={handleAddComment}>Add Comment</button>
           {!showEditForm && <button type="button" onClick={handleDeleteImage}>Delete Image</button>}
+          <CommentComponent />
+          <AddCommentComponent />
         </>
     </div>
   );

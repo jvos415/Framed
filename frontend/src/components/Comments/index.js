@@ -1,33 +1,32 @@
-import { useEffect, useState } from 'react';
-import { useHistory, useParams } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import { useEffect, useState } from "react";
+import { useHistory, useParams } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 
-import { getComments } from '../../store/comments';
-import "./comments.css"
+import { getComments } from "../../store/comments";
+import "./comments.css";
 
 const CommentComponent = () => {
   const { imageId } = useParams();
   const dispatch = useDispatch();
-  const history = useHistory();
-  const comments = useSelector(state => state.comment[imageId]);
-}
+  // const history = useHistory();
+  // const comments = useSelector((state) => state.comment[imageId]);
 
-useEffect(() => {
-  dispatch(getComments(imageId));
-}, [dispatch]);
+  useEffect(() => {
+    dispatch(getComments(imageId));
+  }, [dispatch, imageId]);
 
-const handleDeleteComment = async (e) => {
-  e.preventDefault();
+  // const handleDeleteComment = async (e) => {
+  //   e.preventDefault();
 
-  await dispatch(deleteSingleComment(commentId))
+  //   await dispatch(deleteSingleComment(commentId))
 
-  return history.push(`/images/${imageId}`);
+  //   return history.push(`/images/${imageId}`);
+  // }
+  return (
+    <div className="comment-container">
+      <p>this is the comment component, this will list comments</p>
+    </div>
+  );
 };
-
-return (
-  <div className="comment-container">
-     <p>this is where my comments will go</p>
-  </div>
-);
 
 export default CommentComponent;
