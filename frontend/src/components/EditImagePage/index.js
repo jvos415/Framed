@@ -40,24 +40,22 @@ const EditImageForm = () => {
       updatedAt
     };
 
-    console.log(payload)
+    // console.log(payload)
 
     let updatedImage = await dispatch(updateSingleImage(payload))
 
     // console.log("\n\n", updatedImage, "\n\n",);
 
     if (updatedImage) {
-     return history.push(`/images/${image.id}`);
+      // this should go to the details page without the edit form rendering
+     return history.push(`/`);
     }
   };
 
   const handleCancelClick = (e) => {
     e.preventDefault();
-
-    return (
-      // this should take you back to specific details page
-      history.push("/")
-    )
+    // this should go to the details page wihout the edit form rendering
+    return history.push(`/`);
   };
 
   return (

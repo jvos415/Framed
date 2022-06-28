@@ -51,7 +51,8 @@ router.put(
     /* if (!User.id) {
     return res.redirect(`/signup`);
   } */
-    const image = await Image.update(req.body);
+    const image = await Image.findByPk(req.params.id)
+    await image.update(req.body);
     return res.json(image);
   })
 );
@@ -64,7 +65,7 @@ router.delete(
     /* if (!User.id) {
     return res.redirect(`/signup`);
   } */
-  const image = await Image.findByPk(req.params.id)
+    const image = await Image.findByPk(req.params.id)
     await image.destroy(req.params.id);
     return res.json(image);
   })
