@@ -19,13 +19,17 @@ const ImageDetails = () => {
   const [showEditButton, setShowEditButton] = useState(false);
   const [showDeleteButton, setShowDeleteButton] = useState(false);
 
+  useEffect(() => {
     if (image && image.userId === sessionUser.id) {
       setShowEditButton(true);
     }
+  },[image, sessionUser.id])
 
+  useEffect(() => {
     if (image && image.userId === sessionUser.id) {
       setShowDeleteButton(true);
     }
+  },[image, sessionUser.id])
 
   useEffect(() => {
     dispatch(getOneImage(imageId));
