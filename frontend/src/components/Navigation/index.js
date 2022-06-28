@@ -1,13 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
+import * as sessionActions from '../../store/session';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
 import logo from "../../images/logo-32x32.png"
 
 function Navigation({ isLoaded }){
+  const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
+  const [credential, setCredential] = useState('');
+  const [password, setPassword] = useState('');
+
+  const demoUserLogin = () => {
+    setCredential("demo@user.io")
+    setPassword("password")
+    dispatch(sessionActions.login({ credential, password }))
+  }
 
   let sessionLinks;
   if (sessionUser) {
@@ -23,7 +33,7 @@ function Navigation({ isLoaded }){
   } else {
     sessionLinks = (
       <>
-        <NavLink to="/login">Demo User</NavLink>
+        <button onClick = {demoUserLogin}>Demo User</button>
         {/* the link needs to log you in as a demo user */}
         <NavLink to="/login">Log In</NavLink>
         <NavLink to="/signup">Sign Up</NavLink>
