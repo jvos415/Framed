@@ -56,9 +56,9 @@ export const deleteSingleComment = (commentId) => async dispatch => {
     });
 
   if (response.ok) {
-    const image = await response.json();
-    dispatch(deleteComment(image.id));
-    return image;
+    const comment = await response.json();
+    dispatch(deleteComment(comment.id));
+    return comment;
   }
 };
 
@@ -68,38 +68,36 @@ const initialState = {}
 
 const commentsReducer = (state = initialState, action) => {
   switch (action.type) {
+    // this is could be wrong because a comment is nested in image
     case LOAD:
-      const imageList = {};
-      action.images.forEach((image) => {
-        imageList[image.id] = image;
+      const commentList = {};
+      action.comments.forEach((comment) => {
+        commentList[comment.id] = comment;
       });
       return {
-        ...imageList,
+        ...commentList,
         ...state
       };
-      case ADD_IMAGE:
-        if (!state[action.image.id]) {
+      // this is totally wrong because a comment is nested in image
+      case ADD_COMMENT:
+        if (!state[action.comment.id]) {
           const newState = {
             ...state,
-            [action.image.id]: action.image
+            [action.comment.id]: action.comment
           };
           return newState;
       }
       return {
         ...state,
-        [action.image.id]: {
-          ...state[action.image.id],
-          ...action.image
+        [action.comment.id]: {
+          ...state[action.comment.id],
+          ...action.comment
         }
       };
-      case UPDATE_IMAGE:
-        return {
-          ...state,
-          [action.image.id]: action.image
-        };
-      case DELETE_IMAGE:
+      // this is totally wrong because a comment is nested in image
+      case DELETE_COMMENT:
         const newState = { ...state };
-        delete newState[action.imageId];
+        delete newState[action.commentId];
         return newState;
       default:
         return state;
