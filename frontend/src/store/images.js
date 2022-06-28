@@ -132,23 +132,15 @@ const imagesReducer = (state = initialState, action) => {
           [action.image.id]: action.image
         };
       case DELETE_IMAGE:
-        return {
-          ...state,
-          [action.imageId]: {
-            ...state[action.imageId]
-          }
-        };
+        const newState = { ...state };
+        delete newState[action.imageId];
+        return newState;
       default:
         return state;
       };
     }
 
 export default imagesReducer;
-
-// case DELETE_IMAGE:
-//         const newState = { ...state };
-//         delete newState[action.imageId];
-//         return newState;
 
 
 // //PHASE 3
