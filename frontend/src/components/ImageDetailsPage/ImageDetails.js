@@ -56,7 +56,7 @@ const ImageDetails = () => {
     )
   } else {
     content = (
-      <EditImageForm />
+      <EditImageForm setShowEditForm={setShowEditForm} />
     )
   }
 
