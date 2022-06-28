@@ -91,7 +91,7 @@ export const deleteSingleImage = (imageId) => async dispatch => {
 
   if (response.ok) {
     const image = await response.json();
-    dispatch(deleteImage(image));
+    dispatch(deleteImage(image.id));
     return image;
   }
 };
@@ -133,6 +133,7 @@ const imagesReducer = (state = initialState, action) => {
         };
       case DELETE_IMAGE:
         const newState = { ...state };
+        console.log(action.imageId)
         delete newState[action.imageId];
         return newState;
       default:

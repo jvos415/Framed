@@ -7,7 +7,7 @@ import './SplashPage.css'
 import { getImages } from '../../store/images';
 
 const ImageScroll = () => {
-  const allImages = useSelector(state => {
+  const allImages = useSelector((state) => {
     return Object.values(state.images);
   });
 
@@ -17,10 +17,10 @@ const ImageScroll = () => {
     dispatch(getImages())
   }, [dispatch])
 
-  useEffect(()=> {
-    
-  }, [allImages])
+  // useEffect(()=> {
+  // }, [allImages])
 
+  // brings you to top of page on all re-renders
   // useEffect(() => {
   //   window.scrollTo(0, 0)
   // }, [])
