@@ -26,7 +26,7 @@ const deleteComment = (commentId) => ({
 /********************** THUNKS **************************/
 
 export const getComments = (imageId) => async (dispatch) => {
-  const response = await csrfFetch(`/api/images/${imageId}`, {
+  const response = await csrfFetch(`/api/images/${imageId}/comments`, {
     method: 'GET'
   })
 
@@ -36,54 +36,28 @@ export const getComments = (imageId) => async (dispatch) => {
   }
 }
 
-export const getOneImage = (imageId) => async (dispatch) => {
-  const response = await csrfFetch(`/api/images/${imageId}`, {
-    method: 'GET'
-  })
-
-  if (response.ok) {
-    const image = await response.json();
-    //  console.log("\n\n", image, "\n\n");
-    dispatch(addImage(image));
-  }
-}
-
-export const createImage = (imageObj) => async dispatch => {
-  const response = await csrfFetch(`/api/images`, {
+export const createComment = (commentObj, imageId) => async dispatch => {
+  const response = await csrfFetch(`/api/images/${imageId}/comments`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(imageObj)
+    body: JSON.stringify(commentObj, imageId)
   })
 
   if (response.ok) {
-    const newImage = await response.json();
-    dispatch(addImage(newImage))
-    return newImage;
+    const newComment = await response.json();
+    dispatch(addComment(newComment))
+    return newComment;
   }
 }
 
-export const updateSingleImage = (image) => async dispatch => {
-  const response = await csrfFetch(`/api/images/${image.id}`, {
-    method: 'PUT',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(image)
-  });
-
-  if (response.ok) {
-    const image = await response.json();
-    dispatch(updateImage(image));
-    return image;
-  }
-};
-
-export const deleteSingleImage = (imageId) => async dispatch => {
-  const response = await csrfFetch(`/api/images/${imageId}`, {
+export const deleteSingleComment = (commentId) => async dispatch => {
+  const response = await csrfFetch(`/api/images/comments/${commentId}`, {
     method: 'DELETE'
     });
 
   if (response.ok) {
     const image = await response.json();
-    dispatch(deleteImage(image.id));
+    dispatch(deleteComment(image.id));
     return image;
   }
 };
