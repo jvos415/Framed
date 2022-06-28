@@ -15,7 +15,7 @@ function Navigation({ isLoaded }){
       <>
         <NavLink exact to="/add-image">Add Image</NavLink>
         {/* the link above needs to go to an add-photo page, maybe make this a cool icon*/}
-        <NavLink exact to="/">Home</NavLink>
+        <NavLink exact to="/">My Albums</NavLink>
         {/* the link above needs to go to the personal page for a user */}
         <ProfileButton user={sessionUser} />
       </>
