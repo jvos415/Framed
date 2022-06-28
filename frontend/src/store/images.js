@@ -131,7 +131,6 @@ const imagesReducer = (state = initialState, action) => {
         };
       case DELETE_IMAGE:
         const newState = { ...state };
-        console.log(action.imageId)
         delete newState[action.imageId];
         return newState;
       default:
@@ -140,46 +139,3 @@ const imagesReducer = (state = initialState, action) => {
     }
 
 export default imagesReducer;
-
-
-// //PHASE 3
-// export const createPokemon = data => async dispatch => {
-//   try {
-//     const response = await fetch(`/api/pokemon`, {
-//       method: 'post',
-//       headers: {
-//         'Content-Type': 'application/json'
-//       },
-//       body: JSON.stringify(data)
-//     });
-
-//     if (!response.ok) {
-//       let error;
-//       if (response.status === 422) {
-//         error = await response.json();
-//         throw new ValidationError(error.errors, response.statusText);
-//       }
-//       else {
-//         let errorJSON;
-//         error = await response.text();
-//         try {
-//           // Check if the error is JSON, i.e., from the Pokemon server. If so,
-//           // don't throw error yet or it will be caught by the following catch
-//           errorJSON = JSON.parse(error);
-//         }
-//         catch {
-//           // Case if server could not be reached
-//           throw new Error(error);
-//         }
-//         throw new Error(`${errorJSON.title}: ${errorJSON.message}`);
-//       }
-//     }
-
-//     const pokemon = await response.json();
-//     dispatch(addOnePokemon(pokemon));
-//     return pokemon;
-//   }
-//   catch (error) {
-//     throw error;
-//   }
-// };
