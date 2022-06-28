@@ -4,6 +4,8 @@ import { csrfFetch } from './csrf';
 
 const LOAD = 'images/LOAD';
 const ADD_IMAGE = 'images/ADD_IMAGE';
+const UPDATE_IMAGE = "images/UPDATE_IMAGE";
+const DELETE_IMAGE = "images/DELETE_ITEM";
 
 /********************** ACTION CREATORS **************************/
 
@@ -15,6 +17,16 @@ const load = (images) => ({
 const addImage = (image) => ({
   type: ADD_IMAGE,
   image
+});
+
+const updateImage = (image) => ({
+  type: UPDATE_IMAGE,
+  image
+});
+
+const deleteImage = (imageId) => ({
+  type: DELETE_IMAGE,
+  imageId
 });
 
 /********************** THUNKS **************************/
@@ -30,8 +42,8 @@ export const getImages = () => async (dispatch) => {
   }
 }
 
-export const getOneImage = (id) => async (dispatch) => {
-  const response = await csrfFetch(`/api/images/${id}`, {
+export const getOneImage = (imageId) => async (dispatch) => {
+  const response = await csrfFetch(`/api/images/${imageId}`, {
     method: 'GET'
   })
 
@@ -55,6 +67,34 @@ export const createImage = (imageObj) => async dispatch => {
     return newImage;
   }
 }
+
+export const updateSingleImage = image => async dispatch => {
+  const response = await csrfFetch(`/api/images/${image.id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(image)
+  });
+
+  if (response.ok) {
+    const image = await response.json();
+    dispatch(updateImage(image));
+    return image;
+  }
+};
+
+export const deleteSingleImage = (imageId) => async dispatch => {
+  const response = await csrfFetch(`/api/images/${imageId}`, {
+    method: 'DELETE'
+    });
+
+  if (response.ok) {
+    const image = await response.json();
+    dispatch(deleteImage(image.id));
+    return image;
+  }
+};
 
 /********************** REDUCER **************************/
 
@@ -86,27 +126,23 @@ const imagesReducer = (state = initialState, action) => {
           ...action.image
         }
       };
+      case UPDATE_IMAGE:
+        return {
+          ...state,
+          [action.image.id]: action.image
+        };
+      case DELETE_IMAGE:
+        const newState = { ...state };
+        console.log(action.imageId)
+        delete newState[action.imageId];
+        return newState;
       default:
         return state;
       };
     }
 
-
 export default imagesReducer;
 
-
-
-
-// //PHASE TWO
-// //!!START SILENT
-// export const getOnePokemon = id => async dispatch => {
-//   const response = await fetch(`/api/pokemon/${id}`);
-
-//   if (response.ok) {
-//     const pokemon = await response.json();
-//     dispatch(addOnePokemon(pokemon));
-//   }
-// };
 
 // //PHASE 3
 // export const createPokemon = data => async dispatch => {
@@ -147,22 +183,5 @@ export default imagesReducer;
 //   }
 //   catch (error) {
 //     throw error;
-//   }
-// };
-
-// //PHASE 4
-// export const updatePokemon = data => async dispatch => {
-//   const response = await fetch(`/api/pokemon/${data.id}`, {
-//     method: 'put',
-//     headers: {
-//       'Content-Type': 'application/json'
-//     },
-//     body: JSON.stringify(data)
-//   });
-
-//   if (response.ok) {
-//     const pokemon = await response.json();
-//     dispatch(addOnePokemon(pokemon));
-//     return pokemon;
 //   }
 // };

@@ -35,7 +35,7 @@ function Navigation({ isLoaded }){
     <ul className="nav-bar">
       <li className="nav-bar-items">
         <NavLink id="framed-logo" exact to="/">
-          <img src={logo}></img>
+          <img src={logo} alt="FRAMED logo"></img>
         </NavLink>
        <NavLink id="framed" exact to="/">FRAMED</NavLink>
         {isLoaded && sessionLinks}
