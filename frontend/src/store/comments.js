@@ -2,43 +2,37 @@ import { csrfFetch } from './csrf';
 
 /********************** ACTION **************************/
 
-const LOAD = 'images/LOAD';
-const ADD_IMAGE = 'images/ADD_IMAGE';
-const UPDATE_IMAGE = "images/UPDATE_IMAGE";
-const DELETE_IMAGE = "images/DELETE_ITEM";
+const LOAD = 'comments/LOAD';
+const ADD_COMMENT = 'comments/ADD_COMMENT';
+const DELETE_COMMENT = "comments/DELETE_COMMENT";
 
 /********************** ACTION CREATORS **************************/
 
-const load = (images) => ({
+const load = (comments) => ({
   type: LOAD,
-  images
+  comments
 });
 
-const addImage = (image) => ({
-  type: ADD_IMAGE,
-  image
+const addComment = (comment) => ({
+  type: ADD_COMMENT,
+  comment
 });
 
-const updateImage = (image) => ({
-  type: UPDATE_IMAGE,
-  image
-});
-
-const deleteImage = (imageId) => ({
-  type: DELETE_IMAGE,
-  imageId
+const deleteComment = (commentId) => ({
+  type: DELETE_COMMENT,
+  commentId
 });
 
 /********************** THUNKS **************************/
 
-export const getImages = () => async (dispatch) => {
-  const response = await csrfFetch('/api/images', {
+export const getComments = (imageId) => async (dispatch) => {
+  const response = await csrfFetch(`/api/images/${imageId}`, {
     method: 'GET'
   })
 
   if (response.ok) {
-    const images = await response.json();
-    dispatch(load(images));
+    const comments = await response.json();
+    dispatch(load(comments));
   }
 }
 
