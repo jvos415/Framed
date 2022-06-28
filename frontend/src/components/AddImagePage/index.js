@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { createImage } from '../../store/images';
 import './AddImagePage.css';
 
@@ -13,7 +13,7 @@ const AddImageForm = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
 
-  if (!sessionUser) return <Redirect to="/signup" />;
+  if (!sessionUser) return history.push("/signup");
 
   const updateImageUrl = (e) => setImageUrl(e.target.value);
   const updateTitle = (e) => setTitle(e.target.value);
@@ -31,7 +31,6 @@ const AddImageForm = () => {
       description
     };
 
-    // Anything after this line seems like it does not run
     let createdImage = await dispatch(createImage(payload))
 
     // console.log("\n\n", createdImage, "\n\n",);
@@ -45,7 +44,7 @@ const AddImageForm = () => {
     e.preventDefault();
 
     return (
-      <Redirect to="/" />
+      history.push("/")
     )
   };
 

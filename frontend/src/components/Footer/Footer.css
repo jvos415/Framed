@@ -6,6 +6,9 @@
   list-style: none;
   background-color: rgb(51, 127, 175);
   padding: 2%;
+  /* position: fixed;
+  bottom: 0;
+  width: 100%; */
 }
 
 .footer-items {
@@ -31,4 +34,8 @@
 #GitHub {
   width: 25px;
   height: auto;
+}
+
+#established {
+  padding-right: 3%;
 }

@@ -1,8 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { deleteSingleImage, getOneImage } from '../../store/images';
+import EditImageForm from "../EditImagePage"
 import "./ImageDetails.css"
 
 const ImageDetails = () => {
@@ -11,11 +12,10 @@ const ImageDetails = () => {
   const history = useHistory();
   const image = useSelector(state => state.images[imageId]);
 
-  const [showEditImageForm, setShowEditImageForm] = useState(false);
+  const [showEditForm, setShowEditForm] = useState(false)
 
   useEffect(() => {
     dispatch(getOneImage(imageId));
-    setShowEditImageForm(false);
   }, [dispatch, imageId]);
 
   useEffect(() => {
@@ -34,15 +34,13 @@ const ImageDetails = () => {
     return history.push(`/`);
   };
 
+  const goToEditPage = () => {
+    setShowEditForm(true);
+  }
+
   let content = null;
 
-  if (showEditImageForm) {
-    // content = (
-    //   <EditImageForm image={image}
-    //   hideForm={() => setShowEditImageForm(false)}
-    //   />
-    // )
-  } else {
+  if (!showEditForm) {
     content = (
     <div className='image-details'>
       <img id='image-image' src={`${image.imageUrl}`} alt={image.title}></img>
@@ -50,17 +48,19 @@ const ImageDetails = () => {
       <p id="image-description">{image.description}</p>
     </div>
     )
+  } else {
+    content = (
+      <EditImageForm />
+    )
   }
 
   return (
     <div className="image-detail">
       {content}
-      {(!showEditImageForm &&
         <>
-          <button id="image-edit-button" onClick={() => setShowEditImageForm(true)}>Edit</button>
-          <button type="button" onClick={handleDeleteImage}>Delete Image</button>
+          {!showEditForm && <button id="image-edit-button" onClick={goToEditPage}>Edit</button>}
+          {!showEditForm && <button type="button" onClick={handleDeleteImage}>Delete Image</button>}
         </>
-      )}
     </div>
   );
 }

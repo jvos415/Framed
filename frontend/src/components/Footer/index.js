@@ -15,7 +15,7 @@ function Footer(){
       <a href="https://github.com/jvos415">
         <GitHub id="GitHub"/>
       </a>
-       <p><span>&copy;</span>FRAMED 2022</p>
+       <p id="established"><span>&copy;</span>FRAMED 2022</p>
       </li>
     </ul>
   );

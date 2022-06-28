@@ -39,6 +39,9 @@ function App() {
           <Route exact path="/images/:imageId">
             <ImageDetails />
           </Route>
+          <Route>
+           Page Not be Found
+          </Route>
         </Switch>
       )}
       <Footer />
