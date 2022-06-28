@@ -68,7 +68,7 @@ export const createImage = (imageObj) => async dispatch => {
   }
 }
 
-export const updateSingleImage = image => async dispatch => {
+export const updateSingleImage = (image) => async dispatch => {
   const response = await csrfFetch(`/api/images/${image.id}`, {
     method: 'PUT',
     headers: {

@@ -9,7 +9,6 @@ import Footer from "./components/Footer";
 import ImageScroll from "./components/SplashPage";
 import AddImageForm from "./components/AddImagePage";
 import ImageDetails from "./components/ImageDetailsPage/ImageDetails";
-import EditImageForm from "./components/EditImagePage";
 
 function App() {
   const dispatch = useDispatch();

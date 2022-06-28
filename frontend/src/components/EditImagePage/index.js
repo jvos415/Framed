@@ -1,17 +1,21 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
-import { createImage } from '../../store/images';
+import { useHistory, useParams } from "react-router-dom";
+import { updateSingleImage } from '../../store/images';
 import './EditImagePage.css';
 
 const EditImageForm = () => {
+  const { imageId } = useParams();
   const dispatch = useDispatch();
   const history = useHistory();
   const sessionUser = useSelector(state => state.session.user);
+  const image = useSelector(state => state.images[imageId]);
 
-  const [imageUrl, setImageUrl] = useState("");
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
+  // console.log(image)
+
+  const [imageUrl, setImageUrl] = useState(image.imageUrl);
+  const [title, setTitle] = useState(image.title);
+  const [description, setDescription] = useState(image.description);
 
   if (!sessionUser) return history.push("/signup");
 
@@ -22,21 +26,28 @@ const EditImageForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const userId = sessionUser.id
+    const userId = sessionUser.id;
+    const createdAt = image.createdAt;
+    const updatedAt = new Date();
 
     const payload = {
+      id: imageId,
       userId,
       imageUrl,
       title,
-      description
+      description,
+      createdAt,
+      updatedAt
     };
 
-    let createdImage = await dispatch(createImage(payload))
+    console.log(payload)
 
-    // console.log("\n\n", createdImage, "\n\n",);
+    let updatedImage = await dispatch(updateSingleImage(payload))
 
-    if (createdImage) {
-     return history.push(`/images/${createdImage.id}`);
+    // console.log("\n\n", updatedImage, "\n\n",);
+
+    if (updatedImage) {
+     return history.push(`/images/${image.id}`);
     }
   };
 
@@ -68,7 +79,7 @@ const EditImageForm = () => {
           type="text"
           value={description}
           onChange={updateDescription} />
-        <button type="submit">Submit Image Changes</button>
+        <button type="submit">Submit Image Detail Edits</button>
         <button type="button" onClick={handleCancelClick}>Cancel</button>
       </form>
     </div>
