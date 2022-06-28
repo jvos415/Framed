@@ -52,16 +52,19 @@ const AddImageForm = () => {
     <div className="add-image-container">
       <h3 id="add-image-title">Add an image to FRAMED</h3>
       <form className="add-image-form" onSubmit={handleSubmit}>
-         <input
+        <label>ImageUrl: </label>
+          <input
           type="text"
           placeholder="Image URL"
           value={imageUrl}
           onChange={updateImageUrl} />
+        <label>Title: </label>
         <input
           type="text"
           placeholder="Image Title"
           value={title}
           onChange={updateTitle} />
+        <label>Description: </label>
         <input
           type="text"
           placeholder="Image Description"

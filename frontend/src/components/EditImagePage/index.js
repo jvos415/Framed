@@ -4,7 +4,7 @@ import { useHistory, useParams } from "react-router-dom";
 import { updateSingleImage } from '../../store/images';
 import './EditImagePage.css';
 
-const EditImageForm = () => {
+const EditImageForm = ({ setShowEditForm }) => {
   const { imageId } = useParams();
   const dispatch = useDispatch();
   const history = useHistory();
@@ -47,15 +47,17 @@ const EditImageForm = () => {
     // console.log("\n\n", updatedImage, "\n\n",);
 
     if (updatedImage) {
+      setShowEditForm(false);
       // this should go to the details page without the edit form rendering
-     return history.push(`/`);
+     return history.push(`/images/${imageId}`);
     }
   };
 
   const handleCancelClick = (e) => {
     e.preventDefault();
+    setShowEditForm(false);
     // this should go to the details page wihout the edit form rendering
-    return history.push(`/`);
+    return history.push(`/images/${imageId}`);
   };
 
   return (
