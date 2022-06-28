@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -11,11 +11,8 @@ const ImageDetails = () => {
   const history = useHistory();
   const image = useSelector(state => state.images[imageId]);
 
-  const [showEditImageForm, setShowEditImageForm] = useState(false);
-
   useEffect(() => {
     dispatch(getOneImage(imageId));
-    setShowEditImageForm(false);
   }, [dispatch, imageId]);
 
   useEffect(() => {
@@ -34,15 +31,12 @@ const ImageDetails = () => {
     return history.push(`/`);
   };
 
+  const goToEditPage = () => {
+    return history.push(`/edit`)
+  }
+
   let content = null;
 
-  if (showEditImageForm) {
-    // content = (
-    //   <EditImageForm image={image}
-    //   hideForm={() => setShowEditImageForm(false)}
-    //   />
-    // )
-  } else {
     content = (
     <div className='image-details'>
       <img id='image-image' src={`${image.imageUrl}`} alt={image.title}></img>
@@ -50,17 +44,14 @@ const ImageDetails = () => {
       <p id="image-description">{image.description}</p>
     </div>
     )
-  }
 
   return (
     <div className="image-detail">
       {content}
-      {(!showEditImageForm &&
         <>
-          <button id="image-edit-button" onClick={() => setShowEditImageForm(true)}>Edit</button>
+          <button id="image-edit-button" onClick={goToEditPage}>Edit</button>
           <button type="button" onClick={handleDeleteImage}>Delete Image</button>
         </>
-      )}
     </div>
   );
 }
