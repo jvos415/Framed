@@ -16,20 +16,18 @@ useEffect(() => {
   dispatch(getComments(imageId));
 }, [dispatch]);
 
-useEffect(() => {
-  window.scrollTo(0, 0)
-}, [])
-
-if (!comments) {
-  return null;
-}
-
 const handleDeleteComment = async (e) => {
   e.preventDefault();
 
-  await dispatch(deleteSingleImage(imageId))
+  await dispatch(deleteSingleComment(commentId))
 
-  return history.push(`/`);
+  return history.push(`/images/${imageId}`);
 };
+
+return (
+  <div className="comment-container">
+     <p>this is where my comments will go</p>
+  </div>
+);
 
 export default CommentComponent;
