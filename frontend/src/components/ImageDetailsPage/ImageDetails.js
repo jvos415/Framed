@@ -12,9 +12,20 @@ const ImageDetails = () => {
   const { imageId } = useParams();
   const dispatch = useDispatch();
   const history = useHistory();
+  const sessionUser = useSelector(state => state.session.user);
   const image = useSelector(state => state.images[imageId]);
 
-  const [showEditForm, setShowEditForm] = useState(false)
+  const [showEditForm, setShowEditForm] = useState(false);
+  const [showEditButton, setShowEditButton] = useState(false);
+  const [showDeleteButton, setShowDeleteButton] = useState(false);
+
+    if (image && image.userId === sessionUser.id) {
+      setShowEditButton(true);
+    }
+
+    if (image && image.userId === sessionUser.id) {
+      setShowDeleteButton(true);
+    }
 
   useEffect(() => {
     dispatch(getOneImage(imageId));
@@ -64,9 +75,9 @@ const ImageDetails = () => {
     <div className="image-detail">
       {content}
         <>
-          {!showEditForm && <button id="image-edit-button" onClick={goToEditPage}>Edit</button>}
+          {!showEditForm && showEditButton && <button id="image-edit-button" onClick={goToEditPage}>Edit</button>}
           <button type="button" onClick={handleAddComment}>Add Comment</button>
-          {!showEditForm && <button type="button" onClick={handleDeleteImage}>Delete Image</button>}
+          {!showEditForm && showDeleteButton && <button type="button" onClick={handleDeleteImage}>Delete Image</button>}
           <CommentComponent />
           <AddCommentComponent />
         </>
