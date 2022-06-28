@@ -4,6 +4,7 @@ const asyncHandler = require("express-async-handler");
 
 const { setTokenCookie, restoreUser } = require("../../utils/auth");
 const imageValidations = require("../../utils/images");
+const commentValidations = require("../../utils/comments")
 const { User, Image, Comment } = require("../../db/models");
 
 /******************************* GET ROUTE FOR SPLASH PAGE*************************************/
@@ -56,8 +57,45 @@ router.delete(
   "/:id(\\d+)",
   asyncHandler(async function (req, res) {
     const image = await Image.findByPk(req.params.id)
-    await image.destroy(req.params.id);
+    await image.destroy();
     return res.json(image);
+  })
+);
+
+/******************************* GET ROUTE FOR COMMENTS *************************************/
+
+router.get(
+  "/:imageId/comments",
+  asyncHandler(async function (req, res) {
+    const imageId = await Image.findByPk(req.params.imageId);
+    const comments = await Comment.findAll({
+      where: {
+        imageId:imageId
+      }
+    })
+    return res.json(comments);
+  })
+);
+
+/******************************* POST ROUTE FOR COMMENT *************************************/
+
+router.post(
+  "/:imageId/comments", commentValidations.validateComment,
+  asyncHandler(async function (req, res) {
+    const commentObj = await Comment.create(req.body)
+    res.status(201);
+    return res.json(commentObj);
+  })
+);
+
+/******************************* DELETE SINGLE COMMENT *************************************/
+
+router.delete(
+  "/comments/:commentId",
+  asyncHandler(async function (req, res) {
+    const comment = await Comment.findByPk(req.params.commentId)
+    await comment.destroy();
+    return res.json(comment);
   })
 );
 
