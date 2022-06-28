@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { createComment } from "../../store/comments";
 import "./addComments.css";
 
-const AddCommentComponent = () => {
+const AddCommentComponent = ({ setShowAddComment }) => {
   const { imageId } = useParams();
   const dispatch = useDispatch();
   const history = useHistory();
@@ -27,11 +27,18 @@ const AddCommentComponent = () => {
   //   return history.push(`/images/${imageId}`);
   // }
 
+  const handleCancel = () => {
+    setShowAddComment(false)
+  }
+
   return (
     <div className="add-comment-container">
       <p>this is the add comment component</p>
-      <button typ="sumbit">
+      <button id="add-comment-button" type="sumbit">
         Post Comment
+      </button>
+      <button onClick={handleCancel} id="add-comment-button" type="sumbit">
+        Cancel
       </button>
     </div>
   );

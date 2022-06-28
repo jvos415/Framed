@@ -22,6 +22,7 @@ const CommentComponent = () => {
 
   //   return history.push(`/images/${imageId}`);
   // }
+  
   return (
     <div className="comment-container">
       <p>this is the comment component, this will list comments</p>

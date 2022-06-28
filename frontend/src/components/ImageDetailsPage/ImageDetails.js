@@ -18,6 +18,7 @@ const ImageDetails = () => {
   const [showEditForm, setShowEditForm] = useState(false);
   const [showEditButton, setShowEditButton] = useState(false);
   const [showDeleteButton, setShowDeleteButton] = useState(false);
+  const [showAddComment, setShowAddComment] = useState(false);
 
   useEffect(() => {
     if (image && image.userId === sessionUser.id) {
@@ -52,12 +53,12 @@ const ImageDetails = () => {
   };
 
   const goToEditPage = () => {
-    setShowEditForm(true);
-  }
+    setShowEditForm(true)
+  };
 
   const handleAddComment = () => {
-   // This will open up the add comment component
-  }
+   setShowAddComment(true)
+  };
 
   let content = null;
 
@@ -80,10 +81,10 @@ const ImageDetails = () => {
       {content}
         <>
           {!showEditForm && showEditButton && <button id="image-edit-button" onClick={goToEditPage}>Edit</button>}
-          <button type="button" onClick={handleAddComment}>Add Comment</button>
           {!showEditForm && showDeleteButton && <button type="button" onClick={handleDeleteImage}>Delete Image</button>}
           <CommentComponent />
-          <AddCommentComponent />
+          <button id="add-comment-button" type="button" onClick={handleAddComment}>Add Comment</button>
+          {showAddComment && <AddCommentComponent setShowAddComment={setShowAddComment} />}
         </>
     </div>
   );
