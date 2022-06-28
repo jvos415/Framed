@@ -20,7 +20,7 @@ const ImageScroll = () => {
   // useEffect(()=> {
   // }, [allImages])
 
-  // brings you to top of page on all re-renders
+  // brings you to top of page on all re-renders, not user friendly IMO
   // useEffect(() => {
   //   window.scrollTo(0, 0)
   // }, [])
@@ -44,6 +44,7 @@ const ImageScroll = () => {
           </Link>
         )
       })}
+      <button onClick={() => window.scrollTo(0, 0)}>Back to the top</button>
     </div>
   )
 }
