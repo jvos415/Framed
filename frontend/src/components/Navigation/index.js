@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -10,13 +10,11 @@ import logo from "../../images/logo-32x32.png"
 function Navigation({ isLoaded }){
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
-  const [credential, setCredential] = useState('');
-  const [password, setPassword] = useState('');
 
   const demoUserLogin = () => {
-    setCredential("demo@user.io")
-    setPassword("password")
-    dispatch(sessionActions.login({ credential, password }))
+    const credential = "demo@user.io"
+    const password = "password"
+    return dispatch(sessionActions.login({ credential, password }))
   }
 
   let sessionLinks;
