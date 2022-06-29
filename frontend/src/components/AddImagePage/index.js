@@ -83,11 +83,3 @@ const AddImageForm = () => {
 };
 
 export default AddImageForm;
-
-{
-  /* <input
-          type="text"
-          placeholder="Image Description"
-          value={description}
-          onChange={updateDescription} /> */
-}

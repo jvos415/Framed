@@ -5,3 +5,13 @@
 .add-comment-container {
   padding: 1% 2%;
 }
+
+.trash-can {
+  width: 30px;
+  height: auto;
+}
+
+.trash-can > img {
+  width: 15px;
+  height: auto;
+}
