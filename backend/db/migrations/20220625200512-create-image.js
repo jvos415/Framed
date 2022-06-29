@@ -32,9 +32,6 @@ module.exports = {
       description: {
         type: Sequelize.STRING(150)
       },
-      comment: {
-        type: Sequelize.TEXT
-      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
