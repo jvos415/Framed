@@ -43,7 +43,8 @@ router.get(
 
 router.put(
   "/:id",
-  imageValidations.validateUpdatePhoto, requireAuth,
+  imageValidations.validateUpdatePhoto,
+  requireAuth,
   asyncHandler(async function (req, res) {
     const image = await Image.findByPk(req.params.id)
     await image.update(req.body);
