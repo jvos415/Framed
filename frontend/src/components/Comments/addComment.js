@@ -10,7 +10,6 @@ const AddCommentComponent = ({ setShowAddComment }) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const sessionUser = useSelector(state => state.session.user);
-  // const comments = useSelector((state) => state.comments);
 
   const [commentText, setCommentText] = useState("");
 
