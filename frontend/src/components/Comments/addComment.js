@@ -9,13 +9,17 @@ const AddCommentComponent = ({ setShowAddComment }) => {
   const { imageId } = useParams();
   const dispatch = useDispatch();
   const history = useHistory();
-  const comments = useSelector((state) => state.comments);
-  const commentsArray = Object.values(comments)
+  const sessionUser = useSelector(state => state.session.user);
+  // const comments = useSelector((state) => state.comments);
 
   const handlePostComment = async (e) => {
     e.preventDefault();
 
-    let commentObj;
+    const userId = sessionUser.id
+
+    const commentObj = {
+     
+    }
 
     await dispatch(createComment(commentObj));
 
@@ -36,10 +40,13 @@ const AddCommentComponent = ({ setShowAddComment }) => {
 
   return (
     <div className="add-comment-container">
-      <p>this is the add comment component</p>
-      <button onClick={handlePostComment} id="add-comment-button" type="sumbit">
-        Post Comment
-      </button>
+      <form onSubmit={handlePostComment}>
+        <label>Comment</label>
+        <input type="text" placeholder="Add your comment here"></input>
+        <button onClick={handlePostComment} id="add-comment-button" type="sumbit">
+          Post Comment
+        </button>
+      </form>
       <button onClick={handleCancel} id="add-comment-button" type="sumbit">
         Cancel
       </button>
