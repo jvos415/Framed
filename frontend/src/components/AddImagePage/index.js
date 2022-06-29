@@ -12,6 +12,7 @@ const AddImageForm = () => {
   const [imageUrl, setImageUrl] = useState("");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [errors, setErrors] = useState([]);
 
   if (!sessionUser) return history.push("/signup");
 
@@ -21,6 +22,7 @@ const AddImageForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setErrors([]);
 
     const userId = sessionUser.id;
 
@@ -31,12 +33,15 @@ const AddImageForm = () => {
       description,
     };
 
-    let createdImage = await dispatch(createImage(payload));
+    try {
+      let createdImage = await dispatch(createImage(payload));
 
-    // console.log("\n\n", createdImage, "\n\n",);
-
-    if (createdImage) {
-      return history.push(`/images/${createdImage.id}`);
+      if (createdImage) {
+        return history.push(`/images/${createdImage.id}`);
+      }
+    } catch (error) {
+      const data = await error.json();
+        if (data && data.errors) setErrors(data.errors);
     }
   };
 
@@ -50,6 +55,9 @@ const AddImageForm = () => {
     <div className="add-image-container">
       <h3 id="add-image-title">Add an image to FRAMED</h3>
       <form className="add-image-form" onSubmit={handleSubmit}>
+        <ul>
+          {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+        </ul>
         <label>ImageUrl: </label>
         <input
           type="text"
