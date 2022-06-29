@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import TrashCan from "../../images/trash-can.png"
@@ -13,7 +13,10 @@ const CommentComponent = () => {
   const comments = useSelector((state) => state.comments);
   const commentsArray = Object.values(comments)
 
+  const [commentId, setCommentId] = useState('')
   // const [commentsSection, setCommentsSection] = useState(false)
+
+  const updateCommentId = (e) => setCommentId(e.target.value);
 
   // useEffect(() => {
   //   setCommentsSection(true)
@@ -23,15 +26,17 @@ const CommentComponent = () => {
     dispatch(getComments(imageId));
   }, [dispatch, imageId]);
 
+
   const handleDeleteComment = async (e) => {
     e.preventDefault();
 
-    let commentId;
+    console.log(commentId);
 
     await dispatch(deleteSingleComment(commentId))
 
     return history.push(`/images/${imageId}`);
   }
+  
 
   return (
     <div className="comment-container">
@@ -40,8 +45,8 @@ const CommentComponent = () => {
         return (
           <div key={comment.id}>
             <p>{comment.comment}</p>
-            <button onClick={handleDeleteComment} className='trash-can'>
-              <img src={TrashCan} value={comment.id} alt="trash can"></img>
+            <button value={comment.id} onClick={updateCommentId && handleDeleteComment} className='trash-can'>
+              <img src={TrashCan} alt="trash can"></img>
             </button>
           </div>
         )
