@@ -67,12 +67,13 @@ router.delete(
 router.get(
   "/:imageId/comments",
   asyncHandler(async function (req, res) {
-    const imageId = await Image.findByPk(req.params.imageId);
+    const image = await Image.findByPk(req.params.imageId);
     const comments = await Comment.findAll({
       where: {
-        imageId:imageId
+        imageId: image.id
       }
     })
+
     return res.json(comments);
   })
 );
