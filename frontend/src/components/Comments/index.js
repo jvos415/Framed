@@ -10,8 +10,11 @@ const CommentComponent = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const comments = useSelector((state) => state.comments);
-
   const commentsArray = Object.values(comments)
+
+  useEffect(() => {
+
+  },[comments])
 
   useEffect(() => {
     dispatch(getComments(imageId));
@@ -27,7 +30,8 @@ const CommentComponent = () => {
 
   return (
     <div className="comment-container">
-      {commentsArray.map((comment) => {
+      <h3>Comments</h3>
+      {commentsArray && commentsArray.map((comment) => {
         return <p key={comment.id}>{comment.comment}</p>
       })}
     </div>
