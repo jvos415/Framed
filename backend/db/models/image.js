@@ -23,7 +23,6 @@ module.exports = (sequelize, DataTypes) => {
         len: [0, 150]
       }
     },
-    comment: DataTypes.TEXT
   }, {});
   Image.associate = function(models) {
     Image.belongsTo(models.User, { foreignKey: 'userId' });
