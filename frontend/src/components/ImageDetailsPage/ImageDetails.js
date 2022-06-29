@@ -83,7 +83,7 @@ const ImageDetails = () => {
           {!showEditForm && showEditButton && <button id="image-edit-button" onClick={goToEditPage}>Edit</button>}
           {!showEditForm && showDeleteButton && <button type="button" onClick={handleDeleteImage}>Delete Image</button>}
           <CommentComponent />
-          <button id="add-comment-button" type="button" onClick={handleAddComment}>Add Comment</button>
+          {!showEditForm && <button id="add-comment-button" type="button" onClick={handleAddComment}>Add Comment</button>}
           {showAddComment && <AddCommentComponent setShowAddComment={setShowAddComment} />}
         </>
     </div>
