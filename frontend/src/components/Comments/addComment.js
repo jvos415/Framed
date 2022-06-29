@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -34,14 +34,6 @@ const AddCommentComponent = ({ setShowAddComment }) => {
     setShowAddComment(false)
     return history.push(`/images/${imageId}`);
   };
-
-  // const handleDeleteComment = async (e) => {
-  //   e.preventDefault();
-
-  //   await dispatch(deleteSingleComment(commentId))
-
-  //   return history.push(`/images/${imageId}`);
-  // }
 
   const handleCancel = () => {
     setShowAddComment(false)
