@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import TrashCan from "../../images/trash-can.png";
@@ -10,6 +11,14 @@ const SingleCommentComponent = ({ comment }) => {
   const history = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
 
+  const [showTrashCan, setShowTrashCan] = useState(false);
+
+  useEffect(() => {
+    if (comment && comment.userId === sessionUser.id) {
+      setShowTrashCan(true);
+    }
+  },[comment, sessionUser.id])
+
   const handleDeleteComment = async (e) => {
     e.preventDefault();
 
@@ -21,13 +30,13 @@ const SingleCommentComponent = ({ comment }) => {
   return (
     <div className="single-comment-container">
         <p>{comment.comment}</p>
-        <button
+       {showTrashCan && <button
           value={comment.id}
           onClick={handleDeleteComment}
           className="trash-can"
         >
           <img src={TrashCan} alt="trash can"></img>
-        </button>
+        </button>}
       </div>
   );
 };

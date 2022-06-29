@@ -11,8 +11,6 @@ const EditImageForm = ({ setShowEditForm }) => {
   const sessionUser = useSelector(state => state.session.user);
   const image = useSelector(state => state.images[imageId]);
 
-  // console.log(image)
-
   const [imageUrl, setImageUrl] = useState(image.imageUrl);
   const [title, setTitle] = useState(image.title);
   const [description, setDescription] = useState(image.description);
@@ -40,15 +38,10 @@ const EditImageForm = ({ setShowEditForm }) => {
       updatedAt
     };
 
-    // console.log(payload)
-
     let updatedImage = await dispatch(updateSingleImage(payload))
-
-    // console.log("\n\n", updatedImage, "\n\n",);
 
     if (updatedImage) {
       setShowEditForm(false);
-      // this should go to the details page without the edit form rendering
      return history.push(`/images/${imageId}`);
     }
   };
@@ -56,7 +49,6 @@ const EditImageForm = ({ setShowEditForm }) => {
   const handleCancelClick = (e) => {
     e.preventDefault();
     setShowEditForm(false);
-    // this should go to the details page wihout the edit form rendering
     return history.push(`/images/${imageId}`);
   };
 
