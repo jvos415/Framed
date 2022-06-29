@@ -11,7 +11,6 @@ module.exports = {
       userId: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        unique: true,
         references: {
           model: "Users"
         }
@@ -19,7 +18,6 @@ module.exports = {
       imageId: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        unique: true,
         references: {
           model: "Images"
         }
