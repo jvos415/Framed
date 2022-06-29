@@ -10,9 +10,9 @@ const AddCommentComponent = ({ setShowAddComment }) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const sessionUser = useSelector(state => state.session.user);
-  // const comments = useSelector((state) => state.comments);
 
   const [commentText, setCommentText] = useState("");
+  const [errors, setErrors] = useState([]);
 
   const updateCommentText = (e) => setCommentText(e.target.value);
 
@@ -29,10 +29,15 @@ const AddCommentComponent = ({ setShowAddComment }) => {
       updatedAt: new Date(),
     }
 
-    await dispatch(createComment(commentObj));
+    try {
+      await dispatch(createComment(commentObj));
 
-    setShowAddComment(false)
-    return history.push(`/images/${imageId}`);
+      setShowAddComment(false)
+      return history.push(`/images/${imageId}`);
+    } catch (error) {
+      const data = await error.json();
+      if (data && data.errors) setErrors(data.errors);
+    }
   };
 
   const handleCancel = () => {
@@ -42,6 +47,9 @@ const AddCommentComponent = ({ setShowAddComment }) => {
   return (
     <div className="add-comment-container">
       <form onSubmit={handlePostComment}>
+        <ul>
+          {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+        </ul>
         <textarea type="text" placeholder="Add your comment here" cols="30" rows="3"
         value={commentText} onChange={updateCommentText} />
         <button onClick={handlePostComment} id="add-comment-button" type="sumbit">

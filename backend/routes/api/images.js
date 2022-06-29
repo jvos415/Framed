@@ -2,10 +2,10 @@ const express = require("express");
 const router = express.Router();
 const asyncHandler = require("express-async-handler");
 
-const { setTokenCookie, restoreUser } = require("../../utils/auth");
+const { requireAuth } = require("../../utils/auth");
 const imageValidations = require("../../utils/images");
 const commentValidations = require("../../utils/comments")
-const { User, Image, Comment } = require("../../db/models");
+const { Image, Comment } = require("../../db/models");
 
 /******************************* GET ROUTE FOR SPLASH PAGE*************************************/
 
@@ -21,7 +21,7 @@ router.get(
 
 router.post(
   "/",
-  imageValidations.validateAddPhoto,
+  imageValidations.validateAddPhoto, requireAuth,
   asyncHandler(async function (req, res) {
     const imageObj = await Image.create(req.body);
     res.status(201);
@@ -44,6 +44,7 @@ router.get(
 router.put(
   "/:id",
   imageValidations.validateUpdatePhoto,
+  requireAuth,
   asyncHandler(async function (req, res) {
     const image = await Image.findByPk(req.params.id)
     await image.update(req.body);
@@ -54,7 +55,7 @@ router.put(
 /******************************* DELETE SINGLE IMAGE ROUTE *************************************/
 
 router.delete(
-  "/:id(\\d+)",
+  "/:id(\\d+)", requireAuth,
   asyncHandler(async function (req, res) {
     const image = await Image.findByPk(req.params.id)
     await image.destroy();
@@ -81,7 +82,7 @@ router.get(
 /******************************* POST ROUTE FOR COMMENT *************************************/
 
 router.post(
-  "/:imageId/comments", commentValidations.validateComment,
+  "/:imageId/comments", commentValidations.validateComment, requireAuth,
   asyncHandler(async function (req, res) {
     const commentObj = await Comment.create(req.body)
     res.status(201);
@@ -92,7 +93,7 @@ router.post(
 /******************************* DELETE SINGLE COMMENT *************************************/
 
 router.delete(
-  "/comments/:commentId",
+  "/comments/:commentId", requireAuth,
   asyncHandler(async function (req, res) {
     const comment = await Comment.findByPk(req.params.commentId)
     await comment.destroy();
