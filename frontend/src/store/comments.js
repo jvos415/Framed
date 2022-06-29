@@ -68,7 +68,6 @@ const initialState = {}
 
 const commentsReducer = (state = initialState, action) => {
   switch (action.type) {
-    // this is could be wrong because a comment is nested in image
     case LOAD:
       const commentList = {};
       action.comments.forEach((comment) => {
@@ -78,7 +77,6 @@ const commentsReducer = (state = initialState, action) => {
         ...commentList,
         ...state
       };
-      // this is totally wrong because a comment is nested in image
       case ADD_COMMENT:
         if (!state[action.comment.id]) {
           const newState = {
@@ -94,7 +92,6 @@ const commentsReducer = (state = initialState, action) => {
           ...action.comment
         }
       };
-      // this is totally wrong because a comment is nested in image
       case DELETE_COMMENT:
         const newState = { ...state };
         delete newState[action.commentId];
