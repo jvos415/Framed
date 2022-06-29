@@ -18,7 +18,6 @@ module.exports = {
       imageId: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        unique: true,
         references: {
           model: "Images"
         }
