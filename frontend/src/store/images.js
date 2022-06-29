@@ -106,8 +106,7 @@ const imagesReducer = (state = initialState, action) => {
         imageList[image.id] = image;
       });
       return {
-        ...imageList,
-        ...state
+        ...imageList
       };
       case ADD_IMAGE:
         if (!state[action.image.id]) {
