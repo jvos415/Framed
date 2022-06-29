@@ -12,9 +12,11 @@ const CommentComponent = () => {
   const comments = useSelector((state) => state.comments);
   const commentsArray = Object.values(comments)
 
-  useEffect(() => {
+  // const [commentsSection, setCommentsSection] = useState(false)
 
-  },[comments])
+  // useEffect(() => {
+  //   setCommentsSection(true)
+  // },[commentsArray])
 
   useEffect(() => {
     dispatch(getComments(imageId));
@@ -30,7 +32,7 @@ const CommentComponent = () => {
 
   return (
     <div className="comment-container">
-      <h3>Comments</h3>
+      {commentsArray.length > 0 && <h3>Comments</h3>}
       {commentsArray && commentsArray.map((comment) => {
         return <p key={comment.id}>{comment.comment}</p>
       })}
