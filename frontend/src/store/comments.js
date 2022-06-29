@@ -74,8 +74,7 @@ const commentsReducer = (state = initialState, action) => {
         commentList[comment.id] = comment;
       });
       return {
-        ...commentList,
-        ...state
+        ...commentList
       };
       case ADD_COMMENT:
         if (!state[action.comment.id]) {
