@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import TrashCan from "../../images/trash-can.png";
@@ -11,12 +10,10 @@ const SingleCommentComponent = ({ comment }) => {
   const history = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
 
-  const [commentId, setCommentId] = useState("");
-
-  const handleDeleteComment = (e) => {
+  const handleDeleteComment = async (e) => {
     e.preventDefault();
 
-    dispatch(deleteSingleComment(comment.id));
+    await dispatch(deleteSingleComment(comment.id));
 
     return history.push(`/images/${imageId}`);
   };

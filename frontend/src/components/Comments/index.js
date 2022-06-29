@@ -31,38 +31,3 @@ const CommentComponent = () => {
 };
 
 export default CommentComponent;
-
-
-// const updateCommentId = (e) => setCommentId(e.target.value);
-
-//   useEffect(() => {
-//     dispatch(getComments(imageId));
-//   }, [dispatch, imageId]);
-
-//   const handleDeleteComment = async (e) => {
-//     e.preventDefault();
-
-//     console.log(commentId);
-
-//     await dispatch(deleteSingleComment(commentId))
-
-//     return history.push(`/images/${imageId}`);
-//   }
-
-
-//   return (
-//     <div className="comment-container">
-//       {commentsArray.length > 0 && <h3>Comments</h3>}
-//       {commentsArray && commentsArray.map((comment) => {
-//         return (
-//           <div key={comment.id}>
-//             <p>{comment.comment}</p>
-//             <button value={comment.id} onClick={updateCommentId && handleDeleteComment} className='trash-can'>
-//               <img src={TrashCan} value={comment.id} alt="trash can"></img>
-//             </button>
-//           </div>
-//         )
-//       })}
-//     </div>
-//   );
-// };
