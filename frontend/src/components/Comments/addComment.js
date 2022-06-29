@@ -9,15 +9,31 @@ const AddCommentComponent = ({ setShowAddComment }) => {
   const { imageId } = useParams();
   const dispatch = useDispatch();
   const history = useHistory();
-  // const comments = useSelector((state) => state.comment[imageId]);
+  const sessionUser = useSelector(state => state.session.user);
+  // const comments = useSelector((state) => state.comments);
 
-  // const handlePostComment = async (e) => {
-  //   e.preventDefault();
+  const [commentText, setCommentText] = useState("");
 
-  //   await dispatch(createComment(commentId));
+  const updateCommentText = (e) => setCommentText(e.target.value);
 
-  //   return history.push(`/images/${imageId}`);
-  // };
+  const handlePostComment = async (e) => {
+    e.preventDefault();
+
+    const userId = sessionUser.id
+
+    const commentObj = {
+      userId,
+      imageId,
+      comment: commentText,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    }
+
+    await dispatch(createComment(commentObj));
+
+    setShowAddComment(false)
+    return history.push(`/images/${imageId}`);
+  };
 
   // const handleDeleteComment = async (e) => {
   //   e.preventDefault();
@@ -33,10 +49,13 @@ const AddCommentComponent = ({ setShowAddComment }) => {
 
   return (
     <div className="add-comment-container">
-      <p>this is the add comment component</p>
-      <button id="add-comment-button" type="sumbit">
-        Post Comment
-      </button>
+      <form onSubmit={handlePostComment}>
+        <textarea type="text" placeholder="Add your comment here" cols="30" rows="3"
+        value={commentText} onChange={updateCommentText} />
+        <button onClick={handlePostComment} id="add-comment-button" type="sumbit">
+          Post Comment
+        </button>
+      </form>
       <button onClick={handleCancel} id="add-comment-button" type="sumbit">
         Cancel
       </button>

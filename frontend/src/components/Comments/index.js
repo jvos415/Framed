@@ -8,8 +8,15 @@ import "./comments.css";
 const CommentComponent = () => {
   const { imageId } = useParams();
   const dispatch = useDispatch();
-  // const history = useHistory();
-  // const comments = useSelector((state) => state.comment[imageId]);
+  const history = useHistory();
+  const comments = useSelector((state) => state.comments);
+  const commentsArray = Object.values(comments)
+
+  // const [commentsSection, setCommentsSection] = useState(false)
+
+  // useEffect(() => {
+  //   setCommentsSection(true)
+  // },[commentsArray])
 
   useEffect(() => {
     dispatch(getComments(imageId));
@@ -22,10 +29,13 @@ const CommentComponent = () => {
 
   //   return history.push(`/images/${imageId}`);
   // }
-  
+
   return (
     <div className="comment-container">
-      <p>this is the comment component, this will list comments</p>
+      {commentsArray.length > 0 && <h3>Comments</h3>}
+      {commentsArray && commentsArray.map((comment) => {
+        return <p key={comment.id}>{comment.comment}</p>
+      })}
     </div>
   );
 };

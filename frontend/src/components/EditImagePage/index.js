@@ -75,7 +75,9 @@ const EditImageForm = ({ setShowEditForm }) => {
           value={title}
           onChange={updateTitle} />
         <label>Description: </label>
-        <input
+        <textarea
+          cols="30"
+          rows="3"
           type="text"
           value={description}
           onChange={updateDescription} />
