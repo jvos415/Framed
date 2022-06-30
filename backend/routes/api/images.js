@@ -33,6 +33,7 @@ router.post(
 
 router.get(
   "/:id",
+  requireAuth,
   asyncHandler(async function (req, res) {
     const imageId = await Image.findByPk(req.params.id);
     return res.json(imageId);
