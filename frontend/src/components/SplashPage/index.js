@@ -61,10 +61,10 @@ const ImageScroll = () => {
       <div className="welcome">
         <h2 id="welcome-title">Welcome to FRAMED!</h2>
         <p id="welcome-blurb">
-          View people's favorite frames from around the world on the framed app!
-          Below, you can scroll the roll of frames. As a logged in user, you can
+          View users' favorite frames from around the world!
+          Scroll the roll! As a logged in user, you can
           add an image of your liking to be viewed by the FRAMED community and
-          comment on other member's photos.
+          comment on other members' photos.
         </p>
       </div>
       <div className="splash-container">{content}</div>
