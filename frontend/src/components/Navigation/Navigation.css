@@ -6,27 +6,40 @@
   list-style: none;
   background-color: black;
   padding: 2%;
+  display: flex;
+  justify-content: space-between;
 }
 
-.nav-bar-items {
+.nav-bar-items-left {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.nav-bar-items > a {
+.nav-bar-items-right {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+}
+
+.nav-bar-items-right > a {
   color: white;
   font-size: 1.2em;
   text-decoration: none;
+  padding-right: 8px;
 }
 
 #framed {
-  font-size: 2.2em;
+  font-size: 2.5em;
   font-family: 'Bebas Neue', cursive;
+  color: white;
+  text-decoration: none;
 }
 
 #framed-logo {
   padding-top: 4px;
+  padding-right: 8px;
 }
 
 #profile-button {

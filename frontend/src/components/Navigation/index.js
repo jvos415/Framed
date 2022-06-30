@@ -38,15 +38,17 @@ function Navigation({ isLoaded }){
   }
 
   return (
-    <ul className="nav-bar">
-      <li className="nav-bar-items">
+    <div className="nav-bar">
+      <p className="nav-bar-items-left">
         <NavLink id="framed-logo" exact to="/">
           <img src={logo} alt="FRAMED logo"></img>
         </NavLink>
-       <NavLink id="framed" exact to="/">FRAMED</NavLink>
+        <NavLink id="framed" exact to="/">FRAMED</NavLink>
+       </p>
+       <p className="nav-bar-items-right">
         {isLoaded && sessionLinks}
-      </li>
-    </ul>
+      </p>
+    </div>
   );
 }
 
