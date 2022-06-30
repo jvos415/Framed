@@ -96,8 +96,8 @@
   display: inline;
   background: none;
   border: none;
-  padding-left: 7px;
-  padding-right: 7px;
+  padding-left: 9px;
+  padding-right: 9px;
   font-weight: 400;
 }
 
@@ -131,8 +131,8 @@
   list-style: none;
   position: relative;
   display: inline;
-  padding-left: 7px;
-  padding-right: 7px;
+  padding-left: 9px;
+  padding-right: 9px;
 }
 
 #login-button:after {
@@ -162,8 +162,8 @@
   list-style: none;
   position: relative;
   display: inline;
-  padding-left: 7px;
-  padding-right: 7px;
+  padding-left: 9px;
+  padding-right: 9px;
 }
 
 #signup-button:after {
