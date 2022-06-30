@@ -15,6 +15,7 @@ function Footer(){
       <a href="https://github.com/jvos415">
         <GitHub id="GitHub"/>
       </a>
+       <p id="stack-items">Built using React, Redux, PostgreSQL, Express.js, Node.js</p>
        <p id="established"><span>&copy;</span> FRAMED 2022</p>
       </li>
     </ul>

@@ -30,8 +30,8 @@ module.exports = {
   {
     userId: 2,
     imageUrl: "https://cdn.theatlantic.com/thumbor/oXSEjwhvgcGyKp9nTg6dN1JAKLI=/1200x801/media/img/photo/2020/10/california-photos/a11_604576095/original.jpg",
-    title: "The Painted Ladies",
-    description: "The Painted Ladies at dusk. SF, CA",
+    title: "In the Redwoods",
+    description: "A peaceful meadow in the redwoods",
     createdAt: new Date(),
     updatedAt: new Date()
   },
