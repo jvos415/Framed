@@ -6,7 +6,7 @@
 }
 
 #login-title {
-  padding: 45px 20px 0px 20px;
+  padding: 15px 20px 0px 20px;
 }
 
 .login-form {
@@ -41,4 +41,5 @@
 .footer-position {
   position: fixed;
   bottom: 0;
+  width: 100%;
 }
