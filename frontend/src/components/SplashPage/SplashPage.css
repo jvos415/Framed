@@ -25,4 +25,24 @@
   color: white;
   background-image: url("../../images/Marin.jpeg");
   background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  width: 100%;
+  height: 800px;
+}
+
+#welcome-title {
+  position: relative;
+  top: 10%;
+  text-align: center;
+  font-size: 65px;
+  padding: 2% 10%;
+}
+
+#welcome-blurb {
+  position: relative;
+  text-align: center;
+  font-size: 35px;
+  top: 15%;
+  padding: 2% 10%;
 }
