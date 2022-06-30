@@ -4,21 +4,184 @@
 
 .nav-bar {
   list-style: none;
-  background-color: rgb(51, 127, 175);
+  background-color: black;
   padding: 2%;
-}
-
-.nav-bar-items {
   display: flex;
   justify-content: space-between;
 }
 
-.nav-bar-items > a {
+.nav-bar-items-left {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-bar-items-right {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+}
+
+#add-image {
   color: white;
   font-size: 1.2em;
+  text-decoration: none;
+  list-style: none;
+  position: relative;
+  display: inline;
+}
+
+#add-image:after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -2px;
+  width: 0px;
+  height: 2px;
+  background: white;
+  transition: all 0.45s;
+}
+
+#add-image:hover:after {
+  width: 100%;
+  left: 0;
+}
+
+#add-image:hover {
   text-decoration: none;
 }
 
 #framed {
-  font-size: 1.6em;
+  font-size: 2.5em;
+  font-family: 'Bebas Neue', cursive;
+  color: white;
+  text-decoration: none;
+}
+
+#framed-logo {
+  padding-top: 4px;
+  padding-right: 12px;
+}
+
+#profile-button {
+  padding: 0;
+  border: none;
+  background: none;
+  height: 1.75em;
+}
+
+#profile-icon {
+  font-size: 25px;
+  color: white;
+  padding-left: 15px;
+}
+
+#profile-icon:hover {
+  font-size: 25px;
+}
+
+.profile-dropdown {
+  list-style-type: '> ';
+  font-size: 0.9em;
+  color: white;
+}
+
+#demo-user-button {
+  color: white;
+  font-size: 1.2em;
+  text-decoration: none;
+  list-style: none;
+  position: relative;
+  display: inline;
+  background: none;
+  border: none;
+  padding-left: 7px;
+  padding-right: 7px;
+  font-weight: 400;
+}
+
+#demo-user-button:after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -2px;
+  width: 0px;
+  height: 2px;
+  background: white;
+  transition: all 0.45s;
+  font-weight: 400;
+}
+
+#demo-user-button:hover:after {
+  width: 100%;
+  left: 0;
+  font-weight: 400;
+}
+
+#demo-user-button:hover {
+  text-decoration: none;
+  font-weight: 400;
+}
+
+#login-button {
+  color: white;
+  font-size: 1.2em;
+  text-decoration: none;
+  list-style: none;
+  position: relative;
+  display: inline;
+  padding-left: 7px;
+  padding-right: 7px;
+}
+
+#login-button:after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -2px;
+  width: 0px;
+  height: 2px;
+  background: white;
+  transition: all 0.45s;
+}
+
+#login-button:hover:after {
+  width: 100%;
+  left: 0;
+}
+
+#login-button:hover {
+  text-decoration: none;
+}
+
+#signup-button {
+  color: white;
+  font-size: 1.2em;
+  text-decoration: none;
+  list-style: none;
+  position: relative;
+  display: inline;
+  padding-left: 7px;
+  padding-right: 7px;
+}
+
+#signup-button:after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -2px;
+  width: 0px;
+  height: 2px;
+  background: white;
+  transition: all 0.45s;
+}
+
+#signup-button:hover:after {
+  width: 100%;
+  left: 0;
+}
+
+#signup-button:hover {
+  text-decoration: none;
 }

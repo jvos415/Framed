@@ -65,7 +65,6 @@ const ImageDetails = () => {
   if (!showEditForm) {
     content = (
     <div className='image-details'>
-      <img id='image-image' src={`${image.imageUrl}`} alt={image.title}></img>
       <h3 id="image-title">{image.title}</h3>
       <p id="image-description">{image.description}</p>
     </div>
@@ -78,14 +77,13 @@ const ImageDetails = () => {
 
   return (
     <div className="image-detail">
+      <img id='image-image' src={`${image.imageUrl}`} alt={image.title}></img>
       {content}
-        <>
-          {!showEditForm && showEditButton && <button id="image-edit-button" onClick={goToEditPage}>Edit</button>}
-          {!showEditForm && showDeleteButton && <button type="button" onClick={handleDeleteImage}>Delete Image</button>}
-          <CommentComponent />
-          {!showEditForm && <button id="add-comment-button" type="button" onClick={handleAddComment}>Add Comment</button>}
-          {showAddComment && <AddCommentComponent setShowAddComment={setShowAddComment} />}
-        </>
+      {!showEditForm && showEditButton && <button id="image-edit-button" onClick={goToEditPage}>Edit</button>}
+      {!showEditForm && showDeleteButton && <button type="button" onClick={handleDeleteImage}>Delete Image</button>}
+      <CommentComponent />
+      {!showEditForm && <button id="add-comment-button" type="button" onClick={handleAddComment}>Add Comment</button>}
+      {showAddComment && <AddCommentComponent setShowAddComment={setShowAddComment} />}
     </div>
   );
 }

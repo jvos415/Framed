@@ -9,6 +9,7 @@ import Footer from "./components/Footer";
 import ImageScroll from "./components/SplashPage";
 import AddImageForm from "./components/AddImagePage";
 import ImageDetails from "./components/ImageDetailsPage/ImageDetails";
+import PageNotFound from "./components/PageNotFound/PageNotFound";
 
 function App() {
   const dispatch = useDispatch();
@@ -40,7 +41,7 @@ function App() {
             <ImageDetails />
           </Route>
           <Route>
-           Page Not be Found
+           <PageNotFound />
           </Route>
         </Switch>
       )}

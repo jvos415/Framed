@@ -4,7 +4,7 @@
 
 .footer {
   list-style: none;
-  background-color: rgb(51, 127, 175);
+  background-color: rgb(193, 193, 197);
   padding: 2%;
   /* position: fixed;
   bottom: 0;
@@ -17,23 +17,27 @@
 }
 
 .footer-items > a {
-  color: white;
   font-size: 1.2em;
   text-decoration: none;
 }
 
 .footer-items > p {
-  color: white;
+  color: black;
+  font-size: 1.1em;
 }
 
 #linkedIn {
   width: 23px;
   height: auto;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 #GitHub {
   width: 25px;
   height: auto;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 #established {
