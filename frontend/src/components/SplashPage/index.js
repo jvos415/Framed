@@ -17,15 +17,9 @@ const ImageScroll = () => {
     dispatch(getImages())
   }, [dispatch])
 
-  // brings you to top of page on all re-renders, not user friendly IMO
-  // useEffect(() => {
-  //   window.scrollTo(0, 0)
-  // }, [])
-
   if (!allImages) {
     return null;
   }
-  
 
   return (
     <div className='splash-container'>
