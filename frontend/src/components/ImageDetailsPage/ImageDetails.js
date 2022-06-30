@@ -21,16 +21,16 @@ const ImageDetails = () => {
   const [showAddComment, setShowAddComment] = useState(false);
 
   useEffect(() => {
-    if (image && image.userId === sessionUser.id) {
+    if (sessionUser && image && image.userId === sessionUser.id) {
       setShowEditButton(true);
     }
-  },[image, sessionUser.id])
+  },[image, sessionUser])
 
   useEffect(() => {
-    if (image && image.userId === sessionUser.id) {
+    if (sessionUser && image && image.userId === sessionUser.id) {
       setShowDeleteButton(true);
     }
-  },[image, sessionUser.id])
+  },[image, sessionUser])
 
   useEffect(() => {
     dispatch(getOneImage(imageId));

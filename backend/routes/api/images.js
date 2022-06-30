@@ -32,7 +32,7 @@ router.post(
 /******************************* GET SINGLE IMAGE AND DETAILS *************************************/
 
 router.get(
-  "/:id",
+  "/:id(\\d+)",
   requireAuth,
   asyncHandler(async function (req, res) {
     const imageId = await Image.findByPk(req.params.id);
@@ -43,7 +43,7 @@ router.get(
 /******************************* UPDATE A SINGLE IMAGE AND DETAILS *************************************/
 
 router.put(
-  "/:id",
+  "/:id(\\d+)",
   imageValidations.validateUpdatePhoto,
   requireAuth,
   asyncHandler(async function (req, res) {
@@ -94,7 +94,7 @@ router.post(
 /******************************* DELETE SINGLE COMMENT *************************************/
 
 router.delete(
-  "/comments/:commentId", requireAuth,
+  "/comments/:commentId(\\d+)", requireAuth,
   asyncHandler(async function (req, res) {
     const comment = await Comment.findByPk(req.params.commentId)
     await comment.destroy();
