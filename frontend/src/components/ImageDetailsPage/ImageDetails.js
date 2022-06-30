@@ -21,11 +21,7 @@ const ImageDetails = () => {
   const [showAddComment, setShowAddComment] = useState(false);
 
   useEffect(() => {
-    try {
-      if (!sessionUser) return history.push("/signup")
-    } catch (error) {
-      //Do nothing because already redirecting
-    }
+    if (!sessionUser) return history.push("/signup")
     if (sessionUser && image && image.userId === sessionUser.id) {
       setShowEditButton(true);
     }
