@@ -29,17 +29,22 @@
 #linkedIn {
   width: 23px;
   height: auto;
-  padding-left: 5px;
-  padding-right: 5px;
+  padding-left: 7px;
+  padding-right: 7px;
 }
 
 #GitHub {
   width: 25px;
   height: auto;
-  padding-left: 5px;
-  padding-right: 5px;
+  padding-left: 7px;
+  padding-right: 7px;
 }
 
 #established {
   padding-right: 3%;
+}
+
+#stack-items {
+  padding-left: 7px;
+  padding-right: 7px;
 }
