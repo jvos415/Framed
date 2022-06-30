@@ -17,13 +17,13 @@
 }
 
 .footer-items > a {
-  color: white;
   font-size: 1.2em;
   text-decoration: none;
 }
 
 .footer-items > p {
-  color: white;
+  color: black;
+  font-size: 1.1em;
 }
 
 #linkedIn {
