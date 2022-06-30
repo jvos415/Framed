@@ -40,21 +40,27 @@ const ImageScroll = () => {
   } else {
     content = allImages.map((image) => {
       return (
-          <img
-            key={image.id}
-            id="splash-images"
-            src={`${image.imageUrl}`}
-            alt={`${image.title}`}
-            loading="lazy"
-          ></img>
+        <img
+          key={image.id}
+          id="splash-images"
+          src={`${image.imageUrl}`}
+          alt={`${image.title}`}
+          loading="lazy"
+        ></img>
       );
     });
   }
 
   return (
-    <div className="splash-container">
-      {content}
-      <button onClick={() => window.scrollTo(0, 0)}>Back to the top</button>
+    <div>
+      <div className="splash-container">
+        {content}
+      </div>
+      <div className="back-to-top-container">
+        <button id="back-to-top" onClick={() => window.scrollTo(0, 0)}>
+          Back to the top ⇧
+        </button>
+      </div>
     </div>
   );
 };

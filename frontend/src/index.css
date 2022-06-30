@@ -6,6 +6,7 @@ button {
   font-family: 'Poppins', sans-serif;
   border-radius: 20px;
   border-width: 0;
+  background-color: rgb(193, 193, 197);
 }
 
 button:hover {
