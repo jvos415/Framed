@@ -46,3 +46,9 @@
   top: 15%;
   padding: 2% 10%;
 }
+
+@media only screen and (max-width: 750px) {
+  .back-to-top-container {
+    margin-top: -20px;
+   }
+}
