@@ -28,12 +28,12 @@ function Navigation({ isLoaded }){
     );
   } else {
     sessionLinks = (
-      <>
-        <button onClick = {demoUserLogin}>Demo User</button>
+      <div className="logged-in-nav">
+        <button id="demo-user-button" onClick = {demoUserLogin}>Demo User</button>
         {/* the link needs to log you in as a demo user */}
-        <NavLink to="/login">Log In</NavLink>
-        <NavLink to="/signup">Sign Up</NavLink>
-      </>
+        <NavLink id="login-button"  to="/login">Log In</NavLink>
+        <NavLink id="signup-button" to="/signup">Sign Up</NavLink>
+      </div>
     );
   }
 
