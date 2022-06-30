@@ -24,4 +24,5 @@
   font-family: 'Bebas Neue', cursive;
   color: white;
   background-image: url("../../images/Marin.jpeg");
+  background-size: cover;
 }
