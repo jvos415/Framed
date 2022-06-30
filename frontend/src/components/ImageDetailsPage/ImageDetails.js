@@ -21,6 +21,7 @@ const ImageDetails = () => {
   const [showAddComment, setShowAddComment] = useState(false);
 
   useEffect(() => {
+    if (!sessionUser) return history.push("/signup")
     if (sessionUser && image && image.userId === sessionUser.id) {
       setShowEditButton(true);
     }
