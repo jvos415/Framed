@@ -1,1 +1,7 @@
-/* TODO Add site wide styles */
+html {
+  font-family: 'Poppins', sans-serif;
+}
+
+button {
+  font-family: 'Poppins', sans-serif;
+}
