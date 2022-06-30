@@ -4,4 +4,12 @@ html {
 
 button {
   font-family: 'Poppins', sans-serif;
+  border-radius: 20px;
+  border-width: 0;
+}
+
+button:hover {
+  font-weight: 500;
+  background-image: linear-gradient(to right, #df3308, #e45800, #e87500, #ea9000, #eba912);
+  cursor: pointer;
 }
