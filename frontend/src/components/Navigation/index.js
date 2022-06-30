@@ -45,9 +45,9 @@ function Navigation({ isLoaded }){
         </NavLink>
         <NavLink id="framed" exact to="/">FRAMED</NavLink>
        </p>
-       <p className="nav-bar-items-right">
+       <div className="nav-bar-items-right">
         {isLoaded && sessionLinks}
-      </p>
+      </div>
     </div>
   );
 }
