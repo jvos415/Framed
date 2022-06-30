@@ -14,3 +14,27 @@ button:hover {
   background-image: linear-gradient(to right, #df3308, #e45800, #e87500, #ea9000, #eba912);
   cursor: pointer;
 }
+
+input {
+  font-family: 'Poppins', sans-serif;
+  border: 1px solid;
+  border-radius: 10px;
+}
+
+input:focus {
+  outline: none !important;
+  border-color: #df3308;
+  box-shadow: 0 0 3px #df3308;
+}
+
+textarea {
+  font-family: 'Poppins', sans-serif;
+  border: 1px solid;
+  border-radius: 10px;
+}
+
+textarea:focus {
+  outline: none !important;
+  border-color: #df3308;
+  box-shadow: 0 0 3px #df3308;
+}

@@ -50,11 +50,11 @@ export const getOneImage = (imageId) => async (dispatch) => {
 
     if (response.ok) {
       const image = await response.json();
-      //  console.log("\n\n", image, "\n\n");
       dispatch(addImage(image));
     }
   } catch (error) {
     const data = await error.json();
+    return data;
   }
 };
 
