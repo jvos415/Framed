@@ -53,6 +53,9 @@ const ImageScroll = () => {
 
   return (
     <div>
+      <div className="welcome">
+        <h2>Welcome to FRAMED!</h2>
+      </div>
       <div className="splash-container">
         {content}
       </div>

@@ -23,8 +23,8 @@ input {
 
 input:focus {
   outline: none !important;
-  border-color: #df3308;
-  box-shadow: 0 0 3px #df3308;
+  border-color: black;
+  box-shadow: 0 0 3px black;
 }
 
 textarea {
@@ -35,6 +35,6 @@ textarea {
 
 textarea:focus {
   outline: none !important;
-  border-color: #df3308;
-  box-shadow: 0 0 3px #df3308;
+  border-color: black;
+  box-shadow: 0 0 3px black;
 }
