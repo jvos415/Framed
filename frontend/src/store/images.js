@@ -43,14 +43,18 @@ export const getImages = () => async (dispatch) => {
 };
 
 export const getOneImage = (imageId) => async (dispatch) => {
-  const response = await csrfFetch(`/api/images/${imageId}`, {
-    method: "GET",
-  });
+  try {
+    const response = await csrfFetch(`/api/images/${imageId}`, {
+      method: "GET",
+    });
 
-  if (response.ok) {
-    const image = await response.json();
-    //  console.log("\n\n", image, "\n\n");
-    dispatch(addImage(image));
+    if (response.ok) {
+      const image = await response.json();
+      //  console.log("\n\n", image, "\n\n");
+      dispatch(addImage(image));
+    }
+  } catch (error) {
+    const data = await error.json();
   }
 };
 
