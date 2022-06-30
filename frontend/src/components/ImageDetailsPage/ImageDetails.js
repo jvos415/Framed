@@ -76,6 +76,11 @@ const ImageDetails = () => {
     )
   }
 
+  let footer = document.querySelector(".footer");
+  if (footer) {
+    footer.classList.remove("footer-position");
+  }
+
   return (
     <div className="image-detail">
       <img id='image-image' src={`${image.imageUrl}`} alt={image.title}></img>
