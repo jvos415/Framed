@@ -19,7 +19,7 @@ const ImageDetails = () => {
   const [showEditButton, setShowEditButton] = useState(false);
   const [showDeleteButton, setShowDeleteButton] = useState(false);
   const [showAddComment, setShowAddComment] = useState(false);
-  // const [showAddCommentButton, setShowAddCommentButton] = useState(true);
+  const [showAddCommentButton, setShowAddCommentButton] = useState(true);
 
   useEffect(() => {
     if (!sessionUser) return history.push("/signup")
@@ -60,6 +60,7 @@ const ImageDetails = () => {
 
   const handleAddComment = () => {
    setShowAddComment(true)
+   setShowAddCommentButton(false)
   };
 
   let content = null;
@@ -90,8 +91,8 @@ const ImageDetails = () => {
         {!showEditForm && showEditButton && <button id="image-edit-button" onClick={goToEditPage}>Edit Image</button>}
         {!showEditForm && showDeleteButton && <button type="button" onClick={handleDeleteImage}>Delete Image</button>}
         <CommentComponent />
-        {!showEditForm && <button id="add-comment-button" type="button" onClick={handleAddComment}>Add Comment</button>}
-        {showAddComment && <AddCommentComponent setShowAddComment={setShowAddComment} />}
+        {!showEditForm && showAddCommentButton && <button id="add-comment-button" type="button" onClick={handleAddComment}>Add Comment</button>}
+        {showAddComment && <AddCommentComponent setShowAddComment={setShowAddComment} setShowAddCommentButton={setShowAddCommentButton} />}
       </div>
     </div>
   );
