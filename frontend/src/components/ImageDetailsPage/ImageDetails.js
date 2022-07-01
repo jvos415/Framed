@@ -3,6 +3,7 @@ import { useHistory, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { deleteSingleImage, getOneImage } from '../../store/images';
+import { getComments } from '../../store/comments';
 import EditImageForm from "../EditImagePage"
 import CommentComponent from '../Comments';
 import AddCommentComponent from '../Comments/addComment';
@@ -61,6 +62,9 @@ const ImageDetails = () => {
   const handleAddComment = () => {
    setShowAddComment(true)
    setShowAddCommentButton(false)
+
+    dispatch(getComments(imageId));
+
   };
 
   let content = null;

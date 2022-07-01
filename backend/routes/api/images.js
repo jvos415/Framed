@@ -73,7 +73,7 @@ router.get(
     const comments = await Comment.findAll({
       where: {
         imageId: image.id
-      }
+      }, include: User
     })
 
     return res.json(comments);
