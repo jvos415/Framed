@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { createComment } from "../../store/comments";
 import "./addComments.css";
 
-const AddCommentComponent = ({ setShowAddComment }) => {
+const AddCommentComponent = ({ setShowAddComment, setShowAddCommentButton }) => {
   const { imageId } = useParams();
   const dispatch = useDispatch();
   const history = useHistory();
@@ -33,6 +33,8 @@ const AddCommentComponent = ({ setShowAddComment }) => {
       await dispatch(createComment(commentObj));
 
       setShowAddComment(false)
+      setShowAddCommentButton(true)
+
       return history.push(`/images/${imageId}`);
     } catch (error) {
       const data = await error.json();
@@ -42,6 +44,7 @@ const AddCommentComponent = ({ setShowAddComment }) => {
 
   const handleCancel = () => {
     setShowAddComment(false)
+    setShowAddCommentButton(true)
   }
 
   let errorList;

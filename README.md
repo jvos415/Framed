@@ -1,5 +1,5 @@
-# Welcome to Framed!
+# Welcome to FRAMED!
 
-Here you can scroll the roll of photos to your heart's content, add photos that you want to share with the world and create photo albums. Find inspiration, enjoy the beauty of world and share some of your best work!
+Using the FRAMED app, you can scroll the roll of photos to your heart's content, add images that you want to share with the world and comments on images in the roll. Find inspiration, enjoy the beauty of world and share some of your best work!
 
-The Framed app welcomes photographers of all different skill levels to share their snapshot of the world through a lense. Get out there in the world and show us what photo can look like! Report back when you are done ;)
+The FRAMED app welcomes photographers of all different skill levels to share their snapshots of the world through a lense. Get out there in the world and show us what an image can look like! Report back and post your image ;)
