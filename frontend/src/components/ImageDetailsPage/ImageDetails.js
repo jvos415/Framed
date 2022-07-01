@@ -84,12 +84,14 @@ const ImageDetails = () => {
   return (
     <div className="image-detail">
       <img id='image-image' src={`${image.imageUrl}`} alt={image.title}></img>
-      {content}
-      {!showEditForm && showEditButton && <button id="image-edit-button" onClick={goToEditPage}>Edit</button>}
-      {!showEditForm && showDeleteButton && <button type="button" onClick={handleDeleteImage}>Delete Image</button>}
-      <CommentComponent />
-      {!showEditForm && <button id="add-comment-button" type="button" onClick={handleAddComment}>Add Comment</button>}
-      {showAddComment && <AddCommentComponent setShowAddComment={setShowAddComment} />}
+      <div className="image-details-end">
+        {content}
+        {!showEditForm && showEditButton && <button id="image-edit-button" onClick={goToEditPage}>Edit Image</button>}
+        {!showEditForm && showDeleteButton && <button type="button" onClick={handleDeleteImage}>Delete Image</button>}
+        <CommentComponent />
+        {!showEditForm && <button id="add-comment-button" type="button" onClick={handleAddComment}>Add Comment</button>}
+        {showAddComment && <AddCommentComponent setShowAddComment={setShowAddComment} />}
+      </div>
     </div>
   );
 }
