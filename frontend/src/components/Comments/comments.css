@@ -1,5 +1,5 @@
 .comment-container {
-  padding: 1% 2%;
+  padding: 5px 2% 4px 2%;
 }
 
 .add-comment-container {
@@ -9,9 +9,20 @@
 .trash-can {
   width: 30px;
   height: auto;
+  padding: 5px;
+  margin: 1px;
+}
+
+.single-comment-container {
+  display: flex;
 }
 
 .trash-can > img {
   width: 15px;
   height: auto;
+}
+
+#single-comment {
+  padding-top: 3px;
+  margin-right: 11px
 }

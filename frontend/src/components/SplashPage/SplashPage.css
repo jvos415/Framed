@@ -10,7 +10,21 @@
   max-width: 400px; */
   width: 100%;
   height: 100%;
-  padding: 3px;
+  margin: 3px;
+}
+
+#splash-images-more {
+  /* max-height: 400px;
+  max-width: 400px; */
+  width: 100%;
+  height: 100%;
+  margin: 3px;
+  transition-property: transform;
+  transition-duration: 0.6s;
+}
+
+#splash-images-more:hover {
+  transform: scale(1.025);
 }
 
 .back-to-top-container {
@@ -18,4 +32,37 @@
  justify-content: center;
  margin-top: -40px;
  margin-bottom: 35px;
+}
+
+.welcome {
+  font-family: 'Bebas Neue', cursive;
+  color: white;
+  background-image: url("../../images/mountains.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  width: 100%;
+  height: 800px;
+}
+
+#welcome-title {
+  position: relative;
+  top: 10%;
+  text-align: center;
+  font-size: 65px;
+  padding: 2% 10%;
+}
+
+#welcome-blurb {
+  position: relative;
+  text-align: center;
+  font-size: 35px;
+  top: 30%;
+  padding: 2% 10%;
+}
+
+@media only screen and (max-width: 750px) {
+  .back-to-top-container {
+    margin-top: -20px;
+   }
 }

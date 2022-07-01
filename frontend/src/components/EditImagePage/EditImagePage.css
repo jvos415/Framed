@@ -1,15 +1,32 @@
 .edit-image-container {
+  display: flex;
   margin: 2% 15%;
+  flex-direction: column;
+  align-items: center;
 }
 
 #edit-image-title {
-  display: flex;
-  justify-content: center;
-  padding: 20px;
+  padding: 15px 20px 0px 20px;
 }
 
 .edit-image-form {
-  display: flex;
-  flex-wrap: wrap;
   margin: 2% 15%;
+}
+
+#button-update {
+  margin: 15px 0px 7px 10px;
+  width: 200px;
+  align-self: center;
+}
+
+#button-cancel-update {
+  margin: 15px 0px 7px 10px;
+  width: 200px;
+  align-self: center;
+}
+
+.footer-position {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }

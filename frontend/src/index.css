@@ -23,8 +23,8 @@ input {
 
 input:focus {
   outline: none !important;
-  border-color: #df3308;
-  box-shadow: 0 0 3px #df3308;
+  border-color: black;
+  box-shadow: 0 0 4px black;
 }
 
 textarea {
@@ -35,6 +35,36 @@ textarea {
 
 textarea:focus {
   outline: none !important;
-  border-color: #df3308;
-  box-shadow: 0 0 3px #df3308;
+  border-color: black;
+  box-shadow: 0 0 3px black;
+}
+
+.errorList {
+  text-align: center;
+  background-color: rgba(255, 0, 0, 0.4);
+  padding: 15px 35px;
+  margin: 25px 25px 25px 45px;
+  border-radius: 10px;
+ text-align: left;
+}
+
+.form-box {
+  padding: 4px 3%;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-field {
+  width: 100%;
+  padding: 0px 10px;
+}
+
+.footer-position {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.label {
+  padding: 5px 0px 0px 0px;
 }
