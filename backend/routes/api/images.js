@@ -5,7 +5,7 @@ const asyncHandler = require("express-async-handler");
 const { requireAuth } = require("../../utils/auth");
 const imageValidations = require("../../utils/images");
 const commentValidations = require("../../utils/comments")
-const { Image, Comment } = require("../../db/models");
+const { User, Image, Comment } = require("../../db/models");
 
 /******************************* GET ROUTE FOR SPLASH PAGE*************************************/
 
@@ -35,7 +35,7 @@ router.get(
   "/:id(\\d+)",
   requireAuth,
   asyncHandler(async function (req, res) {
-    const imageId = await Image.findByPk(req.params.id);
+    const imageId = await Image.findByPk(req.params.id, { include: User });
     return res.json(imageId);
   })
 );
