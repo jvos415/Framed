@@ -30,6 +30,7 @@ const SingleCommentComponent = ({ comment }) => {
   return (
     <div className="single-comment-container">
         <p id="single-comment">{comment.comment}</p>
+        <p id="commenting-user">Comment by @UserName here</p>
        {showTrashCan && <button
           value={comment.id}
           onClick={handleDeleteComment}
