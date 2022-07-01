@@ -19,6 +19,7 @@ const ImageDetails = () => {
   const [showEditButton, setShowEditButton] = useState(false);
   const [showDeleteButton, setShowDeleteButton] = useState(false);
   const [showAddComment, setShowAddComment] = useState(false);
+  // const [showAddCommentButton, setShowAddCommentButton] = useState(true);
 
   useEffect(() => {
     if (!sessionUser) return history.push("/signup")
