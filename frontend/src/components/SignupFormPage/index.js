@@ -46,7 +46,7 @@ function SignupFormPage() {
 
   return (
     <div className="signup-form-container">
-      <h3 id="signup-title">Welcome! Sign Up for FRAMED here</h3>
+      <h3 id="signup-title">Welcome! Sign Up for FRAMED Here</h3>
       <form className="signup-form" onSubmit={handleSubmit}>
         <ul className={errorList}>
           {errors.map((error, idx) => (

@@ -39,7 +39,7 @@ function LoginFormPage() {
 
   return (
     <div className="login-form-container">
-      <h3 id="login-title">Welcome! Login for FRAMED here</h3>
+      <h3 id="login-title">Welcome! Login for FRAMED Here</h3>
       <form className="login-form" onSubmit={handleSubmit}>
         <ul className={errorList}>
           {errors.map((error, idx) => (
