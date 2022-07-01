@@ -69,6 +69,7 @@ const ImageDetails = () => {
     content = (
     <div className='image-details'>
       <h3 id="image-title">{image.title}</h3>
+      <h3 id="username">Image Posted by @UserName here</h3>
       <p id="image-description">{image.description}</p>
     </div>
     )
