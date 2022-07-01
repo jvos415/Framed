@@ -5,7 +5,7 @@
 }
 
 #image-title {
-  font-size: 24px;
+  font-size: 30px;
   padding: 1% 2%;
 }
 
@@ -23,4 +23,9 @@
 
 #add-comment-button {
   margin-bottom: 25px;
+}
+
+#username {
+  font-size: 18px;
+  padding: 1% 2%;
 }

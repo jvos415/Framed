@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
-import { createComment } from "../../store/comments";
+import { createComment, getComments } from "../../store/comments";
 import "./addComments.css";
 
 const AddCommentComponent = ({ setShowAddComment, setShowAddCommentButton }) => {
@@ -34,6 +34,8 @@ const AddCommentComponent = ({ setShowAddComment, setShowAddCommentButton }) => 
 
       setShowAddComment(false)
       setShowAddCommentButton(true)
+
+      await dispatch(getComments(imageId));
 
       return history.push(`/images/${imageId}`);
     } catch (error) {
