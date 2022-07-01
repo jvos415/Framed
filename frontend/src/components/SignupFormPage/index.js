@@ -54,28 +54,28 @@ function SignupFormPage() {
           ))}
         </ul>
         <div className="form-box">
-          <label>Email</label>
+          <label className="label">Email</label>
           <input className="input-field"
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
-          <label>Username</label>
+          <label className="label">Username</label>
           <input className="input-field"
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
           />
-          <label>Password</label>
+          <label className="label">Password</label>
           <input className="input-field"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-          <label>Confirm Password</label>
+          <label className="label">Confirm Password</label>
           <input className="input-field"
             type="password"
             value={confirmPassword}

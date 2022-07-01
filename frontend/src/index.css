@@ -24,7 +24,7 @@ input {
 input:focus {
   outline: none !important;
   border-color: black;
-  box-shadow: 0 0 3px black;
+  box-shadow: 0 0 4px black;
 }
 
 textarea {

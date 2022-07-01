@@ -51,40 +51,55 @@ const AddImageForm = () => {
     return history.push("/");
   };
 
+  let errorList;
+
+  if (errors.length > 0) {
+    errorList = "errorList";
+  } else {
+    errorList = "";
+  }
+
+  let footer = document.querySelector(".footer")
+  if (footer) {
+    footer.classList.add("footer-position")
+  }
+
   return (
     <div className="add-image-container">
-      <h3 id="add-image-title">Add an image to FRAMED</h3>
+      <h3 id="add-image-title">Add an Image to FRAMED</h3>
       <form className="add-image-form" onSubmit={handleSubmit}>
-        <ul>
+        <ul className={errorList}>
           {errors.map((error, idx) => <li key={idx}>{error}</li>)}
         </ul>
-        <label>ImageUrl: </label>
-        <input
-          type="text"
-          placeholder="Image URL"
-          value={imageUrl}
-          onChange={updateImageUrl}
-        />
-        <label>Title: </label>
-        <input
-          type="text"
-          placeholder="Image Title"
-          value={title}
-          onChange={updateTitle}
-        />
-        <label>Description: </label>
-        <textarea
-          cols="30"
-          rows="3"
-          type="text"
-          placeholder="Image Description"
-          value={description}
-          onChange={updateDescription}
-        />
-        <button type="submit">Add Your Image</button>
-        <button type="button" onClick={handleCancelClick}>
-          Cancel
-        </button>
+        <div className="form-box">
+          <label className="label">Image Url</label>
+          <input className="input-field"
+            type="text"
+            placeholder="Image URL"
+            value={imageUrl}
+            onChange={updateImageUrl}
+          />
+          <label className="label">Title</label>
+          <input className="input-field"
+            type="text"
+            placeholder="Image Title"
+            value={title}
+            onChange={updateTitle}
+          />
+          <label className="label">Description</label>
+          <textarea className="input-field"
+            cols="30"
+            rows="4"
+            type="text"
+            placeholder="Image Description"
+            value={description}
+            onChange={updateDescription}
+          />
+          <button id="button-add" type="submit">Add Your Image</button>
+          <button  id="button-cancel-add" type="button" onClick={handleCancelClick}>
+            Cancel
+          </button>
+        </div>
       </form>
     </div>
   );
