@@ -20,7 +20,7 @@ const imageUrl = check("imageUrl")
     }
   })
   .withMessage(
-    "Please provide a valid image url file. The file must end with jpeg, jpg or png"
+    "Please provide a valid image url file. The file must end with .jpeg, .jpg or .png"
   );
 const title = check("title")
   .notEmpty()
