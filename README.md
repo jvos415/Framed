@@ -15,21 +15,21 @@ Checkout the Framed here: https://framed-app.herokuapp.com/
 3) Create a database user (with createDB) using the same information you wrote inside of your .env file
 3) After that you will want -->
 
-![](README%20-images/splash.png)
+![](README-images/splash.png)
 
 On the top right of the page, in the nav bar, you can find "Log In", "Sign Up" and "Demo User". Using the "Log In" link you will be redirected to the "Log In Page" where you can log in if you have an existing account. If you do not have an existing account you can create a new account on the "Sign Up Page" using he sign up link.
 
 Additionally, in the nav bar at the top right of the page, you can find a "Demo User" link to log in and test the functionality of the site without creating an account. Log in and check it out!
 
-![](README%20-images/Add-Image.png)
+![](README-images/Add-Image.png)
 
 After you are logged in, you can add a URL image using the "Add Image" link that will now appear in the nav bar. You will additionally see a proile icon that will list you information and a logout button if clicked.
 
-![](README%20-images/add-image-page.png)
+![](README-images/add-image-page.png)
 
 When logged in, a user can click on any of the photos located in the roll and see details about the image and who posted it. Logged in users can additionally, add comments to any image. If you added an image to the scroll yourself, you can edit this image or remove it from the roll completely.
 
-![](README%20-images/Photo-detail.png)
+![](README-images/Photo-detail.png)
 
 At the bottom of the page you can find links to my LinkedIn and GitHub profiles.
 
@@ -62,4 +62,15 @@ At the bottom of the page you can find links to my LinkedIn and GitHub profiles.
 - Tags
 - Google Maps
 
-<!-- ## Technical Implementation Details -->
+## Technical Implementation Details
+
+I did spend extra time making sure that my database was planned out to work exactly how I wanted it to. This was a lesson I learned from my first a/A project.
+
+One of the most difficult things was making the footer look good at all times on every page in mobile and normal. My final fix was to assign specific classes when certain components were rendered. This allowed me to have different styling for the footer on different pages while still have overall styles that keep the footer layout the same on all page.
+
+```
+ let footer = document.querySelector(".footer");
+  if (footer) {
+    footer.classList.remove("footer-position");
+  }
+  ```
