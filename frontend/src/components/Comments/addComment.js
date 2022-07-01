@@ -44,21 +44,33 @@ const AddCommentComponent = ({ setShowAddComment }) => {
     setShowAddComment(false)
   }
 
+  let errorList;
+
+  if (errors.length > 0) {
+    errorList = "errorListComment";
+  } else {
+    errorList = "";
+  }
+
   return (
     <div className="add-comment-container">
       <form onSubmit={handlePostComment}>
-        <ul>
+        <ul className={errorList}>
           {errors.map((error, idx) => <li key={idx}>{error}</li>)}
         </ul>
-        <textarea type="text" placeholder="Add your comment here" cols="30" rows="3"
-        value={commentText} onChange={updateCommentText} />
-        <button onClick={handlePostComment} id="add-comment-button" type="sumbit">
-          Post Comment
-        </button>
-      </form>
-      <button onClick={handleCancel} id="add-comment-button" type="sumbit">
-        Cancel
-      </button>
+        <div className="form-box-comment">
+          <textarea id="comment-zone" className="input-field-comments" type="text" placeholder="Add your comment here" cols="30" rows="4"
+          value={commentText} onChange={updateCommentText} />
+          <div>
+            <button onClick={handleCancel} id="cancel-comment-button">
+              Cancel
+            </button>
+            <button onClick={handlePostComment} id="add-comment-button" type="sumbit">
+              Post Comment
+            </button>
+          </div>
+        </div>
+        </form>
     </div>
   );
 };
