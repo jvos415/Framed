@@ -36,15 +36,16 @@ At the bottom of the page you can find links to my LinkedIn and GitHub profiles.
 ## List of Technologies Used
 
 ### PERN STACK
-* Javascript
-* Rect
-* Express.js
-* Redux
-* Node.js
-* PostgreSQL
-* SEQEULIZE
-* CSS
-* HTML
+
+- Javascript
+- Rect
+- Express.js
+- Redux
+- Node.js
+- PostgreSQL
+- SEQEULIZE
+- CSS
+- HTML
 
 ## Features of FRAMED
 
@@ -64,13 +65,29 @@ At the bottom of the page you can find links to my LinkedIn and GitHub profiles.
 
 ## Technical Implementation Details
 
-I did spend extra time making sure that my database was planned out to work exactly how I wanted it to. This was a lesson I learned from my first a/A project.
+I spent extra time making sure that my database was planned out properly before getting into the code. This was an important lesson I learned from my first a/A project.
 
-One of the most difficult things was making the footer look good at all times on every page in mobile and normal. My final fix was to assign specific classes when certain components were rendered. This allowed me to have different styling for the footer on different pages while still have overall styles that keep the footer layout the same on all page.
+Conditionally rendering certain buttons or components was something that I really felt comfortable with by the end of this project. Below is a quick same of some code from one of my components to make sure that only certain buttons or options appeared if you have the appropriate credentials.
 
 ```
- let footer = document.querySelector(".footer");
-  if (footer) {
-    footer.classList.remove("footer-position");
-  }
-  ```
+ <div className="image-detail">
+      <img id='image-image' src={`${image.imageUrl}`} alt={image.title}></img>
+      <div className="image-details-end">
+        {content}
+        {!showEditForm && showEditButton && <button id="image-edit-button" onClick={goToEditPage}>Edit Image</button>}
+        {!showEditForm && showDeleteButton && <button type="button" onClick={handleDeleteImage}>Delete Image</button>}
+        <CommentComponent />
+        {!showEditForm && showAddCommentButton && <button id="add-comment-button" type="button" onClick={handleAddComment}>Add Comment</button>}
+        {showAddComment && <AddCommentComponent setShowAddComment={setShowAddComment} setShowAddCommentButton={setShowAddCommentButton} />}
+      </div>
+    </div>
+```
+
+A very small but surprisingly difficulty that I ran into during this project was rendering the footer on all pages and mobile. My final fix was to use DOM manipulation to assign specific classes to the footer in certain components only. This allowed me to have different styling for the footer on different pages while still have overall styles that keep the footer layout the same on all page.
+
+```
+let footer = document.querySelector(".footer");
+if (footer) {
+footer.classList.remove("footer-position");
+}
+```
