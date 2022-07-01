@@ -59,29 +59,40 @@ const EditImageForm = ({ setShowEditForm }) => {
     return history.push(`/images/${imageId}`);
   };
 
+  let errorList;
+
+  if (errors.length > 0) {
+    errorList = "errorList";
+  } else {
+    errorList = "";
+  }
+
   return (
     <div className="edit-image-container">
       <h3 id="edit-image-title">Edit Your Image</h3>
       <form className="edit-image-form" onSubmit={handleSubmit}>
-        <ul>
+        <ul className={errorList}>
           {errors.map((error, idx) => <li key={idx}>{error}</li>)}
         </ul>
-        <label>ImageUrl: </label>
-        <input type="text" value={imageUrl} onChange={updateImageUrl} />
-        <label>Title: </label>
-        <input type="text" value={title} onChange={updateTitle} />
-        <label>Description: </label>
-        <textarea
-          cols="30"
-          rows="3"
-          type="text"
-          value={description}
-          onChange={updateDescription}
-        />
-        <button type="submit">Submit Image Detail Edits</button>
-        <button type="button" onClick={handleCancelClick}>
-          Cancel
-        </button>
+        <div className="form-box">
+          <label className="label">Image Url</label>
+          <input className="input-field" type="text" value={imageUrl} onChange={updateImageUrl} />
+          <label className="label">Title</label>
+          <input className="input-field" type="text" value={title} onChange={updateTitle} />
+          <label className="label">Description</label>
+          <textarea
+            className="input-field"
+            cols="30"
+            rows="4"
+            type="text"
+            value={description}
+            onChange={updateDescription}
+          />
+          <button id="button-update" type="submit">Submit Image Detail Edits</button>
+          <button id="button-cancel-update" type="button" onClick={handleCancelClick}>
+            Cancel
+          </button>
+        </div>
       </form>
     </div>
   );
