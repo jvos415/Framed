@@ -26,7 +26,7 @@ const ImageScroll = () => {
   if (sessionUser) {
     content = allImages.map((image) => {
       return (
-        <Link id="splash-images" key={image.id} to={`/images/${image.id}`}>
+        <Link id="splash-images-more" key={image.id} to={`/images/${image.id}`}>
           <img
             key={image.id}
             id="splash-images"
