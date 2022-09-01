@@ -1,18 +1,18 @@
-import { useEffect, useState } from 'react';
-import { useHistory, useParams } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import { deleteSingleImage, getOneImage } from '../../store/images';
-import EditImageForm from "../EditImagePage"
-import CommentComponent from '../Comments';
-import AddCommentComponent from '../Comments/addComment';
-import "./ImageDetails.css"
+import { useEffect, useState } from "react";
+import { useHistory, useParams } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { deleteSingleImage, getOneImage } from "../../store/images";
+import EditImageForm from "../EditImagePage";
+import CommentComponent from "../Comments";
+import AddCommentComponent from "../Comments/addComment";
+import "./ImageDetails.css";
 
 const ImageDetails = () => {
   const { imageId } = useParams();
   const dispatch = useDispatch();
   const history = useHistory();
-  const sessionUser = useSelector(state => state.session.user);
-  const image = useSelector(state => state.images[imageId]);
+  const sessionUser = useSelector((state) => state.session.user);
+  const image = useSelector((state) => state.images[imageId]);
 
   const [showEditForm, setShowEditForm] = useState(false);
   const [showEditButton, setShowEditButton] = useState(false);
@@ -21,25 +21,25 @@ const ImageDetails = () => {
   const [showAddCommentButton, setShowAddCommentButton] = useState(true);
 
   useEffect(() => {
-    if (!sessionUser) return history.push("/signup")
+    if (!sessionUser) return history.push("/signup");
     if (sessionUser && image && image.userId === sessionUser.id) {
       setShowEditButton(true);
     }
-  },[image, sessionUser, history])
+  }, [image, sessionUser, history]);
 
   useEffect(() => {
     if (sessionUser && image && image.userId === sessionUser.id) {
       setShowDeleteButton(true);
     }
-  },[image, sessionUser])
+  }, [image, sessionUser]);
 
   useEffect(() => {
     dispatch(getOneImage(imageId));
   }, [dispatch, imageId]);
 
   useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
+    window.scrollTo(0, 0);
+  }, []);
 
   if (!image) {
     return null;
@@ -48,34 +48,36 @@ const ImageDetails = () => {
   const handleDeleteImage = async (e) => {
     e.preventDefault();
 
-    await dispatch(deleteSingleImage(imageId))
+    await dispatch(deleteSingleImage(imageId));
 
     return history.push(`/`);
   };
 
   const goToEditPage = () => {
-    setShowEditForm(true)
+    setShowEditForm(true);
   };
 
   const handleAddComment = () => {
-   setShowAddComment(true)
-   setShowAddCommentButton(false)
+    setShowAddComment(true);
+    setShowAddCommentButton(false);
   };
 
   let content = null;
 
   if (!showEditForm) {
     content = (
-    <div className='image-details'>
-      <h3 id="image-title">{image.title}</h3>
-      {image.User && <h3 id="username">Image Posted by @{image.User.username}</h3>}
-      <p id="image-description">{image.description}</p>
-    </div>
-    )
+      <div className="image-details">
+        <div className="title-and-poster">
+          <h3 id="image-title">{image.title}</h3>
+          {image.User && (
+            <h3 id="username">Image Posted by @{image.User.username}</h3>
+          )}
+        </div>
+        <p id="image-description">{image.description}</p>
+      </div>
+    );
   } else {
-    content = (
-      <EditImageForm setShowEditForm={setShowEditForm} />
-    )
+    content = <EditImageForm setShowEditForm={setShowEditForm} />;
   }
 
   let footer = document.querySelector(".footer");
@@ -85,17 +87,49 @@ const ImageDetails = () => {
 
   return (
     <div className="image-detail">
-      <img id='image-image' src={`${image.imageUrl}`} alt={image.title} onError={(e)=>{e.target.onerror = null; e.target.src="https://fisnikde.com/wp-content/uploads/2019/01/broken-image.png"}}></img>
+      <div className="image-image-container">
+        <img
+          id="image-image"
+          src={`${image.imageUrl}`}
+          alt={image.title}
+          onError={(e) => {
+            e.target.onerror = null;
+            e.target.src =
+              "https://fisnikde.com/wp-content/uploads/2019/01/broken-image.png";
+          }}
+        ></img>
+      </div>
       <div className="image-details-end">
         {content}
-        {!showEditForm && showEditButton && <button id="image-edit-button" onClick={goToEditPage}>Edit Image</button>}
-        {!showEditForm && showDeleteButton && <button type="button" onClick={handleDeleteImage}>Delete Image</button>}
+        {!showEditForm && showEditButton && (
+          <button id="image-edit-button" onClick={goToEditPage}>
+            Edit Image
+          </button>
+        )}
+        {!showEditForm && showDeleteButton && (
+          <button type="button" onClick={handleDeleteImage}>
+            Delete Image
+          </button>
+        )}
         <CommentComponent />
-        {!showEditForm && showAddCommentButton && <button id="add-comment-button" type="button" onClick={handleAddComment}>Add Comment</button>}
-        {showAddComment && <AddCommentComponent setShowAddComment={setShowAddComment} setShowAddCommentButton={setShowAddCommentButton} />}
+        {!showEditForm && showAddCommentButton && (
+          <button
+            id="add-comment-button"
+            type="button"
+            onClick={handleAddComment}
+          >
+            Add Comment
+          </button>
+        )}
+        {showAddComment && (
+          <AddCommentComponent
+            setShowAddComment={setShowAddComment}
+            setShowAddCommentButton={setShowAddCommentButton}
+          />
+        )}
       </div>
     </div>
   );
-}
+};
 
 export default ImageDetails;
