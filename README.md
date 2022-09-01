@@ -8,13 +8,6 @@ Checkout the Framed here: https://framed-app.herokuapp.com/
 
 ## FRAMED User Guide
 
-<!-- ### Local Set Up
-
-1) Clone the repo and run npm install
-2) Create a .env file and fill in all fields, refer to the .env.example for reference
-3) Create a database user (with createDB) using the same information you wrote inside of your .env file
-3) After that you will want -->
-
 ![](README-images/splash.png)
 
 On the top right of the page, in the nav bar, you can find "Log In", "Sign Up" and "Demo User". Using the "Log In" link you will be redirected to the "Log In Page" where you can log in if you have an existing account. If you do not have an existing account you can create a new account on the "Sign Up Page" using he sign up link.
@@ -62,6 +55,16 @@ At the bottom of the page you can find links to my LinkedIn and GitHub profiles.
 - Favorites
 - Tags
 - Google Maps
+
+## Local Set Up
+
+1) Clone the repo, cd into the backend directory and run "npm install"
+2) Create a .env file in the root of your backend directory, refer to the .env.example for reference
+3) Create a database user (with createDB) using the same information you wrote inside of your .env file
+4) After that you will want to run "npx dotenv sequelize-cli db:migrate" and then "npx dotenv sequelize-cli db:seed:all" 
+5) While still in your backend directory run "npm start"
+6) cd into the frontend directory and run "npm install"
+7) The app will then open up automatically on localhost:3000
 
 ## Technical Implementation Details
 
