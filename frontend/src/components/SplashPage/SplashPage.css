@@ -1,24 +1,22 @@
 .splash-container {
-  margin: 5% 15%;
+  margin: 5% 10%;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
+  gap: 10px;
+  justify-content: center;
 }
 
 #splash-images {
-  /* max-height: 400px;
-  max-width: 400px; */
-  width: 100%;
-  height: 100%;
-  margin: 3px;
+  width: 500px;
+  height: 500px;
+  object-fit: cover;
 }
 
 #splash-images-more {
-  /* max-height: 400px;
-  max-width: 400px; */
-  width: 100%;
-  height: 100%;
-  margin: 3px;
+  width: 500px;
+  height: 500px;
+  object-fit: cover;
   transition-property: transform;
   transition-duration: 0.6s;
 }
