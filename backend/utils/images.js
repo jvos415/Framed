@@ -29,6 +29,7 @@ const title = check("title")
   .withMessage("Image title cannot be less than 1 character")
   .isLength({ max: 40 })
   .withMessage("Image title cannot be greater than 40 characters");
+  
 const description = check("description")
   .isLength({ max: 150 })
   .withMessage("Description cannot be more than 150 characters long");
@@ -46,5 +47,3 @@ exports.validateUpdatePhoto = [
   description,
   handleValidationErrors,
 ];
-
-// .*(jpe?g|png|gif|bmp)$
