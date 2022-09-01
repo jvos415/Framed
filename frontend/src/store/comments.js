@@ -1,6 +1,6 @@
 import { csrfFetch } from './csrf';
 
-/********************** ACTION **************************/
+/********************** ACTIONS **************************/
 
 const LOAD = 'comments/LOAD';
 const ADD_COMMENT = 'comments/ADD_COMMENT';

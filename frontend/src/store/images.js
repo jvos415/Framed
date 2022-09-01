@@ -1,6 +1,6 @@
 import { csrfFetch } from "./csrf";
 
-/********************** ACTION **************************/
+/********************** ACTIONS **************************/
 
 const LOAD = "images/LOAD";
 const ADD_IMAGE = "images/ADD_IMAGE";
