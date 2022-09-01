@@ -10,6 +10,9 @@ import ImageScroll from "./components/SplashPage";
 import AddImageForm from "./components/AddImagePage";
 import ImageDetails from "./components/ImageDetailsPage/ImageDetails";
 import PageNotFound from "./components/PageNotFound/PageNotFound";
+import AddAlbumForm from "./components/Albums/forms/AddAlbumForm";
+import MyAlbumsPage from "./components/Albums/MyAlbumsPage";
+import SingleAlbumPage from "./components/Albums/SingleAlbumPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -39,6 +42,15 @@ function App() {
           </Route>
           <Route exact path="/images/:imageId">
             <ImageDetails />
+          </Route>
+          <Route exact path="/add-album">
+            <AddAlbumForm />
+          </Route>
+          <Route exact path="/my-albums/:userId">
+            <MyAlbumsPage />
+          </Route>
+          <Route exact path="/albums/:albumId">
+            <SingleAlbumPage />
           </Route>
           <Route>
            <PageNotFound />
