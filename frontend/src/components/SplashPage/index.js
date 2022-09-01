@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-
 import "./SplashPage.css";
 
 import { getImages } from "../../store/images";
@@ -31,6 +30,7 @@ const ImageScroll = () => {
             key={image.id}
             id="splash-images"
             src={`${image.imageUrl}`}
+            onError={(e)=>{e.target.onerror = null; e.target.src="https://fisnikde.com/wp-content/uploads/2019/01/broken-image.png"}}
             alt={`${image.title}`}
             loading="lazy"
           ></img>
@@ -44,6 +44,7 @@ const ImageScroll = () => {
           key={image.id}
           id="splash-images"
           src={`${image.imageUrl}`}
+          onError={(e)=>{e.target.onerror = null; e.target.src="https://fisnikde.com/wp-content/uploads/2019/01/broken-image.png"}}
           alt={`${image.title}`}
           loading="lazy"
         ></img>

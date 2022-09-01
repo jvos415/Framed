@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-
 import { deleteSingleImage, getOneImage } from '../../store/images';
 import EditImageForm from "../EditImagePage"
 import CommentComponent from '../Comments';
@@ -86,7 +85,7 @@ const ImageDetails = () => {
 
   return (
     <div className="image-detail">
-      <img id='image-image' src={`${image.imageUrl}`} alt={image.title}></img>
+      <img id='image-image' src={`${image.imageUrl}`} alt={image.title} onError={(e)=>{e.target.onerror = null; e.target.src="https://fisnikde.com/wp-content/uploads/2019/01/broken-image.png"}}></img>
       <div className="image-details-end">
         {content}
         {!showEditForm && showEditButton && <button id="image-edit-button" onClick={goToEditPage}>Edit Image</button>}
