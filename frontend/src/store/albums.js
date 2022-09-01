@@ -19,12 +19,12 @@ const load = (albums) => ({
     payload: album,
   });
   
-  const updateAlbum = (album) => ({
+  const editAlbum = (album) => ({
     type: UPDATE_ALBUM,
     payload: album,
   });
   
-  const deleteAlbum = (albumId) => ({
+  const removeAlbum = (albumId) => ({
     type: DELETE_ALBUM,
     payload: albumId,
   });
@@ -51,7 +51,63 @@ export const createAlbum = (albumObj) => async (dispatch) => {
 
     if (response.ok) {
         const newAlbum = await response.json();
-        dispatch(addImage(newAlbum));
+        dispatch(addAlbum(newAlbum));
         return newAlbum;
     }
 };  
+
+export const updateAlbum = (album) => async (dispatch) => {
+    const response = await csrfFetch(`/api/albums/${album.id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(album),
+    });
+  
+    if (response.ok) {
+      const album = await response.json();
+      dispatch(editAlbum(album));
+      return album;
+    }
+};
+
+export const deleteAlbum = (albumId) => async (dispatch) => {
+    const response = await csrfFetch(`/api/albums/${albumId}`, {
+      method: "DELETE",
+    });
+  
+    if (response.ok) {
+      const album = await response.json();
+      dispatch(removeAlbum(album.id));
+      return album;
+    }
+};
+
+/********************** REDUCER **************************/
+
+const initialState = {};
+
+export default function reducer(state = initialState, action) {
+  switch (action.type) {
+    case ADD_ALBUM:
+      let newState = { ...state };
+      const album = action.payload;
+      newState[album.id] = album;
+      return newState;
+    case LOAD:
+      newState = {};
+      action.payload.albums.forEach((album) => {
+        newState[album.id] = album;
+      });
+      return newState;
+    case UPDATE_ALBUM:
+      newState = { ...state };
+      newState[action.payload.id] = action.payload;
+      return newState;
+    case DELETE_ALBUM:
+      newState = { ...state };
+      delete newState[action.payload];
+      return newState;
+    default:
+      return state;
+  }
+};
