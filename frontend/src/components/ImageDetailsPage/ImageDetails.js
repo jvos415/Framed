@@ -112,8 +112,11 @@ const ImageDetails = () => {
             Delete Image
           </button>
         )}
-        <CommentComponent />
-        {!showEditForm && showAddCommentButton && (
+        <CommentComponent
+          showEditCommentForm={showEditCommentForm}
+          setShowEditCommentForm={setShowEditCommentForm}
+        />
+        {!showEditForm && !showEditCommentForm && showAddCommentButton && (
           <button
             id="add-comment-button"
             type="button"

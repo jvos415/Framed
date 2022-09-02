@@ -40,7 +40,7 @@ const SingleCommentComponent = ({ comment, showEditCommentForm, setShowEditComme
     <div className="single-comment-container">
         <p id="single-comment">{comment.comment}</p>
         {comment.User && <p id="commenting-user">Comment by @{comment.User.username}</p>}
-        {showEditIcon && <button
+        {showEditIcon && !showEditCommentForm && <button
           value={comment.id}
           onClick={handleEditComment}
           className="trash-can"
@@ -50,7 +50,7 @@ const SingleCommentComponent = ({ comment, showEditCommentForm, setShowEditComme
         {showEditCommentForm && (
           <EditComment comment={comment} setShowEditCommentForm={setShowEditCommentForm}/>
         )}
-       {showTrashCan && <button
+       {showTrashCan && !showEditCommentForm && <button
           value={comment.id}
           onClick={handleDeleteComment}
           className="trash-can"
