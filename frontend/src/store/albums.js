@@ -56,11 +56,11 @@ export const createAlbum = (albumObj) => async (dispatch) => {
     }
 };  
 
-export const updateAlbum = (album) => async (dispatch) => {
-    const response = await csrfFetch(`/api/albums/${album.id}`, {
+export const updateAlbum = (albumObj) => async (dispatch) => {
+    const response = await csrfFetch(`/api/albums/${albumObj.id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(album),
+      body: JSON.stringify(albumObj),
     });
   
     if (response.ok) {

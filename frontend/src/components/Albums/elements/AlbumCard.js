@@ -1,14 +1,17 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { updateAlbum, deleteAlbum } from "../../../store/albums";
+import { deleteAlbum } from "../../../store/albums";
+import EditAlbumForm from "../forms/EditAlbumForm";
 import "./albumCard.css";
 
 const AlbumCard = ({ album }) => {
   const dispatch = useDispatch();
 
-  const updateAlbumFunc = () => {
-    dispatch(updateAlbum(album))
+  const [updateAlbumComp, setUpdateAlbumComp] = useState("");
+
+  const updateAlbumComponent = () => {
+    setUpdateAlbumComp(true)
   };
 
   const deleteAlbumFunc = () => {
@@ -23,9 +26,12 @@ const AlbumCard = ({ album }) => {
         </NavLink>
       </div>
       <div>
-        <button id="button-cancel-add" type="button" onClick={updateAlbumFunc}>
+        <button id="button-cancel-add" type="button" onClick={updateAlbumComponent}>
           Update Album Title
         </button>
+        {updateAlbumComp && (
+            <EditAlbumForm setUpdateAlbumComp={setUpdateAlbumComp}/>
+        )}
         <button id="button-cancel-add" type="button" onClick={deleteAlbumFunc}>
           Delete Album
         </button>
