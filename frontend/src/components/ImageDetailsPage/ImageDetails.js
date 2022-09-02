@@ -1,7 +1,12 @@
 import { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { deleteSingleImage, getOneImage } from "../../store/images";
+import {
+  deleteSingleImage,
+  getOneImage,
+  updateSingleImage,
+} from "../../store/images";
+import { getAlbums } from "../../store/albums";
 import EditImageForm from "../EditImagePage";
 import CommentComponent from "../Comments";
 import AddCommentComponent from "../Comments/addComment";
@@ -13,12 +18,14 @@ const ImageDetails = () => {
   const history = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
   const image = useSelector((state) => state.images[imageId]);
+  const albums = Object.values(useSelector((state) => state.albums));
 
   const [showEditForm, setShowEditForm] = useState(false);
   const [showEditButton, setShowEditButton] = useState(false);
   const [showDeleteButton, setShowDeleteButton] = useState(false);
   const [showAddComment, setShowAddComment] = useState(false);
   const [showAddCommentButton, setShowAddCommentButton] = useState(true);
+  const [albumIdentifier, setAlbumIdentifier] = useState(image?.albumId);
 
   useEffect(() => {
     if (!sessionUser) return history.push("/signup");
@@ -36,6 +43,10 @@ const ImageDetails = () => {
   useEffect(() => {
     dispatch(getOneImage(imageId));
   }, [dispatch, imageId]);
+
+  useEffect(() => {
+    dispatch(getAlbums(sessionUser.id));
+  }, [dispatch, sessionUser.id]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -57,9 +68,47 @@ const ImageDetails = () => {
     setShowEditForm(true);
   };
 
+  const updateAlbumIdentifier = (e) => {
+    setAlbumIdentifier(e.target.value)
+  }
+  
   const handleAddComment = () => {
     setShowAddComment(true);
     setShowAddCommentButton(false);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const userId = image.userId;
+    const albumId = albumIdentifier;
+    const imageUrl = image.imageUrl;
+    const title = image.title;
+    const description = image.description;
+    const createdAt = image.createdAt;
+    const updatedAt = new Date();
+
+    console.log(albumIdentifier)
+
+    const payload = {
+      id: imageId,
+      albumId,
+      userId,
+      imageUrl,
+      title,
+      description,
+      createdAt,
+      updatedAt,
+    };
+
+    console.log(payload)
+
+    let updatedImage = await dispatch(updateSingleImage(payload));
+
+    if (updatedImage) {
+      setShowEditForm(false);
+      return history.push(`/images/${imageId}`);
+    }
   };
 
   let content = null;
@@ -73,7 +122,32 @@ const ImageDetails = () => {
             <h3 id="username">Image Posted by @{image.User.username}</h3>
           )}
         </div>
-        <p id="image-description">{image.description}</p>
+        <div className="image-description-container">
+          <p id="image-description">{image.description}</p>
+          {albums.length && (
+            <div className="add-to-album">
+              <h4 className="add-image-label">Add Image to Album</h4>
+              <form className="album-id-form" onSubmit={handleSubmit}>
+                <select type="text">
+                  {albums.map((album) => {
+                    return (
+                      <option
+                        key={album.id}
+                        value={albumIdentifier}
+                        onChange={updateAlbumIdentifier}
+                      >
+                        {album.title}
+                      </option>
+                    );
+                  })}
+                </select>
+                <button id="button-update" type="submit">
+                  Add Image to Album
+                </button>
+              </form>
+            </div>
+          )}
+        </div>
       </div>
     );
   } else {

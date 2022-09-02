@@ -14,7 +14,17 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
 
+.image-description-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.add-to-album {
+  padding: 0 2%;
 }
 
 #image-title {
@@ -41,4 +51,16 @@
 #username {
   font-size: 18px;
   padding: 1% 2%;
+}
+
+.add-image-label {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.album-id-form {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
 }
