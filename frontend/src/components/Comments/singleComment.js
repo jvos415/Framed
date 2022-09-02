@@ -7,7 +7,7 @@ import EditComment from "./EditComment";
 import { deleteSingleComment } from "../../store/comments";
 import "./comments.css";
 
-const SingleCommentComponent = ({ comment, showEditCommentForm, setShowEditCommentForm }) => {
+const SingleCommentComponent = ({ comment }) => {
   const { imageId } = useParams();
   const dispatch = useDispatch();
   const history = useHistory();
@@ -15,6 +15,7 @@ const SingleCommentComponent = ({ comment, showEditCommentForm, setShowEditComme
 
   const [showEditIcon, setShowEditIcon] = useState(false);
   const [showTrashCan, setShowTrashCan] = useState(false);
+  const [showEditCommentForm, setShowEditCommentForm] = useState(false)
   
 
   useEffect(() => {

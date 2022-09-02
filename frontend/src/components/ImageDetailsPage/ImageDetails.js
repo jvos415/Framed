@@ -19,7 +19,6 @@ const ImageDetails = () => {
   const [showDeleteButton, setShowDeleteButton] = useState(false);
   const [showAddComment, setShowAddComment] = useState(false);
   const [showAddCommentButton, setShowAddCommentButton] = useState(true);
-  const [showEditCommentForm, setShowEditCommentForm] = useState(false);
 
   useEffect(() => {
     if (!sessionUser) return history.push("/signup");
@@ -112,11 +111,8 @@ const ImageDetails = () => {
             Delete Image
           </button>
         )}
-        <CommentComponent
-          showEditCommentForm={showEditCommentForm}
-          setShowEditCommentForm={setShowEditCommentForm}
-        />
-        {!showEditForm && !showEditCommentForm && showAddCommentButton && (
+        <CommentComponent />
+        {!showEditForm && showAddCommentButton && (
           <button
             id="add-comment-button"
             type="button"

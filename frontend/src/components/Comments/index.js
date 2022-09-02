@@ -1,12 +1,11 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-
 import SingleCommentComponent from "./singleComment";
 import { getComments } from "../../store/comments";
 import "./comments.css";
 
-const CommentComponent = ({ showEditCommentForm, setShowEditCommentForm }) => {
+const CommentComponent = () => {
   const { imageId } = useParams();
   const dispatch = useDispatch();
   const comments = useSelector((state) => state.comments);
@@ -25,8 +24,6 @@ const CommentComponent = ({ showEditCommentForm, setShowEditCommentForm }) => {
             <div key={comment.id}>
               <SingleCommentComponent
                 comment={comment}
-                showEditCommentForm={showEditCommentForm}
-                setShowEditCommentForm={setShowEditCommentForm}
               />
             </div>
           );
