@@ -1,23 +1,32 @@
 import { useState, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import EditIcon from "../../images/edit-icon-better.png";
 import TrashCan from "../../images/trash-can.png";
+import EditComment from "./EditComment";
 import { deleteSingleComment } from "../../store/comments";
 import "./comments.css";
 
-const SingleCommentComponent = ({ comment }) => {
+const SingleCommentComponent = ({ comment, showEditCommentForm, setShowEditCommentForm }) => {
   const { imageId } = useParams();
   const dispatch = useDispatch();
   const history = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
 
+  const [showEditIcon, setShowEditIcon] = useState(false);
   const [showTrashCan, setShowTrashCan] = useState(false);
+  
 
   useEffect(() => {
     if (comment && comment.userId === sessionUser.id) {
+      setShowEditIcon(true);
       setShowTrashCan(true);
     }
   },[comment, sessionUser.id])
+
+  const handleEditComment = () => {
+    setShowEditCommentForm(true);
+  };
 
   const handleDeleteComment = async (e) => {
     e.preventDefault();
@@ -31,6 +40,16 @@ const SingleCommentComponent = ({ comment }) => {
     <div className="single-comment-container">
         <p id="single-comment">{comment.comment}</p>
         {comment.User && <p id="commenting-user">Comment by @{comment.User.username}</p>}
+        {showEditIcon && <button
+          value={comment.id}
+          onClick={handleEditComment}
+          className="trash-can"
+        >
+          <img src={EditIcon} alt="Edit Icon"></img>
+        </button>}
+        {showEditCommentForm && (
+          <EditComment comment={comment} setShowEditCommentForm={setShowEditCommentForm}/>
+        )}
        {showTrashCan && <button
           value={comment.id}
           onClick={handleDeleteComment}

@@ -4,6 +4,7 @@ import { csrfFetch } from './csrf';
 
 const LOAD = 'comments/LOAD';
 const ADD_COMMENT = 'comments/ADD_COMMENT';
+const UPDATE_COMMENT = "comments/UPDATE_COMMENT";
 const DELETE_COMMENT = "comments/DELETE_COMMENT";
 
 /********************** ACTION CREATORS **************************/
@@ -16,6 +17,11 @@ const load = (comments) => ({
 const addComment = (comment) => ({
   type: ADD_COMMENT,
   comment
+});
+
+const editComment = (comment) => ({
+  type: UPDATE_COMMENT,
+  comment,
 });
 
 const deleteComment = (commentId) => ({
@@ -49,6 +55,20 @@ export const createComment = (commentObj, imageId) => async dispatch => {
     return newComment;
   }
 }
+
+export const updateComment = (comment) => async (dispatch) => {
+  const response = await csrfFetch(`/api/images/comments/${comment.id}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(comment),
+  });
+
+  if (response.ok) {
+    const comment = await response.json();
+    dispatch(editComment(comment));
+    return comment;
+  }
+};
 
 export const deleteSingleComment = (commentId) => async dispatch => {
   const response = await csrfFetch(`/api/images/comments/${commentId}`, {
@@ -91,6 +111,11 @@ const commentsReducer = (state = initialState, action) => {
           ...action.comment
         }
       };
+      case UPDATE_COMMENT:
+        return {
+          ...state,
+          [action.comment.id]: action.comment,
+        };
       case DELETE_COMMENT:
         const newState = { ...state };
         delete newState[action.commentId];

@@ -4,7 +4,7 @@ const asyncHandler = require("express-async-handler");
 
 const { requireAuth } = require("../../utils/auth");
 const imageValidations = require("../../utils/images");
-const commentValidations = require("../../utils/comments")
+const commentValidations = require("../../utils/comments");
 const { User, Image, Comment } = require("../../db/models");
 
 /******************************* GET ROUTE FOR SPLASH PAGE*************************************/
@@ -21,7 +21,8 @@ router.get(
 
 router.post(
   "/",
-  imageValidations.validateAddPhoto, requireAuth,
+  imageValidations.validateAddPhoto,
+  requireAuth,
   asyncHandler(async function (req, res) {
     const imageObj = await Image.create(req.body);
     res.status(201);
@@ -47,7 +48,7 @@ router.put(
   imageValidations.validateUpdatePhoto,
   requireAuth,
   asyncHandler(async function (req, res) {
-    const image = await Image.findByPk(req.params.id)
+    const image = await Image.findByPk(req.params.id);
     await image.update(req.body);
     return res.json(image);
   })
@@ -56,9 +57,10 @@ router.put(
 /******************************* DELETE SINGLE IMAGE ROUTE *************************************/
 
 router.delete(
-  "/:id(\\d+)", requireAuth,
+  "/:id(\\d+)",
+  requireAuth,
   asyncHandler(async function (req, res) {
-    const image = await Image.findByPk(req.params.id)
+    const image = await Image.findByPk(req.params.id);
     await image.destroy();
     return res.json(image);
   })
@@ -72,9 +74,10 @@ router.get(
     const image = await Image.findByPk(req.params.imageId);
     const comments = await Comment.findAll({
       where: {
-        imageId: image.id
-      }, include: User
-    })
+        imageId: image.id,
+      },
+      include: User,
+    });
 
     return res.json(comments);
   })
@@ -83,20 +86,36 @@ router.get(
 /******************************* POST ROUTE FOR COMMENT *************************************/
 
 router.post(
-  "/:imageId/comments", commentValidations.validateComment, requireAuth,
+  "/:imageId/comments",
+  commentValidations.validateComment,
+  requireAuth,
   asyncHandler(async function (req, res) {
-    const commentObj = await Comment.create(req.body)
+    const commentObj = await Comment.create(req.body);
     res.status(201);
     return res.json(commentObj);
+  })
+);
+
+/******************************* UPDATE A COMMENT *************************************/
+
+router.put(
+  "/comments/:commentId(\\d+)",
+  commentValidations.validateComment,
+  requireAuth,
+  asyncHandler(async function (req, res) {
+    const comment = await Comment.findByPk(req.params.commentId);
+    await comment.update(req.body);
+    return res.json(comment);
   })
 );
 
 /******************************* DELETE SINGLE COMMENT *************************************/
 
 router.delete(
-  "/comments/:commentId(\\d+)", requireAuth,
+  "/comments/:commentId(\\d+)",
+  requireAuth,
   asyncHandler(async function (req, res) {
-    const comment = await Comment.findByPk(req.params.commentId)
+    const comment = await Comment.findByPk(req.params.commentId);
     await comment.destroy();
     return res.json(comment);
   })
