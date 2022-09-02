@@ -125,7 +125,7 @@ const ImageDetails = () => {
         </div>
         <div className="image-description-container">
           <p id="image-description">{image.description}</p>
-          {albums.length && (
+          {albums.length > 0 && (
             <div className="add-to-album">
               <h4 className="add-image-label">Add Image to Album</h4>
               <form className="album-id-form" onSubmit={handleSubmit}>

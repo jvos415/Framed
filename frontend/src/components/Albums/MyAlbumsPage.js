@@ -12,6 +12,12 @@ const MyAlbumsPage = () => {
   const albums = Object.values(useSelector((state) => state.albums));
 
   useEffect(() => {
+    if (!user) {
+      return history.push("/");
+    }
+  },[user])
+
+  useEffect(() => {
     dispatch(getAlbums(user.id));
   }, [dispatch, user.id]);
 

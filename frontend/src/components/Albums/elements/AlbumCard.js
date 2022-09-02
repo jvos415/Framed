@@ -1,12 +1,21 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { NavLink } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { NavLink, useHistory } from "react-router-dom";
 import { deleteAlbum } from "../../../store/albums";
 import EditAlbumForm from "../forms/EditAlbumForm";
 import "./albumCard.css";
 
 const AlbumCard = ({ album }) => {
   const dispatch = useDispatch();
+  const history =useHistory();
+
+  const user = useSelector((state) => state.session.user)
+
+  useEffect(() => {
+    if (!user) {
+      return history.push("/");
+    }
+  },[user])
 
   const [updateAlbumComp, setUpdateAlbumComp] = useState("");
 

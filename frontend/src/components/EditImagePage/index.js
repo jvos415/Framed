@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
-import { updateSingleImage } from "../../store/images";
+import { updateSingleImage, getOneImage } from "../../store/images";
 import "./EditImagePage.css";
 
 const EditImageForm = ({ setShowEditForm }) => {
@@ -45,6 +45,7 @@ const EditImageForm = ({ setShowEditForm }) => {
 
       if (updatedImage) {
         setShowEditForm(false);
+        dispatch(getOneImage(imageId));
         return history.push(`/images/${imageId}`);
       }
     } catch (error) {
