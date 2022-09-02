@@ -26,19 +26,21 @@ const MyAlbumsPage = () => {
 
   return (
     <div className="my-albums-container">
-      <h2>My Photo Albums</h2>
+      <h2>My Albums</h2>
       <div className="add-new-album">
         <button id="button-cancel-add" type="button" onClick={newAlbumPageFunc}>
-          New Photo Album
+          New Album
         </button>
       </div>
-      <div className="all-albums">
+      {albums.length > 0 ? (<div className="all-albums">
       {albums.map((album) => {
         return (
           <AlbumCard album={album} />
         );
       })}
-      </div>
+      </div>) : <div>
+          <h2>You Do Not Have Any Albums Yet...</h2>
+        </div>}
     </div>
   );
 };

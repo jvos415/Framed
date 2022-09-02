@@ -26,15 +26,15 @@ const AlbumCard = ({ album }) => {
         </NavLink>
       </div>
       <div>
-        <button id="button-cancel-add" type="button" onClick={updateAlbumComponent}>
+        {!updateAlbumComp && (<button id="button-cancel-add" type="button" onClick={updateAlbumComponent}>
           Update Album Title
-        </button>
+        </button>)}
         {updateAlbumComp && (
             <EditAlbumForm setUpdateAlbumComp={setUpdateAlbumComp}/>
         )}
-        <button id="button-cancel-add" type="button" onClick={deleteAlbumFunc}>
+        {!updateAlbumComp && (<button id="button-cancel-add" type="button" onClick={deleteAlbumFunc}>
           Delete Album
-        </button>
+        </button>)}
       </div>
     </div>
   );
