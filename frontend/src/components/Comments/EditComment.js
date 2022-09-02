@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getComments, updateComment } from "../../store/comments";
 import "./editComment.css";
 
-const EditComment = ({ comment, setShowEditComment }) => {
+const EditComment = ({ comment, setShowEditCommentForm }) => {
   const { imageId } = useParams();
   const dispatch = useDispatch();
   const history = useHistory();
@@ -33,7 +33,7 @@ const EditComment = ({ comment, setShowEditComment }) => {
     try {
       await dispatch(updateComment(commentObj));
 
-      setShowEditComment(false);
+      setShowEditCommentForm(false);
 
       await dispatch(getComments(imageId));
 
@@ -45,7 +45,7 @@ const EditComment = ({ comment, setShowEditComment }) => {
   };
 
   const handleCancel = () => {
-    setShowEditComment(false);
+    setShowEditCommentForm(false);
   }
 
   let errorList;

@@ -56,11 +56,11 @@ export const createComment = (commentObj, imageId) => async dispatch => {
   }
 }
 
-export const updateComment = (comment) => async (dispatch) => {
-  const response = await csrfFetch(`/api/images/comments/${comment.id}`, {
+export const updateComment = (commentObj) => async (dispatch) => {
+  const response = await csrfFetch(`/api/images/comments/${commentObj.commentId}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(comment),
+    body: JSON.stringify(commentObj),
   });
 
   if (response.ok) {
