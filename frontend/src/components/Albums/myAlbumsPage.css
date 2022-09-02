@@ -1,0 +1,9 @@
+.my-albums-container {
+    margin: 2% 7%;
+}
+
+.add-new-album {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}

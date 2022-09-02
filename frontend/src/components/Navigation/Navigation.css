@@ -30,6 +30,7 @@
   list-style: none;
   position: relative;
   display: inline;
+  padding: 0 7px;
 }
 
 #add-image:after {
