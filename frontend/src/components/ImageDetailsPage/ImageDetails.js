@@ -69,9 +69,13 @@ const ImageDetails = () => {
   };
 
   const updateAlbumIdentifier = (e) => {
-    setAlbumIdentifier(e.target.value)
-  }
-  
+    const albumTitle = e.target.value
+    const singleAlbum = albums.filter((album) => {
+      return album.title === albumTitle
+    })
+    setAlbumIdentifier(singleAlbum[0].id);
+  };
+
   const handleAddComment = () => {
     setShowAddComment(true);
     setShowAddCommentButton(false);
@@ -101,8 +105,6 @@ const ImageDetails = () => {
       updatedAt,
     };
 
-    console.log(payload)
-
     let updatedImage = await dispatch(updateSingleImage(payload));
 
     if (updatedImage) {
@@ -128,17 +130,12 @@ const ImageDetails = () => {
             <div className="add-to-album">
               <h4 className="add-image-label">Add Image to Album</h4>
               <form className="album-id-form" onSubmit={handleSubmit}>
-                <select type="text">
+                <select
+                  type="text"
+                  onChange={updateAlbumIdentifier}
+                >
                   {albums.map((album) => {
-                    return (
-                      <option
-                        key={album.id}
-                        value={albumIdentifier}
-                        onChange={updateAlbumIdentifier}
-                      >
-                        {album.title}
-                      </option>
-                    );
+                    return <option key={album.id}>{album.title}</option>;
                   })}
                 </select>
                 <button id="button-update" type="submit">
