@@ -35,7 +35,7 @@ const MyAlbumsPage = () => {
       {albums.length > 0 ? (<div className="all-albums">
       {albums.map((album) => {
         return (
-          <AlbumCard album={album} />
+          <AlbumCard key={album.id} album={album} />
         );
       })}
       </div>) : <div>
