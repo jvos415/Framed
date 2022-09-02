@@ -28,6 +28,7 @@ const EditAlbumForm = ({ setUpdateAlbumComp, album }) => {
       let updatedAlbum = await dispatch(updateAlbum(albumObj));
 
       if (updatedAlbum) {
+        setUpdateAlbumComp(false);
         return history.push(`/my-albums/${userId}`);
       }
     } catch (error) {
