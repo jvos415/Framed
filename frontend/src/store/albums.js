@@ -87,24 +87,22 @@ export const deleteAlbum = (albumId) => async (dispatch) => {
 const initialState = {};
 
 export default function reducer(state = initialState, action) {
+  let newState = { ...state }
   switch (action.type) {
     case ADD_ALBUM:
-      let newState = { ...state };
       const album = action.payload;
       newState[album.id] = album;
       return newState;
     case LOAD:
       newState = {};
-      action.payload.albums.forEach((album) => {
+      action.payload.forEach((album) => {
         newState[album.id] = album;
       });
       return newState;
     case UPDATE_ALBUM:
-      newState = { ...state };
       newState[action.payload.id] = action.payload;
       return newState;
     case DELETE_ALBUM:
-      newState = { ...state };
       delete newState[action.payload];
       return newState;
     default:
