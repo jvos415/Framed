@@ -1,0 +1,27 @@
+.add-album-container {
+    display: flex;
+    margin: 2% 15%;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  #add-album-title {
+    padding: 15px 20px 0px 20px;
+  }
+  
+  .add-album-form {
+    margin: 2% 15%;
+  }
+  
+  #button-add {
+    margin: 15px 0px 7px 10px;
+    width: 200px;
+    align-self: center;
+  }
+  
+  #button-cancel-add {
+    margin: 15px 0px 7px 10px;
+    width: 200px;
+    align-self: center;
+  }
+  

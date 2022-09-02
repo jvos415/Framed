@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { createAlbum } from "../../../store/albums";
+import "./addAlbumForm.css"
 
 const AddAlbumForm = () => {
   const dispatch = useDispatch();
@@ -36,7 +37,7 @@ const AddAlbumForm = () => {
   const handleCancelClick = (e) => {
     e.preventDefault();
 
-    return history.push("/");
+    return history.push(`/my-albums/${user.id}`);
   };
 
   let errorList;
@@ -53,9 +54,9 @@ const AddAlbumForm = () => {
   }
 
   return (
-    <div>
-      <h1>Add an Photo Album</h1>
-      <form onSubmit={submitAlbum}>
+    <div className="add-album-container">
+      <h3 id="add-album-title">Add an Photo Album</h3>
+      <form className="add-album-form" onSubmit={submitAlbum}>
         <ul className={errorList}>
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
