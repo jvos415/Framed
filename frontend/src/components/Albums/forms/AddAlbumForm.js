@@ -19,7 +19,7 @@ const AddAlbumForm = () => {
 
     const albumObj = {
       userId,
-      title,
+      title
     };
 
     try {
