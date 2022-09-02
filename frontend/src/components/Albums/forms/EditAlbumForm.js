@@ -4,12 +4,13 @@ import { useHistory } from "react-router-dom";
 import { updateAlbum } from "../../../store/albums";
 import "./editAlbumForm.css"
 
-const EditAlbumForm = ({ setUpdateAlbumComp }) => {
+const EditAlbumForm = ({ setUpdateAlbumComp, album }) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const user = useSelector((state) => state.session.user);
+  const albumId = album.id
 
-  const [title, setTitle] = useState("");
+  const [title, setTitle] = useState(album.title);
   const [errors, setErrors] = useState([]);
 
   const submitAlbum = async (e) => {
@@ -18,6 +19,7 @@ const EditAlbumForm = ({ setUpdateAlbumComp }) => {
     const userId = user.id;
 
     const albumObj = {
+      albumId,  
       userId,
       title
     };
