@@ -12,7 +12,7 @@ const MyAlbumsPage = () => {
 
   useEffect(() => {
     dispatch(getAlbums(user.id));
-  }, [dispatch]);
+  }, [dispatch, user.id]);
 
   const newAlbumPageFunc = () => {
     history.push("/add-album");
