@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { NavLink, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { getAlbums } from "../../store/albums";
+import AlbumCard from "./elements/AlbumCard";
 import "./myAlbumsPage.css";
 
 const MyAlbumsPage = () => {
@@ -34,11 +35,7 @@ const MyAlbumsPage = () => {
       <div className="all-albums">
       {albums.map((album) => {
         return (
-          <div>
-            <NavLink exact to={`/albums/${album.id}`}>
-            <h2>{album.title}</h2>
-            </NavLink>
-          </div>
+          <AlbumCard album={album} />
         );
       })}
       </div>
