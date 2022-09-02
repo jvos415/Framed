@@ -92,8 +92,6 @@ const ImageDetails = () => {
     const createdAt = image.createdAt;
     const updatedAt = new Date();
 
-    console.log(albumIdentifier)
-
     const payload = {
       id: imageId,
       albumId,
@@ -109,6 +107,7 @@ const ImageDetails = () => {
 
     if (updatedImage) {
       setShowEditForm(false);
+      dispatch(getOneImage(imageId));
       return history.push(`/images/${imageId}`);
     }
   };
