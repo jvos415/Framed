@@ -58,7 +58,6 @@ const AlbumCard = ({ album }) => {
         return history.push(`/my-albums/${user.id}`);
       }
     })
-    
   };
 
   const deleteAlbumFunc = () => {

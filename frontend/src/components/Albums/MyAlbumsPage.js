@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { getAlbums } from "../../store/albums";
 import AlbumCard from "./elements/AlbumCard";
 import "./myAlbumsPage.css";
@@ -8,12 +8,19 @@ import "./myAlbumsPage.css";
 const MyAlbumsPage = () => {
   const dispatch = useDispatch();
   const history = useHistory();
+  const { userId } = useParams();
   const user = useSelector((state) => state.session.user);
   const albums = Object.values(useSelector((state) => state.albums));
 
   useEffect(() => {
     if (!user) {
       return history.push("/");
+    }
+  },[user])
+
+  useEffect(() => {
+    if (user.id !== userId) {
+      return history.push(`/my-albums/${user.id}`);
     }
   },[user])
 
