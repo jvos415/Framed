@@ -44,7 +44,7 @@ const SingleCommentComponent = ({ comment }) => {
         {showEditIcon && !showEditCommentForm && <button
           value={comment.id}
           onClick={handleEditComment}
-          className="trash-can"
+          className="edit-pencil"
         >
           <img src={EditIcon} alt="Edit Icon"></img>
         </button>}
