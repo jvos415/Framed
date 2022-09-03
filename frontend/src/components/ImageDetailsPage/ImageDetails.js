@@ -129,7 +129,7 @@ const ImageDetails = () => {
           <p id="image-description">{image.description}</p>
           {albums.length > 0 && verifyUser && (
             <div className="add-to-album">
-              <h4 className="add-image-label">Add Image to Album</h4>
+              <h4 className="add-image-label">Add Your Image to an Album</h4>
               <form className="album-id-form" onSubmit={handleSubmit}>
                 <select
                   type="text"

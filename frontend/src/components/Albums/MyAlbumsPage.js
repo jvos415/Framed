@@ -46,6 +46,7 @@ const MyAlbumsPage = () => {
       })}
       </div>) : <div>
           <h2>You Do Not Have Any Albums Yet...</h2>
+          <h3>*You can only add images you posted to your albums</h3>
         </div>}
     </div>
   );
