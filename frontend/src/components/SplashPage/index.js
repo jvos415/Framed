@@ -1,9 +1,8 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import "./SplashPage.css";
-
 import { getImages } from "../../store/images";
+import "./SplashPage.css";
 
 const ImageScroll = () => {
   const sessionUser = useSelector((state) => state.session.user);
