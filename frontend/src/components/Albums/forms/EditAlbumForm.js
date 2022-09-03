@@ -68,7 +68,7 @@ const EditAlbumForm = ({ setUpdateAlbumComp, album }) => {
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
-          <button id="button-add" type="submit">Update Album</button>
+          <button id="button-add" type="submit">Update Album Title</button>
           <button  id="button-cancel-add" type="button" onClick={handleCancelClick}>
             Cancel
           </button>
