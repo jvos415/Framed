@@ -15,7 +15,7 @@ const AlbumCard = ({ album }) => {
     if (!user) {
       return history.push("/");
     }
-  },[user])
+  },[user, history])
 
   const [updateAlbumComp, setUpdateAlbumComp] = useState("");
 
