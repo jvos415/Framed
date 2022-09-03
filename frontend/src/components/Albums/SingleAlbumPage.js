@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams, useHistory } from "react-router-dom";
 import { getImages } from "../../store/images";
 import { getAlbums } from "../../store/albums";
+import "./singleAlbumPage.css";
 
 const SingleAlbumPage = () => {
   const dispatch = useDispatch();
@@ -41,33 +42,42 @@ const SingleAlbumPage = () => {
 
   return (
     <div>
-      <h2>{album[0]?.title}</h2>
+      <h1 id="single-album-title">{album[0]?.title} Album</h1>
       {images.length > 0 ? (
         <div>
-          {images.map((image) => {
-            return (
-              <Link
-                id="splash-images-more"
-                key={image.id}
-                to={`/images/${image.id}`}
-              >
-                <img
+          <div className="album-image-container">
+            {images.map((image) => {
+              return (
+                <Link
+                  id="splash-images-more"
                   key={image.id}
-                  id="splash-images"
-                  src={`${image.imageUrl}`}
-                  onError={(e) => {
-                    e.target.onerror = null;
-                    e.target.src =
-                      "https://fisnikde.com/wp-content/uploads/2019/01/broken-image.png";
-                  }}
-                  alt={`${image.title}`}
-                  loading="lazy"
-                ></img>
-              </Link>
-            );
-          })}
+                  to={`/images/${image.id}`}
+                >
+                  <img
+                    key={image.id}
+                    id="splash-images"
+                    src={`${image.imageUrl}`}
+                    onError={(e) => {
+                      e.target.onerror = null;
+                      e.target.src =
+                        "https://fisnikde.com/wp-content/uploads/2019/01/broken-image.png";
+                    }}
+                    alt={`${image.title}`}
+                    loading="lazy"
+                  ></img>
+                </Link>
+              );
+            })}
+          </div>
+          <div className="back-to-top-container-album">
+            <button id="back-to-top" onClick={() => window.scrollTo(0, 0)}>
+              Back to the top ⇧
+            </button>
+          </div>
         </div>
-      ) : <h3>There are no images in this album yet...</h3>}
+      ) : (
+        <h3>There are no images in this album yet...</h3>
+      )}
     </div>
   );
 };
