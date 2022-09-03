@@ -45,7 +45,6 @@
 
 #welcome-title {
   position: relative;
-  top: 10%;
   text-align: center;
   font-size: 65px;
   padding: 2% 10%;
@@ -55,7 +54,6 @@
   position: relative;
   text-align: center;
   font-size: 35px;
-  top: 30%;
   padding: 2% 10%;
 }
 
@@ -63,4 +61,21 @@
   .back-to-top-container {
     margin-top: -20px;
    }
+}
+
+@media only screen and (max-width: 650px) {
+  #welcome-title {
+    position: relative;
+    text-align: center;
+    font-size: 65px;
+    padding: 2% 5%;
+  }
+  
+  #welcome-blurb {
+    position: relative;
+    text-align: center;
+    font-size: 30px !important;
+    padding: 2% 10%;
+    margin-top: -30px;
+  }
 }

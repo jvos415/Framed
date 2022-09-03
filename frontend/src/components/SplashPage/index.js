@@ -65,7 +65,8 @@ const ImageScroll = () => {
           View users' favorite frames from around the world!
           Scroll the roll! As a logged in user, you can
           add an image of your liking to be viewed by the FRAMED community and
-          comment on other members' photos.
+          comment on other members' photos. A logged in user can add images that
+          that have posted to their personally crafted albums for quick access and organization.
         </p>
       </div>
       <div className="splash-container">{content}</div>
