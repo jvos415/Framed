@@ -7,3 +7,38 @@
     margin: 2% 0 2% 0%;
     padding: 20px 15px;
 }
+
+.link-container {
+    display: flex;
+    align-items: center;
+}
+
+#album-title {
+    color: black;
+    font-size: 1.2em;
+    text-decoration: none;
+    list-style: none;
+    position: relative;
+    display: inline;
+    padding: 0 7px;
+  }
+  
+  #album-title:after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -2px;
+    width: 0px;
+    height: 2px;
+    background: black;
+    transition: all 0.45s;
+  }
+  
+  #album-title:hover:after {
+    width: 100%;
+    left: 0;
+  }
+
+  #album-title:hover {
+    text-decoration: none;
+  }
