@@ -38,7 +38,7 @@ const ImageDetails = () => {
   useEffect(() => {
     if (sessionUser && image && image.userId === sessionUser.id) {
       setShowDeleteButton(true);
-      setVerifyUser(true)
+      setVerifyUser(true);
     }
   }, [image, sessionUser]);
 
@@ -47,8 +47,9 @@ const ImageDetails = () => {
   }, [dispatch, imageId]);
 
   useEffect(() => {
+    if (!sessionUser) return history.push("/signup");
     dispatch(getAlbums(sessionUser.id));
-  }, [dispatch, sessionUser.id]);
+  }, [dispatch, sessionUser, history]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -71,10 +72,10 @@ const ImageDetails = () => {
   };
 
   const updateAlbumIdentifier = (e) => {
-    const albumTitle = e.target.value
+    const albumTitle = e.target.value;
     const singleAlbum = albums.filter((album) => {
-      return album.title === albumTitle
-    })
+      return album.title === albumTitle;
+    });
     setAlbumIdentifier(singleAlbum[0].id);
   };
 
@@ -131,11 +132,10 @@ const ImageDetails = () => {
             <div className="add-to-album">
               <h4 className="add-image-label">Add Your Image to an Album</h4>
               <form className="album-id-form" onSubmit={handleSubmit}>
-                <select
-                  type="text"
-                  onChange={updateAlbumIdentifier}
-                >
-                  <option value="" selected disabled hidden>Choose Album...</option>
+                <select type="text" onChange={updateAlbumIdentifier}>
+                  <option value="" selected disabled hidden>
+                    Choose Album...
+                  </option>
                   {albums.map((album) => {
                     return <option key={album.id}>{album.title}</option>;
                   })}

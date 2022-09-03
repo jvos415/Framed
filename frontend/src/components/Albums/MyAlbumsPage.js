@@ -16,17 +16,23 @@ const MyAlbumsPage = () => {
     if (!user) {
       return history.push("/");
     }
-  },[user])
+  },[user, history])
 
   useEffect(() => {
+    if (!user) {
+      return history.push("/");
+    }
     if (user.id !== userId) {
       return history.push(`/my-albums/${user.id}`);
     }
-  },[user])
+  },[user, history, userId])
 
   useEffect(() => {
+    if (!user) {
+      return history.push("/");
+    }
     dispatch(getAlbums(user.id));
-  }, [dispatch, user.id]);
+  }, [dispatch, user, history]);
 
   const newAlbumPageFunc = () => {
     history.push("/add-album");
