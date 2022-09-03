@@ -76,7 +76,7 @@ const SingleAlbumPage = () => {
           </div>
         </div>
       ) : (
-        <h3>There are no images in this album yet...</h3>
+        <h3 id="no-images-albums">There are no images in this album yet...</h3>
       )}
     </div>
   );

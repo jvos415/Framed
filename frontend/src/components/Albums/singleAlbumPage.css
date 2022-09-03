@@ -65,6 +65,13 @@
     top: 30%;
     padding: 2% 10%;
   }
+
+  #no-images-albums {
+    display: flex;
+    justify-content: flex-start;
+    margin: 2% 8%;
+    align-items: center;
+  }
   
   @media only screen and (max-width: 750px) {
     .back-to-top-container {
