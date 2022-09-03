@@ -32,8 +32,11 @@ const SingleAlbumPage = () => {
   }, [dispatch]);
 
   useEffect(() => {
+    if (!user) {
+      return history.push("/signup");
+    }
     dispatch(getAlbums(user.id));
-  }, [dispatch, user.id]);
+  }, [dispatch, user, history]);
 
   let footer = document.querySelector(".footer");
   if (footer) {

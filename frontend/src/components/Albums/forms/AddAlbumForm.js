@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { createAlbum } from "../../../store/albums";
@@ -11,6 +11,12 @@ const AddAlbumForm = () => {
 
   const [title, setTitle] = useState("");
   const [errors, setErrors] = useState([]);
+
+  useEffect(() => {
+    if (!user) {
+      return history.push("/signup");
+    }
+  },[user, history])
 
   const submitAlbum = async (e) => {
     e.preventDefault();
