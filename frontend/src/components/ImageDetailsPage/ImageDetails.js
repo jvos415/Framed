@@ -133,6 +133,7 @@ const ImageDetails = () => {
                   type="text"
                   onChange={updateAlbumIdentifier}
                 >
+                  <option value="" selected disabled hidden>Choose Album...</option>
                   {albums.map((album) => {
                     return <option key={album.id}>{album.title}</option>;
                   })}
