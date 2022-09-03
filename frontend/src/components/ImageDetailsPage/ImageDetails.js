@@ -26,6 +26,7 @@ const ImageDetails = () => {
   const [showAddComment, setShowAddComment] = useState(false);
   const [showAddCommentButton, setShowAddCommentButton] = useState(true);
   const [albumIdentifier, setAlbumIdentifier] = useState(image?.albumId);
+  const [verifyUser, setVerifyUser] = useState(false);
 
   useEffect(() => {
     if (!sessionUser) return history.push("/signup");
@@ -37,6 +38,7 @@ const ImageDetails = () => {
   useEffect(() => {
     if (sessionUser && image && image.userId === sessionUser.id) {
       setShowDeleteButton(true);
+      setVerifyUser(true)
     }
   }, [image, sessionUser]);
 
@@ -125,7 +127,7 @@ const ImageDetails = () => {
         </div>
         <div className="image-description-container">
           <p id="image-description">{image.description}</p>
-          {albums.length > 0 && (
+          {albums.length > 0 && verifyUser && (
             <div className="add-to-album">
               <h4 className="add-image-label">Add Image to Album</h4>
               <form className="album-id-form" onSubmit={handleSubmit}>
