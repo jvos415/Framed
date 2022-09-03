@@ -109,7 +109,7 @@ module.exports = {
   },
   {
     userId: 5,
-    imageUrl: "https://images.pexels.com/photos/460635/pexels-photo-460635.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    imageUrl: "https://images.pexels.com/photos/460635/pexels-photo-460635.jpeg",
     title: "Cherry Blossoms",
     description: "Cherry blossoms near the creek side",
     createdAt: new Date(),
@@ -133,17 +133,17 @@ module.exports = {
   },
   {
     userId: 6,
-    imageUrl: "https://images.unsplash.com/photo-1546019170-f1f6e46039f5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2895&q=80",
-    title: "Woman On The Beach",
-    description: "A woman standing on the beach looking out to the ocean on a cloudy day",
+    imageUrl: "https://media.springernature.com/relative-r300-703_m1050/springer-static/image/art%3A10.1038%2F528452a/MediaObjects/41586_2015_Article_BF528452a_Figg_HTML.jpg",
+    title: "Komodo Dragons Fighting",
+    description: "Komodo Dragons fighting for territory in Indonesia.",
     createdAt: new Date(),
     updatedAt: new Date()
   },
   {
     userId: 6,
-    imageUrl: "https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2866&q=80",
-    title: "Man Looing Into Nature",
-    description: "Man looking into nature",
+    imageUrl: "https://media.springernature.com/relative-r300-703_m1050/springer-static/image/art%3A10.1038%2F528452a/MediaObjects/41586_2015_Article_BF528452a_Figj_HTML.jpg",
+    title: "Abstract Satellite Image",
+    description: "Very interesting image of large magellanic clouds with small magellanic clouds.",
     createdAt: new Date(),
     updatedAt: new Date()
   },
@@ -157,7 +157,7 @@ module.exports = {
   },
   {
     userId: 6,
-    imageUrl: "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/little-cute-maltipoo-puppy-royalty-free-image-1652926025.jpg?crop=0.444xw:1.00xh;0.129xw,0&resize=980:*",
+    imageUrl: "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/little-cute-maltipoo-puppy-royalty-free-image-1652926025.jpg",
     title: "Maltipoo Snackin'",
     description: "A small light colored Matlipoo eating and looking cute",
     createdAt: new Date(),
@@ -165,7 +165,7 @@ module.exports = {
   },
   {
     userId: 6,
-    imageUrl: "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/happy-dog-outdoors-royalty-free-image-1652927740.jpg?crop=0.447xw:1.00xh;0.187xw,0&resize=980:*",
+    imageUrl: "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/happy-dog-outdoors-royalty-free-image-1652927740.jpg",
     title: "Border Collie",
     description: "White and black border collie looking into the camera",
     createdAt: new Date(),
@@ -173,7 +173,7 @@ module.exports = {
   },
   {
     userId: 6,
-    imageUrl: "https://hips.hearstapps.com/ghk.h-cdn.co/assets/17/30/pit-bull.jpg?crop=1.0xw:1xh;center,top&resize=980:*",
+    imageUrl: "https://hips.hearstapps.com/ghk.h-cdn.co/assets/17/30/pit-bull.jpg",
     title: "American Staffordshire Terrier",
     description: "Grey and white Staffordshire Terrier in the snow",
     createdAt: new Date(),
