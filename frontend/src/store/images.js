@@ -80,17 +80,28 @@ export const createImage = (imageObj) => async (dispatch) => {
     }
 };
 
-export const updateSingleImage = (image) => async (dispatch) => {
-  const response = await csrfFetch(`/api/images/${image.id}`, {
+export const updateSingleImage = (imageObj) => async (dispatch) => {
+  const { image, id, userId, title, description, createdAt, updatedAt } = imageObj;
+  const formData = new FormData();
+  formData.append("id", id);
+  formData.append("userId", userId);
+  formData.append("title", title);
+  formData.append("description", description);
+  formData.append("createdAt", createdAt);
+  formData.append("updatedAt", updatedAt);
+
+  if (image) formData.append("image", image);
+
+  const response = await csrfFetch(`/api/images/${imageObj.id}`, {
     method: "PUT",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(image),
+    headers: { "Content-Type": "multipart/form-data" },
+    body: formData,
   });
 
   if (response.ok) {
-    const image = await response.json();
-    dispatch(updateImage(image));
-    return image;
+    const updatedImage = await response.json();
+    dispatch(updateImage(updatedImage));
+    return updatedImage;
   }
 };
 
