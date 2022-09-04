@@ -17,14 +17,23 @@ router.get(
   })
 );
 
-/******************************* POST ROUTE FOR IMAGES*************************************/
+/******************************* POST ROUTE FOR IMAGES *************************************/
 
 router.post(
   "/",
   imageValidations.validateAddPhoto,
+  singleMulterUpload("image"),
   requireAuth,
   asyncHandler(async function (req, res) {
-    const imageObj = await Image.create(req.body);
+    const { userId, title, description } = req.body;
+    const imageUrl = await singlePublicFileUpload(req.file);
+    const imageObj = await Image.create({
+      userId,
+      imageUrl,
+      title,
+      description
+    });
+
     res.status(201);
     return res.json(imageObj);
   })
@@ -46,10 +55,22 @@ router.get(
 router.put(
   "/:id(\\d+)",
   imageValidations.validateUpdatePhoto,
+  singleMulterUpload("image"),
   requireAuth,
   asyncHandler(async function (req, res) {
+    const { id, userId, title, description, createdAt, updatedAt } = req.body;
+    const imageUrl = await singlePublicFileUpload(req.file);
     const image = await Image.findByPk(req.params.id);
-    await image.update(req.body);
+    await image.update({
+      id,
+      userId,
+      imageUrl,
+      title,
+      description,
+      createdAt,
+      updatedAt
+    });
+
     return res.json(image);
   })
 );
