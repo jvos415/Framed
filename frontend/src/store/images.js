@@ -59,10 +59,18 @@ export const getOneImage = (imageId) => async (dispatch) => {
 };
 
 export const createImage = (imageObj) => async (dispatch) => {
+    const { image, userId, title, description } = imageObj;
+    const formData = new FormData();
+    formData.append("userId", userId);
+    formData.append("title", title);
+    formData.append("description", description);
+
+    if (image) formData.append("image", image);
+
     const response = await csrfFetch(`/api/images`, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(imageObj),
+      headers: { "Content-Type": "multipart/form-data" },
+      body: formData,
     });
 
     if (response.ok) {
