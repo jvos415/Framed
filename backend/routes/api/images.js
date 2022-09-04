@@ -1,13 +1,13 @@
 const express = require("express");
 const router = express.Router();
 const asyncHandler = require("express-async-handler");
-
+const { singlePublicFileUpload, singleMulterUpload } = require("../../awsS3");
 const { requireAuth } = require("../../utils/auth");
 const imageValidations = require("../../utils/images");
 const commentValidations = require("../../utils/comments");
 const { User, Image, Comment } = require("../../db/models");
 
-/******************************* GET ROUTE FOR SPLASH PAGE*************************************/
+/******************************* GET ROUTE IMGAES *************************************/
 
 router.get(
   "/",
@@ -17,7 +17,7 @@ router.get(
   })
 );
 
-/******************************* POST ROUTE TO SPLASH PAGE *************************************/
+/******************************* POST ROUTE FOR IMAGES*************************************/
 
 router.post(
   "/",
