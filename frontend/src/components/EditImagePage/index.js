@@ -9,16 +9,15 @@ const EditImageForm = ({ setShowEditForm }) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
-  const image = useSelector((state) => state.images[imageId]);
+  const imageObj = useSelector((state) => state.images[imageId]);
 
-  const [imageUrl, setImageUrl] = useState(image.imageUrl);
-  const [title, setTitle] = useState(image.title);
-  const [description, setDescription] = useState(image.description);
+  const [image, setImage] = useState(imageObj.imageUrl);
+  const [title, setTitle] = useState(imageObj.title);
+  const [description, setDescription] = useState(imageObj.description);
   const [errors, setErrors] = useState([]);
 
   if (!sessionUser) return history.push("/signup");
 
-  const updateImageUrl = (e) => setImageUrl(e.target.value);
   const updateTitle = (e) => setTitle(e.target.value);
   const updateDescription = (e) => setDescription(e.target.value);
 
@@ -27,13 +26,13 @@ const EditImageForm = ({ setShowEditForm }) => {
     setErrors([]);
 
     const userId = sessionUser.id;
-    const createdAt = image.createdAt;
+    const createdAt = imageObj.createdAt;
     const updatedAt = new Date();
 
     const payload = {
       id: imageId,
       userId,
-      imageUrl,
+      image,
       title,
       description,
       createdAt,
@@ -52,6 +51,11 @@ const EditImageForm = ({ setShowEditForm }) => {
       const data = await error.json();
       if (data && data.errors) setErrors(data.errors);
     }
+  };
+
+  const updateFile = (e) => {
+    const file = e.target.files[0];
+    if (file) setImage(file);
   };
 
   const handleCancelClick = (e) => {
@@ -76,8 +80,10 @@ const EditImageForm = ({ setShowEditForm }) => {
           {errors.map((error, idx) => <li key={idx}>{error}</li>)}
         </ul>
         <div className="form-box">
-          <label className="label">Image Url</label>
-          <input className="input-field" type="text" value={imageUrl} onChange={updateImageUrl} />
+          <label className="label">Upload Image</label>
+          <label>
+            <input className="input-field" type="file" onChange={updateFile} />
+          </label>
           <label className="label">Title</label>
           <input className="input-field" type="text" value={title} onChange={updateTitle} />
           <label className="label">Description</label>
