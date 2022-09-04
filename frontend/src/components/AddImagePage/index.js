@@ -9,14 +9,13 @@ const AddImageForm = () => {
   const history = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
 
-  const [imageUrl, setImageUrl] = useState("");
+  const [image, setImage] = useState(null);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [errors, setErrors] = useState([]);
 
   if (!sessionUser) return history.push("/signup");
 
-  const updateImageUrl = (e) => setImageUrl(e.target.value);
   const updateTitle = (e) => setTitle(e.target.value);
   const updateDescription = (e) => setDescription(e.target.value);
 
@@ -28,7 +27,7 @@ const AddImageForm = () => {
 
     const payload = {
       userId,
-      imageUrl,
+      image,
       title,
       description,
     };
@@ -43,6 +42,11 @@ const AddImageForm = () => {
       const data = await error.json();
         if (data && data.errors) setErrors(data.errors);
     }
+  };
+
+  const updateFile = (e) => {
+    const file = e.target.files[0];
+    if (file) setImage(file);
   };
 
   const handleCancelClick = (e) => {
@@ -72,13 +76,10 @@ const AddImageForm = () => {
           {errors.map((error, idx) => <li key={idx}>{error}</li>)}
         </ul>
         <div className="form-box">
-          <label className="label">Image Url</label>
-          <input className="input-field"
-            type="text"
-            placeholder="Image URL"
-            value={imageUrl}
-            onChange={updateImageUrl}
-          />
+          <label className="label">Upload Image</label>
+          <label>
+            <input className="input-field" type="file" onChange={updateFile} />
+          </label>
           <label className="label">Title</label>
           <input className="input-field"
             type="text"
