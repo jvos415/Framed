@@ -25,6 +25,10 @@
   align-self: center;
 }
 
+#upload-image {
+  border: none;
+}
+
 .footer-position {
   position: fixed;
   bottom: 0;

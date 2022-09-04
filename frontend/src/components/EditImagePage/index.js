@@ -82,7 +82,7 @@ const EditImageForm = ({ setShowEditForm }) => {
         <div className="form-box">
           <label className="label">Upload Image</label>
           <label>
-            <input className="input-field" type="file" onChange={updateFile} />
+            <input id="upload-image" className="input-field" type="file" onChange={updateFile} />
           </label>
           <label className="label">Title</label>
           <input className="input-field" type="text" value={title} onChange={updateTitle} />

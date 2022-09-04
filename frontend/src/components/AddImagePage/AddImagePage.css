@@ -24,3 +24,7 @@
   width: 200px;
   align-self: center;
 }
+
+#upload-image {
+  border: none;
+}
