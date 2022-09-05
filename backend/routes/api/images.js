@@ -25,8 +25,8 @@ router.post(
   imageValidations.validateAddPhoto,
   requireAuth,
   asyncHandler(async function (req, res) {
-    // console.log("\n\n", req, "\n\n")
     const { userId, title, description } = req.body;
+    // console.log("\n\n", req, "\n\n")
     const imageUrl = await singlePublicFileUpload(req.file);
     const imageObj = await Image.create({
       userId,
