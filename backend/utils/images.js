@@ -1,7 +1,7 @@
 const { check } = require("express-validator");
 const { handleValidationErrors } = require("./validation");
 
-const regex = new RegExp(".*(jpe?g|png)$");
+// const regex = new RegExp(".*(jpe?g|png)$");
 
 // const imageUrl = check("imageUrl")
 //   .notEmpty()

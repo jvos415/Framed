@@ -21,10 +21,11 @@ router.get(
 
 router.post(
   "/",
-  imageValidations.validateAddPhoto,
   singleMulterUpload("image"),
+  imageValidations.validateAddPhoto,
   requireAuth,
   asyncHandler(async function (req, res) {
+    // console.log("\n\n", req, "\n\n")
     const { userId, title, description } = req.body;
     const imageUrl = await singlePublicFileUpload(req.file);
     const imageObj = await Image.create({
@@ -54,8 +55,8 @@ router.get(
 
 router.put(
   "/:id(\\d+)",
-  imageValidations.validateUpdatePhoto,
   singleMulterUpload("image"),
+  imageValidations.validateUpdatePhoto,
   requireAuth,
   asyncHandler(async function (req, res) {
     const { id, userId, title, description, createdAt, updatedAt } = req.body;
