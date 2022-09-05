@@ -58,9 +58,13 @@ router.put(
   imageValidations.validateUpdatePhoto,
   requireAuth,
   asyncHandler(async function (req, res) {
-    const { id, userId, title, description, createdAt, updatedAt } = req.body;
+    const { id, albumId, userId, title, description, createdAt, updatedAt } = req.body;
     const image = await Image.findByPk(req.params.id);
     
+    if (!albumId) {
+      albumId = null;
+    }
+
     let imageUrl;
     if (!req.file) {
       imageUrl = image.imageUrl
@@ -70,6 +74,7 @@ router.put(
 
     await image.update({
       id,
+      albumId,
       userId,
       imageUrl,
       title,

@@ -17,30 +17,31 @@ const ImageDetails = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
-  const image = useSelector((state) => state.images[imageId]);
+  const imageObj = useSelector((state) => state.images[imageId]);
   const albums = Object.values(useSelector((state) => state.albums));
 
+  const [image, setImage] = useState(imageObj?.imageUrl);
   const [showEditForm, setShowEditForm] = useState(false);
   const [showEditButton, setShowEditButton] = useState(false);
   const [showDeleteButton, setShowDeleteButton] = useState(false);
   const [showAddComment, setShowAddComment] = useState(false);
   const [showAddCommentButton, setShowAddCommentButton] = useState(true);
-  const [albumIdentifier, setAlbumIdentifier] = useState(image?.albumId);
+  const [albumIdentifier, setAlbumIdentifier] = useState(imageObj?.albumId);
   const [verifyUser, setVerifyUser] = useState(false);
 
   useEffect(() => {
     if (!sessionUser) return history.push("/signup");
-    if (sessionUser && image && image.userId === sessionUser.id) {
+    if (sessionUser && imageObj && imageObj.userId === sessionUser.id) {
       setShowEditButton(true);
     }
-  }, [image, sessionUser, history]);
+  }, [imageObj, sessionUser, history]);
 
   useEffect(() => {
-    if (sessionUser && image && image.userId === sessionUser.id) {
+    if (sessionUser && imageObj && imageObj.userId === sessionUser.id) {
       setShowDeleteButton(true);
       setVerifyUser(true);
     }
-  }, [image, sessionUser]);
+  }, [imageObj, sessionUser]);
 
   useEffect(() => {
     dispatch(getOneImage(imageId));
@@ -55,7 +56,7 @@ const ImageDetails = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  if (!image) {
+  if (!imageObj) {
     return null;
   }
 
@@ -84,22 +85,21 @@ const ImageDetails = () => {
     setShowAddCommentButton(false);
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmitAddAlbum = async (e) => {
     e.preventDefault();
 
-    const userId = image.userId;
+    const userId = imageObj.userId;
     const albumId = albumIdentifier;
-    const imageUrl = image.imageUrl;
-    const title = image.title;
-    const description = image.description;
-    const createdAt = image.createdAt;
+    const title = imageObj.title;
+    const description = imageObj.description;
+    const createdAt = imageObj.createdAt;
     const updatedAt = new Date();
 
     const payload = {
       id: imageId,
       albumId,
       userId,
-      imageUrl,
+      image,
       title,
       description,
       createdAt,
@@ -115,23 +115,28 @@ const ImageDetails = () => {
     }
   };
 
+  const updateFile = (e) => {
+    const file = e.target.files[0];
+    if (file) setImage(file);
+  };
+
   let content = null;
 
   if (!showEditForm) {
     content = (
       <div className="image-details">
         <div className="title-and-poster">
-          <h3 id="image-title">{image.title}</h3>
-          {image.User && (
-            <h3 id="username">Image Posted by @{image.User.username}</h3>
+          <h3 id="image-title">{imageObj.title}</h3>
+          {imageObj.User && (
+            <h3 id="username">Image Posted by @{imageObj.User.username}</h3>
           )}
         </div>
         <div className="image-description-container">
-          <p id="image-description">{image.description}</p>
+          <p id="image-description">{imageObj.description}</p>
           {albums.length > 0 && verifyUser && (
             <div className="add-to-album">
               <h4 className="add-image-label">Add Your Image to an Album</h4>
-              <form className="album-id-form" onSubmit={handleSubmit}>
+              <form className="album-id-form" onSubmit={handleSubmitAddAlbum}>
                 <select type="text" onChange={updateAlbumIdentifier}>
                   <option value="" selected disabled hidden>
                     Choose Album...
@@ -143,6 +148,14 @@ const ImageDetails = () => {
                 <button id="button-update" type="submit">
                   Add Image to Album
                 </button>
+                <label id="hide-me">
+                  <input
+                    id="upload-image"
+                    className="input-field"
+                    type="file"
+                    onChange={updateFile}
+                  />
+                </label>
               </form>
             </div>
           )}
@@ -163,8 +176,8 @@ const ImageDetails = () => {
       <div className="image-image-container">
         <img
           id="image-image"
-          src={`${image.imageUrl}`}
-          alt={image.title}
+          src={`${imageObj.imageUrl}`}
+          alt={imageObj.title}
           onError={(e) => {
             e.target.onerror = null;
             e.target.src =

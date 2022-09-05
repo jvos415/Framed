@@ -85,9 +85,10 @@ export const createImage = (imageObj) => async (dispatch) => {
 };
 
 export const updateSingleImage = (imageObj) => async (dispatch) => {
-  const { image, id, userId, title, description, createdAt, updatedAt } = imageObj;
+  const { image, id, albumId, userId, title, description, createdAt, updatedAt } = imageObj;
   const formData = new FormData();
   formData.append("id", id);
+  formData.append("albumId", albumId);
   formData.append("userId", userId);
   formData.append("title", title);
   formData.append("description", description);

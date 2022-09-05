@@ -11,7 +11,7 @@ const EditImageForm = ({ setShowEditForm }) => {
   const sessionUser = useSelector((state) => state.session.user);
   const imageObj = useSelector((state) => state.images[imageId]);
 
-  const [image, setImage] = useState(imageObj.imageUrl);
+  const [image, setImage] = useState(imageObj?.imageUrl);
   const [title, setTitle] = useState(imageObj.title);
   const [description, setDescription] = useState(imageObj.description);
   const [errors, setErrors] = useState([]);
@@ -25,12 +25,14 @@ const EditImageForm = ({ setShowEditForm }) => {
     e.preventDefault();
     setErrors([]);
 
+    const albumId = imageObj.albumId;
     const userId = sessionUser.id;
     const createdAt = imageObj.createdAt;
     const updatedAt = new Date();
 
     const payload = {
       id: imageId,
+      albumId,
       userId,
       image,
       title,
