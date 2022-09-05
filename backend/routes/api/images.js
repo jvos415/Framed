@@ -1,13 +1,13 @@
 const express = require("express");
 const router = express.Router();
 const asyncHandler = require("express-async-handler");
-
+const { singlePublicFileUpload, singleMulterUpload } = require("../../awsS3");
 const { requireAuth } = require("../../utils/auth");
 const imageValidations = require("../../utils/images");
 const commentValidations = require("../../utils/comments");
 const { User, Image, Comment } = require("../../db/models");
 
-/******************************* GET ROUTE FOR SPLASH PAGE*************************************/
+/******************************* GET ROUTE IMGAES *************************************/
 
 router.get(
   "/",
@@ -17,14 +17,23 @@ router.get(
   })
 );
 
-/******************************* POST ROUTE TO SPLASH PAGE *************************************/
+/******************************* POST ROUTE FOR IMAGES *************************************/
 
 router.post(
   "/",
+  singleMulterUpload("image"),
   imageValidations.validateAddPhoto,
   requireAuth,
   asyncHandler(async function (req, res) {
-    const imageObj = await Image.create(req.body);
+    const { userId, title, description } = req.body;
+    const imageUrl = await singlePublicFileUpload(req.file);
+    const imageObj = await Image.create({
+      userId,
+      imageUrl,
+      title,
+      description
+    });
+
     res.status(201);
     return res.json(imageObj);
   })
@@ -45,11 +54,30 @@ router.get(
 
 router.put(
   "/:id(\\d+)",
+  singleMulterUpload("image"),
   imageValidations.validateUpdatePhoto,
   requireAuth,
   asyncHandler(async function (req, res) {
+    const { id, userId, title, description, createdAt, updatedAt } = req.body;
     const image = await Image.findByPk(req.params.id);
-    await image.update(req.body);
+    
+    let imageUrl;
+    if (!req.file) {
+      imageUrl = image.imageUrl
+    } else {
+      imageUrl = await singlePublicFileUpload(req.file);
+    }
+
+    await image.update({
+      id,
+      userId,
+      imageUrl,
+      title,
+      description,
+      createdAt,
+      updatedAt
+    });
+
     return res.json(image);
   })
 );
