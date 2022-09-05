@@ -80,12 +80,13 @@ const EditImageForm = ({ setShowEditForm }) => {
           {errors.map((error, idx) => <li key={idx}>{error}</li>)}
         </ul>
         <div className="form-box">
+          
+          <label className="label">Title</label>
+          <input className="input-field" type="text" value={title} onChange={updateTitle} />
           <label className="label">Upload Image</label>
           <label>
             <input id="upload-image" className="input-field" type="file" onChange={updateFile} />
           </label>
-          <label className="label">Title</label>
-          <input className="input-field" type="text" value={title} onChange={updateTitle} />
           <label className="label">Description</label>
           <textarea
             className="input-field"
