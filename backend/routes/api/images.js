@@ -26,7 +26,6 @@ router.post(
   requireAuth,
   asyncHandler(async function (req, res) {
     const { userId, title, description } = req.body;
-    // console.log("\n\n", req, "\n\n")
     const imageUrl = await singlePublicFileUpload(req.file);
     const imageObj = await Image.create({
       userId,
@@ -60,8 +59,15 @@ router.put(
   requireAuth,
   asyncHandler(async function (req, res) {
     const { id, userId, title, description, createdAt, updatedAt } = req.body;
-    const imageUrl = await singlePublicFileUpload(req.file);
     const image = await Image.findByPk(req.params.id);
+    
+    let imageUrl;
+    if (!req.file) {
+      imageUrl = image.imageUrl
+    } else {
+      imageUrl = await singlePublicFileUpload(req.file);
+    }
+
     await image.update({
       id,
       userId,
