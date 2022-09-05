@@ -1,6 +1,6 @@
 # Welcome to FRAMED!
 
-Using the FRAMED app, you can scroll the roll of photos to your heart's content, add images that you want to share with the world and comments on images in the roll. Find inspiration, enjoy the beauty of world and share some of your best work!
+Using the FRAMED app, you can scroll the roll of photos to your heart's content, add images that you want to share with the world and comment on any image in the roll. Additionally, users have the ability to create albums to store photos that they themselves posts for quck and easy access. Find inspiration, enjoy the beauty of world and share some of your best work!
 
 The FRAMED app welcomes photographers of all different skill levels to share their snapshots of the world through a lense. Get out there in the world and show us what an image can look like! Report back and post your image ;)
 
@@ -10,9 +10,9 @@ Checkout the Framed here: https://framed-app.herokuapp.com/
 
 ![](README-images/splash.png)
 
-On the top right of the page, in the nav bar, you can find "Log In", "Sign Up" and "Demo User". Using the "Log In" link you will be redirected to the "Log In Page" where you can log in if you have an existing account. If you do not have an existing account you can create a new account on the "Sign Up Page" using he sign up link.
+On the top right of the page, in the nav bar, you can find "Log In", "Sign Up" and "Demo User". Using the "Log In" link you will be redirected to the "Log In Page" where you can log in if you have an existing account. If you do not have an existing account, you can create a new account on the "Sign Up Page" using he sign up link.
 
-Additionally, in the nav bar at the top right of the page, you can find a "Demo User" link to log in and test the functionality of the site without creating an account. Log in and check it out!
+Additionally, in the nav bar at the top right of the page, you can find a "Demo User" link to log in and test the functionality of the site without creating an account. Check it out!
 
 ![](README-images/Add-Image.png)
 
