@@ -14,15 +14,31 @@ On the top right of the page, in the nav bar, you can find "Log In", "Sign Up" a
 
 Additionally, in the nav bar at the top right of the page, you can find a "Demo User" link to log in and test the functionality of the site without creating an account. Check it out!
 
-![](README-images/Add-Image.png)
+![](README-images/add-image.png)
 
-After you are logged in, you can add a URL image using the "Add Image" link that will now appear in the nav bar. You will additionally see a proile icon that will list you information and a logout button if clicked.
+After you are logged in, you can add an image using the "Add Image" link that will now appear in the nav bar.
 
-![](README-images/add-image-page.png)
+![](README-images/add-image-form.png)
 
-When logged in, a user can click on any of the photos located in the roll and see details about the image and who posted it. Logged in users can additionally, add comments to any image. If you added an image to the scroll yourself, you can edit this image or remove it from the roll completely.
+ You will additionally see a proile icon that will list you information and a logout button if clicked as well as the "My Albums" link.
 
-![](README-images/Photo-detail.png)
+When logged in, a user can click on any of the photos located in the roll and see details about the image and who posted it. Logged in users can additionally, add comments to any image. Of course a user can edit or delete their own comments but not comments posted by another user.
+
+![](README-images/image-details-not-owner.png)
+
+If a user added an image to the scroll yourself, you can edit this image or remove it from the roll completely.
+
+![](README-images/image-details-options.png)
+
+You can see that a user that posted an image as the ability to add their photo to an customizable album.
+
+![](README-images/my-albums.png)
+
+On the "My Albums" page, a user can create an album which gives them the ablility to add their own images to any album that the user had previously created. All album titles can be clicked on and will navigate the user to single album.
+
+![](README-images/single-album.png)
+
+Each image on the specific album is a clickable link for easy access for editing.
 
 At the bottom of the page you can find links to my LinkedIn and GitHub profiles.
 
@@ -31,7 +47,7 @@ At the bottom of the page you can find links to my LinkedIn and GitHub profiles.
 ### PERN STACK
 
 - Javascript
-- Rect
+- React
 - Express.js
 - Redux
 - Node.js
@@ -44,14 +60,17 @@ At the bottom of the page you can find links to my LinkedIn and GitHub profiles.
 
 - Sign-In/Log-In with user creditionals
 - Demo User
-- Create, Read, Update, and Destroy Images with error handling
-- Create, Read and Destroy Comments with error gandling
+- Create, read, update, and delete Images with error handling
+  - Images uploaded utilizing AWS
+- Create, read, updated and delete Comments with error handling
+- Create, read, update and delete Albums
+  - Add images posted by the user to personally crafted albums
+
+
 
 ## Future To-Dos
 
-- Update Comments (Posted by User)
-- Albums
-- AWS Image Storing
+- Albums/Images, ability to remove images from an album
 - Favorites
 - Tags
 - Google Maps
@@ -86,7 +105,7 @@ Conditionally rendering certain buttons or components was something that I reall
     </div>
 ```
 
-A very small but surprisingly difficulty that I ran into during this project was rendering the footer on all pages and mobile. My final fix was to use DOM manipulation to assign specific classes to the footer in certain components only. This allowed me to have different styling for the footer on different pages while still have overall styles that keep the footer layout the same on all page.
+A very small but surprisingly difficult thing that I ran into during this project was rendering the footer on all pages and mobile. My final fix was to dynamically added classes to the footer on certain pages to achieve my desired output. This allowed me to have different styling for the footer on different pages while still have overall styles for the footer for consistency.
 
 ```
 let footer = document.querySelector(".footer");
