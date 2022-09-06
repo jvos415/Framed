@@ -79,12 +79,12 @@ const AlbumCard = ({ album }) => {
         {!updateAlbumComp && (<button id="button-cancel-add" type="button" onClick={updateAlbumComponent}>
           Update Album Title
         </button>)}
-        {updateAlbumComp && (
-            <EditAlbumForm setUpdateAlbumComp={setUpdateAlbumComp} album={album}/>
-        )}
         {!updateAlbumComp && (<button id="button-cancel-add" type="button" onClick={deleteAlbumFunc}>
           Delete Album
         </button>)}
+        {updateAlbumComp && (
+            <EditAlbumForm setUpdateAlbumComp={setUpdateAlbumComp} album={album}/>
+        )}
       </div>
     </div>
   );
