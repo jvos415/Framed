@@ -111,7 +111,7 @@ const ImageDetails = () => {
     if (updatedImage) {
       setShowEditForm(false);
       dispatch(getOneImage(imageId));
-      return history.push(`/my-albums/${userId}`);
+      return history.push(`/albums/${albumId}`);
     }
   };
 
