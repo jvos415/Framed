@@ -2,7 +2,11 @@
 module.exports = (sequelize, DataTypes) => {
   const Image = sequelize.define('Image', {
     userId: DataTypes.INTEGER,
-    albumId: DataTypes.INTEGER,
+    albumId: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      defaultValue: null
+    },
     imageUrl: {
       type: DataTypes.STRING,
       allowNull: false,

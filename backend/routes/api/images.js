@@ -61,10 +61,6 @@ router.put(
     const { id, albumId, userId, title, description, createdAt, updatedAt } = req.body;
     const image = await Image.findByPk(req.params.id);
     
-    if (!albumId) {
-      albumId = null;
-    }
-
     let imageUrl;
     if (!req.file) {
       imageUrl = image.imageUrl
@@ -72,16 +68,28 @@ router.put(
       imageUrl = await singlePublicFileUpload(req.file);
     }
 
-    await image.update({
-      id,
-      albumId,
-      userId,
-      imageUrl,
-      title,
-      description,
-      createdAt,
-      updatedAt
-    });
+    if (albumId !== "null") {
+      await image.update({
+        id,
+        albumId,
+        userId,
+        imageUrl,
+        title,
+        description,
+        createdAt,
+        updatedAt
+      });
+    } else {
+      await image.update({
+        id,
+        userId,
+        imageUrl,
+        title,
+        description,
+        createdAt,
+        updatedAt
+      });
+    }
 
     return res.json(image);
   })
