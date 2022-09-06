@@ -10,8 +10,8 @@ const AlbumCard = ({ album }) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const images = Object.values(useSelector((state) => state.images)).filter(
-    (image) => {
-      return image.albumId === album.id;
+    (onlyImage) => {
+      return onlyImage.albumId === album.id;
     }
   );
   const user = useSelector((state) => state.session.user);
@@ -37,8 +37,8 @@ const AlbumCard = ({ album }) => {
   const allAlbumIdsToNull = () => {
     images.forEach(async (imageObj) => {
       const imageId = imageObj.id;
-      const userId = imageObj.userId;
       const albumId = null;
+      const userId = imageObj.userId;
       // const imageUrl = image.imageUrl;
       const title = imageObj.title;
       const description = imageObj.description;
@@ -113,14 +113,14 @@ const AlbumCard = ({ album }) => {
             album={album}
           />
         )}
-        <label id="hide-me">
-          <input
-            id="upload-image"
-            className="input-field"
-            type="file"
-            onChange={updateFile}
-          />
-        </label>
+          <label id="hide-me">
+            <input
+              id="upload-image"
+              className="input-field"
+              type="file"
+              onChange={updateFile}
+            />
+          </label>
       </div>
     </div>
   );

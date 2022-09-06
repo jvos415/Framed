@@ -97,6 +97,10 @@ export const updateSingleImage = (imageObj) => async (dispatch) => {
 
   if (image) formData.append("image", image);
 
+  // for (let key of formData.entries()) {
+	// 		console.log(key[0] + ', ' + key[1])
+	// 	}
+
   const response = await csrfFetch(`/api/images/${imageObj.id}`, {
     method: "PUT",
     headers: { "Content-Type": "multipart/form-data" },
