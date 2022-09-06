@@ -42,3 +42,7 @@
   #album-title:hover {
     text-decoration: none;
   }
+
+  #hide-me {
+    display: none;
+  }
