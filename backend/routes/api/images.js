@@ -58,7 +58,7 @@ router.put(
   imageValidations.validateUpdatePhoto,
   requireAuth,
   asyncHandler(async function (req, res) {
-    const { id, albumId, userId, title, description, createdAt, updatedAt } = req.body;
+    let { id, albumId, userId, title, description, createdAt, updatedAt } = req.body;
     const image = await Image.findByPk(req.params.id);
     
     let imageUrl;
@@ -66,6 +66,20 @@ router.put(
       imageUrl = image.imageUrl
     } else {
       imageUrl = await singlePublicFileUpload(req.file);
+    }
+
+    if (albumId === "turnNull") {
+      albumId = null;
+      await image.update({
+        id,
+        albumId,
+        userId,
+        imageUrl,
+        title,
+        description,
+        createdAt,
+        updatedAt
+      });
     }
 
     if (albumId !== "null") {

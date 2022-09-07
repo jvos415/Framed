@@ -37,7 +37,7 @@ const AlbumCard = ({ album }) => {
   const allAlbumIdsToNull = () => {
     images.forEach(async (imageObj) => {
       const imageId = imageObj.id;
-      const albumId = null;
+      const albumId = "turnNull";
       const userId = imageObj.userId;
       // const imageUrl = image.imageUrl;
       const title = imageObj.title;
