@@ -84,8 +84,8 @@ const AddImageForm = () => {
             value={title}
             onChange={updateTitle}
           />
-          <label className="label">Upload Image</label>
-          <label>
+          <label className="label" id="file-upload">
+            Upload Image Here
             <input id="upload-image" className="input-field" type="file" onChange={updateFile} />
           </label>
           <label className="label">Description</label>

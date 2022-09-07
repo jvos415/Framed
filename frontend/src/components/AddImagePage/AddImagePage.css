@@ -28,3 +28,28 @@
 #upload-image {
   border: none;
 }
+
+input[type="file"] {
+  display: none;
+}
+
+#file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    text-align: center;
+    cursor: pointer;
+    margin: 15px 0px 7px 10px;
+    width: 200px;
+    align-self: center;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 20px;
+    border-width: 0;
+    background-color: rgb(193, 193, 197);
+}
+
+#file-upload:hover {
+  font-weight: 500;
+  background-image: linear-gradient(to right, #df3308, #e45800, #e87500, #ea9000, #eba912);
+  cursor: pointer;
+}
