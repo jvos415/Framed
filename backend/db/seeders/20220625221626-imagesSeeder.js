@@ -9,7 +9,7 @@ if (process.env.NODE_ENV === 'production') {
 module.exports = {
   up: (queryInterface, Sequelize) => {
     options.tableName = "Images";
-   return queryInterface.bulkInsert('Images', [
+   return queryInterface.bulkInsert(options, [
     {
      userId: 1,
      imageUrl: "https://cdn.theatlantic.com/thumbor/971MKCF2WLdRswcPL166EBg0LO8=/1200x801/media/img/photo/2020/10/california-photos/a01_1145070518/original.jpg",
